@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mealAllergen1: MyString
+  mealBlurb: MyString
+  mealLastDate: 2016-07-13 20:40:33
+  mealName: MyString
+  mealQuantity: 1
+  mealScore: 1.5
+  mealThumbnail: 
+  mealTotalQuantity: 1
+  lastShmeal_id: 1
+  photo_id: 1
+  user_id: 1
+
+two:
+  mealAllergen1: MyString
+  mealBlurb: MyString
+  mealLastDate: 2016-07-13 20:40:33
+  mealName: MyString
+  mealQuantity: 1
+  mealScore: 1.5
+  mealThumbnail: 
+  mealTotalQuantity: 1
+  lastShmeal_id: 1
+  photo_id: 1
+  user_id: 1

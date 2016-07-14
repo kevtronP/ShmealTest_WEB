@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  homeAddressLat: 1.5
+  homeAddressLon: 1.5
+  userBlurb: MyString
+  userEmail: MyString
+  userInstructions: MyString
+  userName: MyString
+  userPhoneNumber: MyString
+  userScore: 1.5
+  userThumbnail: 
+  userTotalShmeals: 1
+  lastMenuItem_id: 1
+
+two:
+  homeAddressLat: 1.5
+  homeAddressLon: 1.5
+  userBlurb: MyString
+  userEmail: MyString
+  userInstructions: MyString
+  userName: MyString
+  userPhoneNumber: MyString
+  userScore: 1.5
+  userThumbnail: 
+  userTotalShmeals: 1
+  lastMenuItem_id: 1
