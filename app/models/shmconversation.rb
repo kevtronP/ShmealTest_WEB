@@ -1,0 +1,2 @@
+class Shmconversation < ApplicationRecord
+end

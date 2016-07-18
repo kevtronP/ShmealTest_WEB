@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shmealLat: 1.5
+  shmealLon: 1.5
+  shmealPostDate:
+  shmealDayDate:
+  shmealStartTime:
+  shmealEndTime:
+  shmealQuantity: 1
+  shmealScore: 1.5
+  menuItem_id: 1
+
+two:
+  shmealLat: 1.5
+  shmealLon: 1.5
+  shmealPostDate:
+  shmealDayDate:
+  shmealStartTime:
+  shmealEndTime:
+  shmealQuantity: 1
+  shmealScore: 1.5
+  menuItem_id: 1

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  notificationDate: 2016-07-18 01:40:29
+  notificationMessage: MyString
+  menuItem: 1
+  otherUser: 1
+  user: 1
+
+two:
+  notificationDate: 2016-07-18 01:40:29
+  notificationMessage: MyString
+  menuItem: 1
+  otherUser: 1
+  user: 1

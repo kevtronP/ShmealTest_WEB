@@ -1,0 +1,2 @@
+class Shmeal < ApplicationRecord
+end

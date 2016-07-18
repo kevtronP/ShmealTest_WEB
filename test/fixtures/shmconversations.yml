@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  convChannel: MyString
+  convChannel2: MyString
+  convCheckIn1: 2016-07-18 01:26:22
+  convCheckIn2: 2016-07-18 01:26:22
+  convLastDate: 2016-07-18 01:26:22
+  convLastMessage: MyString
+  convUser1: MyString
+  convUser2: MyString
+
+two:
+  convChannel: MyString
+  convChannel2: MyString
+  convCheckIn1: 2016-07-18 01:26:22
+  convCheckIn2: 2016-07-18 01:26:22
+  convLastDate: 2016-07-18 01:26:22
+  convLastMessage: MyString
+  convUser1: MyString
+  convUser2: MyString

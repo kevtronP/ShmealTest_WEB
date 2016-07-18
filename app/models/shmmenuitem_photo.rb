@@ -1,0 +1,2 @@
+class ShmmenuitemPhoto < ApplicationRecord
+end
