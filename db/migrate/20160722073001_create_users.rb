@@ -8,10 +8,11 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :userInstructions
       t.string :userName
       t.string :userPhoneNumber
-      t.float :userScore
-      t.binary :userThumbnail
+      t.string :userScore
+      t.string :userThumbnail
+      t.string :profPicURL
       t.integer :userTotalShmeals
-      t.integer :lastMenuItem_id
+      t.string :lastMenuItem_id
 
       t.timestamps
     end

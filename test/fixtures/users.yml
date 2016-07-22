@@ -8,10 +8,11 @@ one:
   userInstructions: MyString
   userName: MyString
   userPhoneNumber: MyString
-  userScore: 1.5
-  userThumbnail: 
+  userScore: MyString
+  userThumbnail: MyString
+  profPicURL: MyString
   userTotalShmeals: 1
-  lastMenuItem_id: 1
+  lastMenuItem_id: MyString
 
 two:
   homeAddressLat: 1.5
@@ -21,7 +22,8 @@ two:
   userInstructions: MyString
   userName: MyString
   userPhoneNumber: MyString
-  userScore: 1.5
-  userThumbnail: 
+  userScore: MyString
+  userThumbnail: MyString
+  profPicURL: MyString
   userTotalShmeals: 1
-  lastMenuItem_id: 1
+  lastMenuItem_id: MyString

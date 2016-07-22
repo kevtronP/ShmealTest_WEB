@@ -12,7 +12,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user" do
     assert_difference('User.count') do
-      post users_url, params: { user: { homeAddressLat: @user.homeAddressLat, homeAddressLon: @user.homeAddressLon, lastMenuItem_id: @user.lastMenuItem_id, userBlurb: @user.userBlurb, userEmail: @user.userEmail, userInstructions: @user.userInstructions, userName: @user.userName, userPhoneNumber: @user.userPhoneNumber, userScore: @user.userScore, userThumbnail: @user.userThumbnail, userTotalShmeals: @user.userTotalShmeals } }, as: :json
+      post users_url, params: { user: { homeAddressLat: @user.homeAddressLat, homeAddressLon: @user.homeAddressLon, lastMenuItem_id: @user.lastMenuItem_id, profPicURL: @user.profPicURL, userBlurb: @user.userBlurb, userEmail: @user.userEmail, userInstructions: @user.userInstructions, userName: @user.userName, userPhoneNumber: @user.userPhoneNumber, userScore: @user.userScore, userThumbnail: @user.userThumbnail, userTotalShmeals: @user.userTotalShmeals } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update user" do
-    patch user_url(@user), params: { user: { homeAddressLat: @user.homeAddressLat, homeAddressLon: @user.homeAddressLon, lastMenuItem_id: @user.lastMenuItem_id, userBlurb: @user.userBlurb, userEmail: @user.userEmail, userInstructions: @user.userInstructions, userName: @user.userName, userPhoneNumber: @user.userPhoneNumber, userScore: @user.userScore, userThumbnail: @user.userThumbnail, userTotalShmeals: @user.userTotalShmeals } }, as: :json
+    patch user_url(@user), params: { user: { homeAddressLat: @user.homeAddressLat, homeAddressLon: @user.homeAddressLon, lastMenuItem_id: @user.lastMenuItem_id, profPicURL: @user.profPicURL, userBlurb: @user.userBlurb, userEmail: @user.userEmail, userInstructions: @user.userInstructions, userName: @user.userName, userPhoneNumber: @user.userPhoneNumber, userScore: @user.userScore, userThumbnail: @user.userThumbnail, userTotalShmeals: @user.userTotalShmeals } }, as: :json
     assert_response 200
   end
 
