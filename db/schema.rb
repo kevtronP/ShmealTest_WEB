@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718064029) do
+ActiveRecord::Schema.define(version: 20160723063529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,23 @@ ActiveRecord::Schema.define(version: 20160718064029) do
     t.integer  "lastShmeal_id"
     t.integer  "photo_id"
     t.integer  "user_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "menuitems", force: :cascade do |t|
+    t.string   "mealAllergen1"
+    t.string   "mealBlurb"
+    t.datetime "mealLastDate"
+    t.string   "mealName"
+    t.integer  "mealQuantity"
+    t.float    "mealScore"
+    t.binary   "mealThumbnail"
+    t.integer  "mealTotalQuantity"
+    t.integer  "lastShmeal"
+    t.integer  "photo"
+    t.integer  "user"
+    t.string   "mealPhotoURL"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
@@ -100,10 +117,11 @@ ActiveRecord::Schema.define(version: 20160718064029) do
     t.string   "userInstructions"
     t.string   "userName"
     t.string   "userPhoneNumber"
-    t.float    "userScore"
-    t.binary   "userThumbnail"
+    t.string   "userScore"
+    t.string   "userThumbnail"
+    t.string   "profPicURL"
     t.integer  "userTotalShmeals"
-    t.integer  "lastMenuItem_id"
+    t.string   "lastMenuItem_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end

@@ -1,0 +1,2 @@
+class Menuitem < ApplicationRecord
+end

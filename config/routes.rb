@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :menuitems
   resources :shmnotifications
   resources :shmmenuitem_photos
   resources :shmorders
