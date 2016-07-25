@@ -6,10 +6,10 @@ class CreateShmeals < ActiveRecord::Migration[5.0]
       t.datetime :shmealPostDate
       t.datetime :shmealDayDate
       t.datetime :shmealStartTime
-      t.datetime :shmealEndTime
+      t.timestamp :shmealEndTime
       t.integer :shmealQuantity
       t.float :shmealScore
-      t.integer :menuItem_id
+      t.integer :menuItemID
 
       t.timestamps
     end

@@ -3,21 +3,21 @@
 one:
   shmealLat: 1.5
   shmealLon: 1.5
-  shmealPostDate:
-  shmealDayDate:
-  shmealStartTime:
-  shmealEndTime:
+  shmealPostDate: 2016-07-25 10:41:27
+  shmealDayDate: 2016-07-25 10:41:27
+  shmealStartTime: 2016-07-25 10:41:27
+  shmealEndTime: 2016-07-25 10:41:27
   shmealQuantity: 1
   shmealScore: 1.5
-  menuItem_id: 1
+  menuItemID: 1
 
 two:
   shmealLat: 1.5
   shmealLon: 1.5
-  shmealPostDate:
-  shmealDayDate:
-  shmealStartTime:
-  shmealEndTime:
+  shmealPostDate: 2016-07-25 10:41:27
+  shmealDayDate: 2016-07-25 10:41:27
+  shmealStartTime: 2016-07-25 10:41:27
+  shmealEndTime: 2016-07-25 10:41:27
   shmealQuantity: 1
   shmealScore: 1.5
-  menuItem_id: 1
+  menuItemID: 1
