@@ -3,27 +3,27 @@
 one:
   mealAllergen1: MyString
   mealBlurb: MyString
-  mealLastDate: 2016-07-23 01:35:29
+  mealLastDate: 2016-07-25 00:57:19
   mealName: MyString
   mealQuantity: 1
   mealScore: 1.5
   mealThumbnail: 
   mealTotalQuantity: 1
-  lastShmeal: 1
-  photo: 1
-  user: 1
+  lastShmealID: 1
+  photoID: 1
+  userID: 1
   mealPhotoURL: MyString
 
 two:
   mealAllergen1: MyString
   mealBlurb: MyString
-  mealLastDate: 2016-07-23 01:35:29
+  mealLastDate: 2016-07-25 00:57:19
   mealName: MyString
   mealQuantity: 1
   mealScore: 1.5
   mealThumbnail: 
   mealTotalQuantity: 1
-  lastShmeal: 1
-  photo: 1
-  user: 1
+  lastShmealID: 1
+  photoID: 1
+  userID: 1
   mealPhotoURL: MyString

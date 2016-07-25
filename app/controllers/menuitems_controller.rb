@@ -46,6 +46,6 @@ class MenuitemsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def menuitem_params
-      params.require(:menuitem).permit(:mealAllergen1, :mealBlurb, :mealLastDate, :mealName, :mealQuantity, :mealScore, :mealThumbnail, :mealTotalQuantity, :lastShmeal, :photo, :user, :mealPhotoURL)
+      params.require(:menuitem).permit(:mealAllergen1, :mealBlurb, :mealLastDate, :mealName, :mealQuantity, :mealScore, :mealThumbnail, :mealTotalQuantity, :lastShmealID, :photoID, :userID, :mealPhotoURL)
     end
 end

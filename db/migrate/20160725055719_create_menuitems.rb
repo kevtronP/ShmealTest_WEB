@@ -9,9 +9,9 @@ class CreateMenuitems < ActiveRecord::Migration[5.0]
       t.float :mealScore
       t.binary :mealThumbnail
       t.integer :mealTotalQuantity
-      t.integer :lastShmeal
-      t.integer :photo
-      t.integer :user
+      t.integer :lastShmealID
+      t.integer :photoID
+      t.integer :userID
       t.string :mealPhotoURL
 
       t.timestamps
