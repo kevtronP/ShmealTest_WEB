@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160725154126) do
+ActiveRecord::Schema.define(version: 20160731013200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,10 +101,10 @@ ActiveRecord::Schema.define(version: 20160725154126) do
     t.integer  "orderQuantity"
     t.float    "orderScore"
     t.datetime "orderTime"
-    t.integer  "conversation"
-    t.integer  "shmeal"
-    t.integer  "eater"
-    t.integer  "cook"
+    t.integer  "conversationID"
+    t.integer  "shmealID"
+    t.integer  "eaterID"
+    t.integer  "cookID"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

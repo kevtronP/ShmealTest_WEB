@@ -1,29 +1,29 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  orderActualTime: 2016-07-18 01:34:21
+  orderActualTime: 2016-07-30 20:32:00
   orderApproved: false
-  orderDay: 2016-07-18 01:34:21
+  orderDay: 2016-07-30 20:32:00
   orderPickedUp: false
   orderPrice: 1.5
   orderQuantity: 1
   orderScore: 1.5
-  orderTime: 2016-07-18 01:34:21
-  conversation: 1
-  shmeal: 1
-  eater: 1
-  cook: 1
+  orderTime: 2016-07-30 20:32:00
+  conversationID: 1
+  shmealID: 1
+  eaterID: 1
+  cookID: 1
 
 two:
-  orderActualTime: 2016-07-18 01:34:21
+  orderActualTime: 2016-07-30 20:32:00
   orderApproved: false
-  orderDay: 2016-07-18 01:34:21
+  orderDay: 2016-07-30 20:32:00
   orderPickedUp: false
   orderPrice: 1.5
   orderQuantity: 1
   orderScore: 1.5
-  orderTime: 2016-07-18 01:34:21
-  conversation: 1
-  shmeal: 1
-  eater: 1
-  cook: 1
+  orderTime: 2016-07-30 20:32:00
+  conversationID: 1
+  shmealID: 1
+  eaterID: 1
+  cookID: 1

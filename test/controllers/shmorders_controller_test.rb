@@ -12,7 +12,7 @@ class ShmordersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create shmorder" do
     assert_difference('Shmorder.count') do
-      post shmorders_url, params: { shmorder: { conversation: @shmorder.conversation, cook: @shmorder.cook, eater: @shmorder.eater, orderActualTime: @shmorder.orderActualTime, orderApproved: @shmorder.orderApproved, orderDay: @shmorder.orderDay, orderPickedUp: @shmorder.orderPickedUp, orderPrice: @shmorder.orderPrice, orderQuantity: @shmorder.orderQuantity, orderScore: @shmorder.orderScore, orderTime: @shmorder.orderTime, shmeal: @shmorder.shmeal } }, as: :json
+      post shmorders_url, params: { shmorder: { conversationID: @shmorder.conversationID, cookID: @shmorder.cookID, eaterID: @shmorder.eaterID, orderActualTime: @shmorder.orderActualTime, orderApproved: @shmorder.orderApproved, orderDay: @shmorder.orderDay, orderPickedUp: @shmorder.orderPickedUp, orderPrice: @shmorder.orderPrice, orderQuantity: @shmorder.orderQuantity, orderScore: @shmorder.orderScore, orderTime: @shmorder.orderTime, shmealID: @shmorder.shmealID } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class ShmordersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update shmorder" do
-    patch shmorder_url(@shmorder), params: { shmorder: { conversation: @shmorder.conversation, cook: @shmorder.cook, eater: @shmorder.eater, orderActualTime: @shmorder.orderActualTime, orderApproved: @shmorder.orderApproved, orderDay: @shmorder.orderDay, orderPickedUp: @shmorder.orderPickedUp, orderPrice: @shmorder.orderPrice, orderQuantity: @shmorder.orderQuantity, orderScore: @shmorder.orderScore, orderTime: @shmorder.orderTime, shmeal: @shmorder.shmeal } }, as: :json
+    patch shmorder_url(@shmorder), params: { shmorder: { conversationID: @shmorder.conversationID, cookID: @shmorder.cookID, eaterID: @shmorder.eaterID, orderActualTime: @shmorder.orderActualTime, orderApproved: @shmorder.orderApproved, orderDay: @shmorder.orderDay, orderPickedUp: @shmorder.orderPickedUp, orderPrice: @shmorder.orderPrice, orderQuantity: @shmorder.orderQuantity, orderScore: @shmorder.orderScore, orderTime: @shmorder.orderTime, shmealID: @shmorder.shmealID } }, as: :json
     assert_response 200
   end
 

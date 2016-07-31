@@ -9,10 +9,10 @@ class CreateShmorders < ActiveRecord::Migration[5.0]
       t.integer :orderQuantity
       t.float :orderScore
       t.datetime :orderTime
-      t.integer :conversation
-      t.integer :shmeal
-      t.integer :eater
-      t.integer :cook
+      t.integer :conversationID
+      t.integer :shmealID
+      t.integer :eaterID
+      t.integer :cookID
 
       t.timestamps
     end
