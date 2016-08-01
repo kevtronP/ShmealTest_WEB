@@ -12,7 +12,7 @@ class ShmconversationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create shmconversation" do
     assert_difference('Shmconversation.count') do
-      post shmconversations_url, params: { shmconversation: { convChannel2: @shmconversation.convChannel2, convChannel: @shmconversation.convChannel, convCheckIn1: @shmconversation.convCheckIn1, convCheckIn2: @shmconversation.convCheckIn2, convLastDate: @shmconversation.convLastDate, convLastMessage: @shmconversation.convLastMessage, convUser1: @shmconversation.convUser1, convUser2: @shmconversation.convUser2 } }, as: :json
+      post shmconversations_url, params: { shmconversation: { convChannel: @shmconversation.convChannel, convCheckIn1: @shmconversation.convCheckIn1, convCheckIn2: @shmconversation.convCheckIn2, convLastDate: @shmconversation.convLastDate, convLastMessage: @shmconversation.convLastMessage, convUser1: @shmconversation.convUser1, convUser2: @shmconversation.convUser2, originalCookID: @shmconversation.originalCookID, originalEaterID: @shmconversation.originalEaterID } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class ShmconversationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update shmconversation" do
-    patch shmconversation_url(@shmconversation), params: { shmconversation: { convChannel2: @shmconversation.convChannel2, convChannel: @shmconversation.convChannel, convCheckIn1: @shmconversation.convCheckIn1, convCheckIn2: @shmconversation.convCheckIn2, convLastDate: @shmconversation.convLastDate, convLastMessage: @shmconversation.convLastMessage, convUser1: @shmconversation.convUser1, convUser2: @shmconversation.convUser2 } }, as: :json
+    patch shmconversation_url(@shmconversation), params: { shmconversation: { convChannel: @shmconversation.convChannel, convCheckIn1: @shmconversation.convCheckIn1, convCheckIn2: @shmconversation.convCheckIn2, convLastDate: @shmconversation.convLastDate, convLastMessage: @shmconversation.convLastMessage, convUser1: @shmconversation.convUser1, convUser2: @shmconversation.convUser2, originalCookID: @shmconversation.originalCookID, originalEaterID: @shmconversation.originalEaterID } }, as: :json
     assert_response 200
   end
 
