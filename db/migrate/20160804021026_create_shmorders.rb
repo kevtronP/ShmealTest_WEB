@@ -4,6 +4,7 @@ class CreateShmorders < ActiveRecord::Migration[5.0]
       t.datetime :orderActualTime
       t.boolean :orderApproved
       t.datetime :orderDay
+      t.datetime :orderPickupTime
       t.boolean :orderPickedUp
       t.float :orderPrice
       t.integer :orderQuantity
