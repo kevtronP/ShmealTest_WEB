@@ -46,6 +46,6 @@ class ShmnotificationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def shmnotification_params
-      params.require(:shmnotification).permit(:notificationDate, :notificationMessage, :menuItem, :otherUser, :user)
+      params.require(:shmnotification).permit(:userID, :otherUserID, :menuItemID, :notificationMessage, :notificationDate)
     end
 end

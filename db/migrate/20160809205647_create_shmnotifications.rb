@@ -1,11 +1,11 @@
 class CreateShmnotifications < ActiveRecord::Migration[5.0]
   def change
     create_table :shmnotifications do |t|
-      t.datetime :notificationDate
+      t.integer :userID
+      t.integer :otherUserID
+      t.integer :menuItemID
       t.string :notificationMessage
-      t.integer :menuItem
-      t.integer :otherUser
-      t.integer :user
+      t.datetime :notificationDate
 
       t.timestamps
     end

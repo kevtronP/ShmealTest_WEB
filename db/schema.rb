@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160804021026) do
+ActiveRecord::Schema.define(version: 20160809205647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,11 +94,11 @@ ActiveRecord::Schema.define(version: 20160804021026) do
   end
 
   create_table "shmnotifications", force: :cascade do |t|
-    t.datetime "notificationDate"
+    t.integer  "userID"
+    t.integer  "otherUserID"
+    t.integer  "menuItemID"
     t.string   "notificationMessage"
-    t.integer  "menuItem"
-    t.integer  "otherUser"
-    t.integer  "user"
+    t.datetime "notificationDate"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
   end

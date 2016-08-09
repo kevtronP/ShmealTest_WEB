@@ -1,3 +1,3 @@
 class ShmnotificationSerializer < ActiveModel::Serializer
-  attributes :id, :notificationDate, :notificationMessage, :menuItem, :otherUser, :user
+  attributes :id, :userID, :otherUserID, :menuItemID, :notificationMessage, :notificationDate
 end

@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  notificationDate: 2016-07-18 01:40:29
+  userID: 1
+  otherUserID: 1
+  menuItemID: 1
   notificationMessage: MyString
-  menuItem: 1
-  otherUser: 1
-  user: 1
+  notificationDate: 2016-08-09 15:56:47
 
 two:
-  notificationDate: 2016-07-18 01:40:29
+  userID: 1
+  otherUserID: 1
+  menuItemID: 1
   notificationMessage: MyString
-  menuItem: 1
-  otherUser: 1
-  user: 1
+  notificationDate: 2016-08-09 15:56:47
