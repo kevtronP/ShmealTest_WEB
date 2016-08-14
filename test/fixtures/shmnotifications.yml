@@ -5,11 +5,13 @@ one:
   otherUserID: 1
   menuItemID: 1
   notificationMessage: MyString
-  notificationDate: 2016-08-09 15:56:47
+  notificationDate: 2016-08-13 21:51:34
+  unfollowTimeStamp: 2016-08-13 21:51:34
 
 two:
   userID: 1
   otherUserID: 1
   menuItemID: 1
   notificationMessage: MyString
-  notificationDate: 2016-08-09 15:56:47
+  notificationDate: 2016-08-13 21:51:34
+  unfollowTimeStamp: 2016-08-13 21:51:34

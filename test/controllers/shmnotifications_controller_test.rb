@@ -12,7 +12,7 @@ class ShmnotificationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create shmnotification" do
     assert_difference('Shmnotification.count') do
-      post shmnotifications_url, params: { shmnotification: { menuItemID: @shmnotification.menuItemID, notificationDate: @shmnotification.notificationDate, notificationMessage: @shmnotification.notificationMessage, otherUserID: @shmnotification.otherUserID, userID: @shmnotification.userID } }, as: :json
+      post shmnotifications_url, params: { shmnotification: { menuItemID: @shmnotification.menuItemID, notificationDate: @shmnotification.notificationDate, notificationMessage: @shmnotification.notificationMessage, otherUserID: @shmnotification.otherUserID, unfollowTimeStamp: @shmnotification.unfollowTimeStamp, userID: @shmnotification.userID } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class ShmnotificationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update shmnotification" do
-    patch shmnotification_url(@shmnotification), params: { shmnotification: { menuItemID: @shmnotification.menuItemID, notificationDate: @shmnotification.notificationDate, notificationMessage: @shmnotification.notificationMessage, otherUserID: @shmnotification.otherUserID, userID: @shmnotification.userID } }, as: :json
+    patch shmnotification_url(@shmnotification), params: { shmnotification: { menuItemID: @shmnotification.menuItemID, notificationDate: @shmnotification.notificationDate, notificationMessage: @shmnotification.notificationMessage, otherUserID: @shmnotification.otherUserID, unfollowTimeStamp: @shmnotification.unfollowTimeStamp, userID: @shmnotification.userID } }, as: :json
     assert_response 200
   end
 

@@ -6,6 +6,7 @@ class CreateShmnotifications < ActiveRecord::Migration[5.0]
       t.integer :menuItemID
       t.string :notificationMessage
       t.datetime :notificationDate
+      t.datetime :unfollowTimeStamp
 
       t.timestamps
     end
