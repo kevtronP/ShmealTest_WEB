@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160814025134) do
+ActiveRecord::Schema.define(version: 20160830232713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "devices", force: :cascade do |t|
+    t.string   "deviceToken"
+    t.boolean  "pushNotificationsOn"
+    t.datetime "deviceTokenBeginDate"
+    t.integer  "userID"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
 
   create_table "menu_items", force: :cascade do |t|
     t.string   "mealAllergen1"

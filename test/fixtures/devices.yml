@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  deviceToken: MyString
+  pushNotificationsOn: false
+  deviceTokenBeginDate: 2016-08-30 18:27:13
+  userID: 1
+
+two:
+  deviceToken: MyString
+  pushNotificationsOn: false
+  deviceTokenBeginDate: 2016-08-30 18:27:13
+  userID: 1
