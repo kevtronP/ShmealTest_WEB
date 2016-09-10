@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830232713) do
+ActiveRecord::Schema.define(version: 20160910214055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,17 +41,22 @@ ActiveRecord::Schema.define(version: 20160830232713) do
   end
 
   create_table "menuitems", force: :cascade do |t|
-    t.string   "mealAllergen1"
+    t.string   "mealName"
     t.string   "mealBlurb"
     t.datetime "mealLastDate"
-    t.string   "mealName"
     t.integer  "mealQuantity"
     t.float    "mealScore"
     t.binary   "mealThumbnail"
     t.integer  "mealTotalQuantity"
-    t.integer  "lastShmealID"
-    t.integer  "photoID"
-    t.integer  "userID"
+    t.string   "mealAllergen1"
+    t.string   "mealAllergen2"
+    t.string   "mealAllergen3"
+    t.string   "mealAllergen4"
+    t.string   "mealAllergen5"
+    t.string   "mealAllergen6"
+    t.integer  "lastShmeal"
+    t.integer  "photo"
+    t.integer  "user"
     t.string   "mealPhotoURL"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false

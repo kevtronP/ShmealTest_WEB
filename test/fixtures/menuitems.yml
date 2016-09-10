@@ -1,29 +1,39 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  mealAllergen1: MyString
-  mealBlurb: MyString
-  mealLastDate: 2016-07-25 00:57:19
   mealName: MyString
+  mealBlurb: MyString
+  mealLastDate: 2016-09-10 16:40:55
   mealQuantity: 1
   mealScore: 1.5
   mealThumbnail: 
   mealTotalQuantity: 1
-  lastShmealID: 1
-  photoID: 1
-  userID: 1
+  mealAllergen1: MyString
+  mealAllergen2: MyString
+  mealAllergen3: MyString
+  mealAllergen4: MyString
+  mealAllergen5: MyString
+  mealAllergen6: MyString
+  lastShmeal: 1
+  photo: 1
+  user: 1
   mealPhotoURL: MyString
 
 two:
-  mealAllergen1: MyString
-  mealBlurb: MyString
-  mealLastDate: 2016-07-25 00:57:19
   mealName: MyString
+  mealBlurb: MyString
+  mealLastDate: 2016-09-10 16:40:55
   mealQuantity: 1
   mealScore: 1.5
   mealThumbnail: 
   mealTotalQuantity: 1
-  lastShmealID: 1
-  photoID: 1
-  userID: 1
+  mealAllergen1: MyString
+  mealAllergen2: MyString
+  mealAllergen3: MyString
+  mealAllergen4: MyString
+  mealAllergen5: MyString
+  mealAllergen6: MyString
+  lastShmeal: 1
+  photo: 1
+  user: 1
   mealPhotoURL: MyString
