@@ -9,6 +9,7 @@ class CreateShmorders < ActiveRecord::Migration[5.0]
       t.float :orderPrice
       t.integer :orderQuantity
       t.float :orderScore
+      t.boolean :orderReviewIgnored
       t.datetime :orderTime
       t.integer :conversationID
       t.integer :shmealID
