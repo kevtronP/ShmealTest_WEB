@@ -14,9 +14,8 @@ class CreateMenuitems < ActiveRecord::Migration[5.0]
       t.string :mealAllergen4
       t.string :mealAllergen5
       t.string :mealAllergen6
-      t.integer :lastShmeal
-      t.integer :photo
-      t.integer :user
+      t.integer :lastShmealID
+      t.integer :userID
       t.string :mealPhotoURL
 
       t.timestamps
