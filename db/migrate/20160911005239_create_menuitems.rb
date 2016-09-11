@@ -6,7 +6,6 @@ class CreateMenuitems < ActiveRecord::Migration[5.0]
       t.datetime :mealLastDate
       t.integer :mealQuantity
       t.float :mealScore
-      t.binary :mealThumbnail
       t.integer :mealTotalQuantity
       t.string :mealAllergen1
       t.string :mealAllergen2
@@ -14,7 +13,6 @@ class CreateMenuitems < ActiveRecord::Migration[5.0]
       t.string :mealAllergen4
       t.string :mealAllergen5
       t.string :mealAllergen6
-      t.integer :lastShmealID
       t.integer :userID
       t.string :mealPhotoURL
 

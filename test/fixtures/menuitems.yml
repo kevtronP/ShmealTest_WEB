@@ -3,10 +3,9 @@
 one:
   mealName: MyString
   mealBlurb: MyString
-  mealLastDate: 2016-09-10 18:57:53
+  mealLastDate: 2016-09-10 19:52:39
   mealQuantity: 1
   mealScore: 1.5
-  mealThumbnail: 
   mealTotalQuantity: 1
   mealAllergen1: MyString
   mealAllergen2: MyString
@@ -14,17 +13,15 @@ one:
   mealAllergen4: MyString
   mealAllergen5: MyString
   mealAllergen6: MyString
-  lastShmealID: 1
   userID: 1
   mealPhotoURL: MyString
 
 two:
   mealName: MyString
   mealBlurb: MyString
-  mealLastDate: 2016-09-10 18:57:53
+  mealLastDate: 2016-09-10 19:52:39
   mealQuantity: 1
   mealScore: 1.5
-  mealThumbnail: 
   mealTotalQuantity: 1
   mealAllergen1: MyString
   mealAllergen2: MyString
@@ -32,6 +29,5 @@ two:
   mealAllergen4: MyString
   mealAllergen5: MyString
   mealAllergen6: MyString
-  lastShmealID: 1
   userID: 1
   mealPhotoURL: MyString
