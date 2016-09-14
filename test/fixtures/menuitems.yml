@@ -3,9 +3,10 @@
 one:
   mealName: MyString
   mealBlurb: MyString
-  mealLastDate: 2016-09-10 19:52:39
+  mealLastDate: 2016-09-14 02:40:50
   mealQuantity: 1
   mealScore: 1.5
+  mealScoreQuantity: 1
   mealTotalQuantity: 1
   mealAllergen1: MyString
   mealAllergen2: MyString
@@ -19,9 +20,10 @@ one:
 two:
   mealName: MyString
   mealBlurb: MyString
-  mealLastDate: 2016-09-10 19:52:39
+  mealLastDate: 2016-09-14 02:40:50
   mealQuantity: 1
   mealScore: 1.5
+  mealScoreQuantity: 1
   mealTotalQuantity: 1
   mealAllergen1: MyString
   mealAllergen2: MyString

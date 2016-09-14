@@ -6,6 +6,7 @@ class CreateMenuitems < ActiveRecord::Migration[5.0]
       t.datetime :mealLastDate
       t.integer :mealQuantity
       t.float :mealScore
+      t.integer :mealScoreQuantity
       t.integer :mealTotalQuantity
       t.string :mealAllergen1
       t.string :mealAllergen2
