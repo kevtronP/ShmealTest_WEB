@@ -12,7 +12,8 @@ gem 'puma', '~> 3.0'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem "braintree", "~> 2.66.0"
+gem 'figaro', '~> 1.1.1'
 # amazon web services
 gem 'aws-sdk', '~> 2'
 
