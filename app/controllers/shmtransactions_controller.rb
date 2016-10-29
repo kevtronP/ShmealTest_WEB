@@ -17,6 +17,8 @@ class ShmtransactionsController < ApplicationController
   def create
     @shmtransaction = Shmtransaction.new(shmtransaction_params)
 
+    Braintree::ClientToken.generate
+
     if @shmtransaction.save
       render json: @shmtransaction, status: :created, location: @shmtransaction
     else
