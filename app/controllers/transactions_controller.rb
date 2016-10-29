@@ -1,6 +1,6 @@
 class TransactionsController < ApplicationController
   def new
-    @client_token = Braintree::ClientToken.generate
+    Braintree::ClientToken.generate
   end
 
   def create
