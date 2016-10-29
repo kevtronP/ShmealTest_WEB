@@ -1,6 +1,6 @@
 class TransactionsController < ApplicationController
   def new
-    Braintree::ClientToken.generate
+    @client_token = Braintree::ClientToken.generate
   end
 
   def create
@@ -9,7 +9,7 @@ class TransactionsController < ApplicationController
               payment_method_nonce: params[:payment_method_nonce])
 
     if @result.success?
-      
+
     else
 
     end
