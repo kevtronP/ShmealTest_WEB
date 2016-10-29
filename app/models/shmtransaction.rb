@@ -1,0 +1,2 @@
+class Shmtransaction < ApplicationRecord
+end

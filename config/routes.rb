@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :shmtransactions
   get 'transactions/new'
 
   resources :devices
