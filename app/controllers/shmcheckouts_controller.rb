@@ -18,7 +18,7 @@ class ShmcheckoutsController < ApplicationController
     @shmcheckout = Shmcheckout.new(shmcheckout_params)
 
     result = Braintree::Transaction.sale(
-            :amount => "10.00",
+            :amount => @shmcheckout.amount,
             :payment_method_nonce => @shmcheckout.nonce,
             :options => {
               :submit_for_settlement => true
