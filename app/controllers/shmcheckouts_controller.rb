@@ -18,8 +18,12 @@ class ShmcheckoutsController < ApplicationController
     @shmcheckout = Shmcheckout.new(shmcheckout_params)
 
     result = Braintree::Transaction.sale(
-              :amount => "6.00",
-              :payment_method_nonce: params[:nonce])
+            :amount => "10.00",
+            :payment_method_nonce => @shmcheckout.nonce,
+            :options => {
+              :submit_for_settlement => true
+            }
+            )
 
     if @shmcheckout.save
       render json: @shmcheckout, status: :created, location: @shmcheckout
