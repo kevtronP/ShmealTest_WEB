@@ -17,6 +17,10 @@ class ShmcheckoutsController < ApplicationController
   def create
     @shmcheckout = Shmcheckout.new(shmcheckout_params)
 
+    @result = Braintree::Transaction.sale(
+              amount => "6.00",
+              payment_method_nonce: params[:nonce])
+
     if @shmcheckout.save
       render json: @shmcheckout, status: :created, location: @shmcheckout
     else
