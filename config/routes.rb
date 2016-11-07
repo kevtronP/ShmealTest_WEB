@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :shmaddresses
   resources :shmcheckouts
   resources :shmtransactions
   get 'transactions/new'

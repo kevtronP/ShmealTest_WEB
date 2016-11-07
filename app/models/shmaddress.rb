@@ -1,0 +1,2 @@
+class Shmaddress < ApplicationRecord
+end
