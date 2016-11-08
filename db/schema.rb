@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161108010316) do
+ActiveRecord::Schema.define(version: 20161108013503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -167,18 +167,17 @@ ActiveRecord::Schema.define(version: 20161108010316) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string   "userEmail"
+    t.string   "userName"
+    t.string   "userSurname"
+    t.string   "userPhoneNumber"
+    t.string   "userBlurb"
+    t.string   "userInstructions"
     t.float    "homeAddressLat"
     t.float    "homeAddressLon"
-    t.string   "userBlurb"
-    t.string   "userEmail"
-    t.string   "userInstructions"
-    t.string   "userName"
-    t.string   "userPhoneNumber"
-    t.string   "userScore"
-    t.string   "userThumbnail"
     t.string   "profPicURL"
-    t.integer  "userTotalShmeals"
-    t.string   "lastMenuItem_id"
+    t.integer  "lastMenuItemID"
+    t.integer  "cookID"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
