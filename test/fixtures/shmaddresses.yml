@@ -4,7 +4,7 @@ one:
   streetAddress: MyString
   streetAddress2: MyString
   locality: MyString
-  postalCode: 1
+  postalCode: MyString
   region: MyString
   userID: MyString
 
@@ -12,6 +12,6 @@ two:
   streetAddress: MyString
   streetAddress2: MyString
   locality: MyString
-  postalCode: 1
+  postalCode: MyString
   region: MyString
   userID: MyString

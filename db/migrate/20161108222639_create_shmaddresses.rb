@@ -4,7 +4,7 @@ class CreateShmaddresses < ActiveRecord::Migration[5.0]
       t.string :streetAddress
       t.string :streetAddress2
       t.string :locality
-      t.integer :postalCode
+      t.string :postalCode
       t.string :region
       t.string :userID
 
