@@ -18,31 +18,31 @@ class ShmaddressesController < ApplicationController
     @shmaddress = Shmaddress.new(shmaddress_params)
 
     result = Braintree::MerchantAccount.create(
-
-    :individual => {
-      :first_name => "Jane",
-      :last_name => "Doe",
-      :email => "jane@14ladders.com",
-      :phone => "5553334444",
-      :date_of_birth => "1981-11-19",
-      :ssn => "456-45-4567",
-      :address => {
-        :street_address => "111 Main St",
-        :locality => "Chicago",
-        :region => "IL",
-        :postal_code => "60622"
-    }
-    :funding => {
-      :descriptor => "Blue Ladders",
-      :destination => Braintree::MerchantAccount::FundingDestination::Bank,
-      :email => "funding@blueladders.com",
-      :mobile_phone => "5555555555",
-      :account_number => "1123581321",
-      :routing_number => "071101307"
-    }
-    :tos_accepted => true,
-    :master_merchant_account_id => "shmealllc",
-  },)
+      :individual => {
+        :first_name => "Jane",
+        :last_name => "Doe",
+        :email => "jane@14ladders.com",
+        :phone => "5553334444",
+        :date_of_birth => "1981-11-19",
+        :ssn => "456-45-4567",
+        :address => {
+          :street_address => "111 Main St",
+          :locality => "Chicago",
+          :region => "IL",
+          :postal_code => "60622"
+        }
+      },
+      :funding => {
+        :descriptor => "Blue Ladders",
+        :destination => Braintree::MerchantAccount::FundingDestination::Bank,
+        :email => "funding@blueladders.com",
+        :mobile_phone => "5555555555",
+        :account_number => "1123581321",
+        :routing_number => "071101307"
+      },
+      :tos_accepted => true,
+      :master_merchant_account_id => "shmealllc"
+      )
 
     if @shmaddress.save
       render json: @shmaddress, status: :created, location: @shmaddress
