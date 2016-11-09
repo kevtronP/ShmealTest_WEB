@@ -41,7 +41,7 @@ class ShmaddressesController < ApplicationController
         :routing_number => "071101307"
       },
       :tos_accepted => true,
-      :master_merchant_account_id => "shmealllc"
+      :master_merchant_account_id => "shmealllc",
       :id => "blue_ladders_store"
       )
 
