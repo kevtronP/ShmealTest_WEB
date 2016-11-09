@@ -42,6 +42,7 @@ class ShmaddressesController < ApplicationController
       },
       :tos_accepted => true,
       :master_merchant_account_id => "shmealllc"
+      :id => "blue_ladders_store"
       )
 
     if @shmaddress.save
