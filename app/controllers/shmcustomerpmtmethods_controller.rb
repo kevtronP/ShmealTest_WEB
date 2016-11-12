@@ -22,6 +22,12 @@ class ShmcustomerpmtmethodsController < ApplicationController
       :last_name => @shmcustomerpmtmethod.lastName,
       :payment_method_nonce => @shmcustomerpmtmethod.nonce
       )
+      if result.success?
+        @shmcustomerpmtmethod.customerIDString = result.customer.id
+        @shmcustomerpmtmethod.paymentMethodToken = result.customer.payment_methods[0].token
+      else
+        p result.errors
+      end
 
     if @shmcustomerpmtmethod.save
       render json: @shmcustomerpmtmethod, status: :created, location: @shmcustomerpmtmethod
