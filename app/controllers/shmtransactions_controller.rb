@@ -19,14 +19,6 @@ class ShmtransactionsController < ApplicationController
 
     @shmtransaction.client_token = Braintree::ClientToken.generate
 
-    result = Braintree::PaymentMethod.find(@shmtransaction.payment_token)
-
-    if result.success?
-      @shmtransaction.paymentType = result.card_type
-    else
-      p result.errors
-    end
-
     if @shmtransaction.save
       render json: @shmtransaction, status: :created, location: @shmtransaction
     else
