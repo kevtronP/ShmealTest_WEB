@@ -18,8 +18,8 @@ class ShmcustomerpmtmethodsController < ApplicationController
     @shmcustomerpmtmethod = Shmcustomerpmtmethod.new(shmcustomerpmtmethod_params)
 
     result = Braintree::Customer.create(
-      :first_name => @shmcustomerpmtmethod.first_name,
-      :last_name => @shmcustomerpmtmethod.last_name,
+      :first_name => @shmcustomerpmtmethod.firstName,
+      :last_name => @shmcustomerpmtmethod.lastName,
       :payment_method_nonce => @shmcustomerpmtmethod.nonce
       )
 
