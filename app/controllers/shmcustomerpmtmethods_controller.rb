@@ -24,16 +24,16 @@ class ShmcustomerpmtmethodsController < ApplicationController
       )
 
       if result.success?
-
-        if @shmcustomerpmtmethod.save
-          render json: @shmcustomerpmtmethod, status: :created, location: @shmcustomerpmtmethod
-        else
-          render json: @shmcustomerpmtmethod.errors, status: :unprocessable_entity
-        end
-
       else
         p result.errors
       end
+      
+      if @shmcustomerpmtmethod.save
+        render json: @shmcustomerpmtmethod, status: :created, location: @shmcustomerpmtmethod
+      else
+        render json: @shmcustomerpmtmethod.errors, status: :unprocessable_entity
+      end
+
   end
 
   # PATCH/PUT /shmcustomerpmtmethods/1
