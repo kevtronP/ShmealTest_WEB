@@ -23,17 +23,11 @@ class ShmcustomerpmtmethodsController < ApplicationController
       :payment_method_nonce => @shmcustomerpmtmethod.nonce
       )
 
-      if result.success?
-      else
-        p result.errors
-      end
-      
-      if @shmcustomerpmtmethod.save
-        render json: @shmcustomerpmtmethod, status: :created, location: @shmcustomerpmtmethod
-      else
-        render json: @shmcustomerpmtmethod.errors, status: :unprocessable_entity
-      end
-
+    if @shmcustomerpmtmethod.save
+      render json: @shmcustomerpmtmethod, status: :created, location: @shmcustomerpmtmethod
+    else
+      render json: @shmcustomerpmtmethod.errors, status: :unprocessable_entity
+    end
   end
 
   # PATCH/PUT /shmcustomerpmtmethods/1
@@ -58,6 +52,6 @@ class ShmcustomerpmtmethodsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def shmcustomerpmtmethod_params
-      params.require(:shmcustomerpmtmethod).permit(:customerIDString, :firstName, :lastName, :paymentMethodToken, :userID)
+      params.require(:shmcustomerpmtmethod).permit(:customerIDString, :firstName, :lastName, :paymentMethodToken, :nonce, :userID)
     end
 end
