@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customerIDString: MyString
+  firstName: MyString
+  lastName: MyString
+  paymentMethodToken: MyString
+  nonce: MyString
+  userID: 1
+
+two:
+  customerIDString: MyString
+  firstName: MyString
+  lastName: MyString
+  paymentMethodToken: MyString
+  nonce: MyString
+  userID: 1
