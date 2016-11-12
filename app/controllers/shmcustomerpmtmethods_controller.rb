@@ -23,9 +23,6 @@ class ShmcustomerpmtmethodsController < ApplicationController
       :payment_method_nonce => @shmcustomerpmtmethod.nonce
       )
 
-      @shmcustomerpmtmethod.paymentMethodToken = result.customer.payment_methods[0].token
-      @shmcustomerpmtmethod.customerIDString = result.customer.id
-
       if result.success?
 
         if @shmcustomerpmtmethod.save
