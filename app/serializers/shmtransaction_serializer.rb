@@ -1,3 +1,3 @@
 class ShmtransactionSerializer < ActiveModel::Serializer
-  attributes :id, :client_token
+  attributes :id, :payment_token, :client_token, :paymentType
 end

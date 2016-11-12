@@ -12,7 +12,7 @@ class ShmtransactionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create shmtransaction" do
     assert_difference('Shmtransaction.count') do
-      post shmtransactions_url, params: { shmtransaction: { client_token: @shmtransaction.client_token } }, as: :json
+      post shmtransactions_url, params: { shmtransaction: { client_token: @shmtransaction.client_token, paymentType: @shmtransaction.paymentType, payment_token: @shmtransaction.payment_token } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class ShmtransactionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update shmtransaction" do
-    patch shmtransaction_url(@shmtransaction), params: { shmtransaction: { client_token: @shmtransaction.client_token } }, as: :json
+    patch shmtransaction_url(@shmtransaction), params: { shmtransaction: { client_token: @shmtransaction.client_token, paymentType: @shmtransaction.paymentType, payment_token: @shmtransaction.payment_token } }, as: :json
     assert_response 200
   end
 

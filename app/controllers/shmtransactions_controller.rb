@@ -16,8 +16,16 @@ class ShmtransactionsController < ApplicationController
   # POST /shmtransactions
   def create
     @shmtransaction = Shmtransaction.new(shmtransaction_params)
-    
+
     @shmtransaction.client_token = Braintree::ClientToken.generate
+
+    result = Braintree::PaymentMethod.find(@shmtransaction.payment_token)
+
+    if result.success?
+      @shmtransaction.paymentType = result.card_type
+    else
+      p result.errors
+    end
 
     if @shmtransaction.save
       render json: @shmtransaction, status: :created, location: @shmtransaction
@@ -48,6 +56,6 @@ class ShmtransactionsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def shmtransaction_params
-      params.require(:shmtransaction).permit(:client_token)
+      params.require(:shmtransaction).permit(:payment_token, :client_token, :paymentType)
     end
 end
