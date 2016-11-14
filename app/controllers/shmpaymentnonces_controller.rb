@@ -19,7 +19,7 @@ class ShmpaymentnoncesController < ApplicationController
 
     result = Braintree::PaymentMethodNonce.create(@shmpaymentnonce.paymentMethodToken)
 
-    @shmpaymentnonce.PaymentMethodNonce = result.payment_method_nonce.nonce
+    @shmpaymentnonce.paymentNonce = result.payment_method_nonce.nonce
 
     if @shmpaymentnonce.save
       render json: @shmpaymentnonce, status: :created, location: @shmpaymentnonce
