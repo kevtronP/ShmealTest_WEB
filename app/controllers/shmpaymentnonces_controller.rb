@@ -21,13 +21,6 @@ class ShmpaymentnoncesController < ApplicationController
 
     @shmpaymentnonce.PaymentMethodNonce = result.payment_method_nonce.nonce
 
-      if result.success?
-        @shmcustomerpmtmethod.customerIDString = result.customer.id
-        @shmcustomerpmtmethod.paymentMethodToken = result.customer.payment_methods[0].token
-      else
-        p result.errors
-      end
-
     if @shmpaymentnonce.save
       render json: @shmpaymentnonce, status: :created, location: @shmpaymentnonce
     else
