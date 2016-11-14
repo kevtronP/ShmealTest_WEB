@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :shmpaymentnonces
   resources :shmcustomerpmtmethods
   resources :shmcooks
   resources :shmaddresses
