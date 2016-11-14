@@ -5,6 +5,9 @@ class CreateShmcustomerpmtmethods < ActiveRecord::Migration[5.0]
       t.string :firstName
       t.string :lastName
       t.string :paymentMethodToken
+      t.string :paymentType
+      t.string :cardLastFour
+      t.string :venmoName
       t.string :nonce
       t.integer :userID
 

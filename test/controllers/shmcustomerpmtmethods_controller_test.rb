@@ -12,7 +12,7 @@ class ShmcustomerpmtmethodsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create shmcustomerpmtmethod" do
     assert_difference('Shmcustomerpmtmethod.count') do
-      post shmcustomerpmtmethods_url, params: { shmcustomerpmtmethod: { customerIDString: @shmcustomerpmtmethod.customerIDString, firstName: @shmcustomerpmtmethod.firstName, lastName: @shmcustomerpmtmethod.lastName, nonce: @shmcustomerpmtmethod.nonce, paymentMethodToken: @shmcustomerpmtmethod.paymentMethodToken, userID: @shmcustomerpmtmethod.userID } }, as: :json
+      post shmcustomerpmtmethods_url, params: { shmcustomerpmtmethod: { cardLastFour: @shmcustomerpmtmethod.cardLastFour, customerIDString: @shmcustomerpmtmethod.customerIDString, firstName: @shmcustomerpmtmethod.firstName, lastName: @shmcustomerpmtmethod.lastName, nonce: @shmcustomerpmtmethod.nonce, paymentMethodToken: @shmcustomerpmtmethod.paymentMethodToken, paymentType: @shmcustomerpmtmethod.paymentType, userID: @shmcustomerpmtmethod.userID, venmoName: @shmcustomerpmtmethod.venmoName } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class ShmcustomerpmtmethodsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update shmcustomerpmtmethod" do
-    patch shmcustomerpmtmethod_url(@shmcustomerpmtmethod), params: { shmcustomerpmtmethod: { customerIDString: @shmcustomerpmtmethod.customerIDString, firstName: @shmcustomerpmtmethod.firstName, lastName: @shmcustomerpmtmethod.lastName, nonce: @shmcustomerpmtmethod.nonce, paymentMethodToken: @shmcustomerpmtmethod.paymentMethodToken, userID: @shmcustomerpmtmethod.userID } }, as: :json
+    patch shmcustomerpmtmethod_url(@shmcustomerpmtmethod), params: { shmcustomerpmtmethod: { cardLastFour: @shmcustomerpmtmethod.cardLastFour, customerIDString: @shmcustomerpmtmethod.customerIDString, firstName: @shmcustomerpmtmethod.firstName, lastName: @shmcustomerpmtmethod.lastName, nonce: @shmcustomerpmtmethod.nonce, paymentMethodToken: @shmcustomerpmtmethod.paymentMethodToken, paymentType: @shmcustomerpmtmethod.paymentType, userID: @shmcustomerpmtmethod.userID, venmoName: @shmcustomerpmtmethod.venmoName } }, as: :json
     assert_response 200
   end
 

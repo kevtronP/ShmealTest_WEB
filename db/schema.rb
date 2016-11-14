@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161112223801) do
+ActiveRecord::Schema.define(version: 20161114031618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,6 +114,9 @@ ActiveRecord::Schema.define(version: 20161112223801) do
     t.string   "firstName"
     t.string   "lastName"
     t.string   "paymentMethodToken"
+    t.string   "paymentType"
+    t.string   "cardLastFour"
+    t.string   "venmoName"
     t.string   "nonce"
     t.integer  "userID"
     t.datetime "created_at",         null: false

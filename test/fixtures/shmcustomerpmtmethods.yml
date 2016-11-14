@@ -5,6 +5,9 @@ one:
   firstName: MyString
   lastName: MyString
   paymentMethodToken: MyString
+  paymentType: MyString
+  cardLastFour: MyString
+  venmoName: MyString
   nonce: MyString
   userID: 1
 
@@ -13,5 +16,8 @@ two:
   firstName: MyString
   lastName: MyString
   paymentMethodToken: MyString
+  paymentType: MyString
+  cardLastFour: MyString
+  venmoName: MyString
   nonce: MyString
   userID: 1
