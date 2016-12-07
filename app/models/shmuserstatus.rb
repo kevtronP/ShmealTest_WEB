@@ -1,0 +1,2 @@
+class Shmuserstatus < ApplicationRecord
+end

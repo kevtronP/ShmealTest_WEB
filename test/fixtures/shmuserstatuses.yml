@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  statusCode: MyString
+  sendingUserID: 1
+  receivingUserID: 1
+  statusStartDate: 2016-12-07 13:59:33
+
+two:
+  statusCode: MyString
+  sendingUserID: 1
+  receivingUserID: 1
+  statusStartDate: 2016-12-07 13:59:33
