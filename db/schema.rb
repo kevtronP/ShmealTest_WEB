@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161114043419) do
+ActiveRecord::Schema.define(version: 20161209015209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -181,12 +181,29 @@ ActiveRecord::Schema.define(version: 20161114043419) do
     t.datetime "updated_at",         null: false
   end
 
+  create_table "shmrequeststatuses", force: :cascade do |t|
+    t.string   "statusCode"
+    t.integer  "requestID"
+    t.datetime "statusStartDate"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "shmtransactions", force: :cascade do |t|
     t.string   "payment_token"
     t.string   "client_token"
     t.string   "paymentType"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "shmuserstatuses", force: :cascade do |t|
+    t.string   "statusCode"
+    t.integer  "sendingUserID"
+    t.integer  "receivingUserID"
+    t.datetime "statusStartDate"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "users", force: :cascade do |t|

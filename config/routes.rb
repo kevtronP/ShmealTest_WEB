@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :shmrequeststatuses
   resources :shmuserstatuses
   resources :shmpaymentnonces
   resources :shmcustomerpmtmethods

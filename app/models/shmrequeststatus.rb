@@ -1,0 +1,2 @@
+class Shmrequeststatus < ApplicationRecord
+end
