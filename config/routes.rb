@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :shmmenuitemstatuses
   resources :shmshmealstatuses
   resources :shmrequeststatuses
   resources :shmuserstatuses

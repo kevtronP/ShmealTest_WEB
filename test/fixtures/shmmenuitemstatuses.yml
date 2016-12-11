@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  statusCode: MyString
+  menuItemID: 1
+  statusStartDate: 2016-12-10 21:26:17
+
+two:
+  statusCode: MyString
+  menuItemID: 1
+  statusStartDate: 2016-12-10 21:26:17

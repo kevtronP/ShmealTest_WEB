@@ -1,0 +1,2 @@
+class Shmmenuitemstatus < ApplicationRecord
+end
