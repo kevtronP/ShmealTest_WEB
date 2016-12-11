@@ -1,0 +1,2 @@
+class Shmpaymentmethodstatus < ApplicationRecord
+end
