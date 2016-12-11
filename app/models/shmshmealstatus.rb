@@ -1,0 +1,2 @@
+class Shmshmealstatus < ApplicationRecord
+end

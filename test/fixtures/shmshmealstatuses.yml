@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  statusCode: MyString
+  shmealID: 1
+  statusStartDate: 2016-12-10 18:34:18
+
+two:
+  statusCode: MyString
+  shmealID: 1
+  statusStartDate: 2016-12-10 18:34:18
