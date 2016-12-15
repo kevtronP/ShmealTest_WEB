@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :shmcheckins
   resources :shmpaymentmethodstatuses
   resources :shmmenuitemstatuses
   resources :shmshmealstatuses

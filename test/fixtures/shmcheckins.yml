@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  checkInTime: 2016-12-14 23:05:05
+  userID: 1
+  conversationID: 1
+
+two:
+  checkInTime: 2016-12-14 23:05:05
+  userID: 1
+  conversationID: 1
