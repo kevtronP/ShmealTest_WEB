@@ -12,7 +12,7 @@ class ShmcheckinsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create shmcheckin" do
     assert_difference('Shmcheckin.count') do
-      post shmcheckins_url, params: { shmcheckin: { checkInTime: @shmcheckin.checkInTime, conversationID: @shmcheckin.conversationID, userID: @shmcheckin.userID } }, as: :json
+      post shmcheckins_url, params: { shmcheckin: { checkInTime: @shmcheckin.checkInTime, conversationID: @shmcheckin.conversationID, messageSent: @shmcheckin.messageSent, userID: @shmcheckin.userID } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class ShmcheckinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update shmcheckin" do
-    patch shmcheckin_url(@shmcheckin), params: { shmcheckin: { checkInTime: @shmcheckin.checkInTime, conversationID: @shmcheckin.conversationID, userID: @shmcheckin.userID } }, as: :json
+    patch shmcheckin_url(@shmcheckin), params: { shmcheckin: { checkInTime: @shmcheckin.checkInTime, conversationID: @shmcheckin.conversationID, messageSent: @shmcheckin.messageSent, userID: @shmcheckin.userID } }, as: :json
     assert_response 200
   end
 

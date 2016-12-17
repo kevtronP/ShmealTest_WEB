@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215050505) do
+ActiveRecord::Schema.define(version: 20161217223533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20161215050505) do
 
   create_table "shmcheckins", force: :cascade do |t|
     t.datetime "checkInTime"
+    t.boolean  "messageSent"
     t.integer  "userID"
     t.integer  "conversationID"
     t.datetime "created_at",     null: false

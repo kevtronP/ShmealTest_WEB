@@ -46,6 +46,6 @@ class ShmcheckinsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def shmcheckin_params
-      params.require(:shmcheckin).permit(:checkInTime, :userID, :conversationID)
+      params.require(:shmcheckin).permit(:checkInTime, :messageSent, :userID, :conversationID)
     end
 end
