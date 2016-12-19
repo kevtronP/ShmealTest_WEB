@@ -1,0 +1,2 @@
+class Shmrequestattribute < ApplicationRecord
+end
