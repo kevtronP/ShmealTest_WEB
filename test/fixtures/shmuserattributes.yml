@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  attributeName: MyString
+  userAttribute: MyString
+  attributeDate: 2016-12-19 16:23:31
+  userID: 1
+
+two:
+  attributeName: MyString
+  userAttribute: MyString
+  attributeDate: 2016-12-19 16:23:31
+  userID: 1

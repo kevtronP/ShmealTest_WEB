@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161219183843) do
+ActiveRecord::Schema.define(version: 20161219222331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -235,6 +235,15 @@ ActiveRecord::Schema.define(version: 20161219183843) do
     t.string   "payment_token"
     t.string   "client_token"
     t.string   "paymentType"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "shmuserattributes", force: :cascade do |t|
+    t.string   "attributeName"
+    t.string   "userAttribute"
+    t.datetime "attributeDate"
+    t.integer  "userID"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end

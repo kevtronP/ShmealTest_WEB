@@ -1,0 +1,2 @@
+class Shmuserattribute < ApplicationRecord
+end
