@@ -1,0 +1,2 @@
+class Shmorderfeedback < ApplicationRecord
+end
