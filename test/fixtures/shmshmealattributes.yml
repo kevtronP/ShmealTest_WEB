@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  attributeName: MyString
+  shmealAttribute: MyString
+  attributeDate: 2016-12-30 20:43:06
+  shmealID: 1
+
+two:
+  attributeName: MyString
+  shmealAttribute: MyString
+  attributeDate: 2016-12-30 20:43:06
+  shmealID: 1

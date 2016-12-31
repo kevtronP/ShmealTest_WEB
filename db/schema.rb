@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161229233719) do
+ActiveRecord::Schema.define(version: 20161231024306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -228,6 +228,15 @@ ActiveRecord::Schema.define(version: 20161229233719) do
     t.string   "statusCode"
     t.integer  "requestID"
     t.datetime "statusStartDate"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "shmshmealattributes", force: :cascade do |t|
+    t.string   "attributeName"
+    t.string   "shmealAttribute"
+    t.datetime "attributeDate"
+    t.integer  "shmealID"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

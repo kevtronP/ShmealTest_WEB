@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :shmshmealattributes
   resources :shmorderfeedbacks
   resources :shmuserattributes
   resources :shmrequestattributes

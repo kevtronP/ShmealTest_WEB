@@ -1,0 +1,2 @@
+class Shmshmealattribute < ApplicationRecord
+end
