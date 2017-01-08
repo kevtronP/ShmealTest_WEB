@@ -46,6 +46,6 @@ class ShmshmealattributesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def shmshmealattribute_params
-      params.require(:shmshmealattribute).permit(:attributeName, :shmealAttribute, :attributeDate, :shmealID)
+      params.require(:shmshmealattribute).permit(:attributeName, :shmealAttribute, :attributeDate, :shmealID, :menuItemID)
     end
 end
