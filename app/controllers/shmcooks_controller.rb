@@ -44,6 +44,12 @@ class ShmcooksController < ApplicationController
       :id => @shmcook.merchantID
       )
 
+      if result.success?
+        
+      else
+        p result.errors
+      end
+
     if @shmcook.save
       render json: @shmcook, status: :created, location: @shmcook
     else
