@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170108014618) do
+ActiveRecord::Schema.define(version: 20170109205652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,12 +61,15 @@ ActiveRecord::Schema.define(version: 20170108014618) do
   end
 
   create_table "shmaddresses", force: :cascade do |t|
+    t.string   "firstName"
+    t.string   "lastName"
     t.string   "streetAddress"
     t.string   "streetAddress2"
     t.string   "locality"
     t.string   "postalCode"
     t.string   "region"
-    t.string   "userID"
+    t.datetime "addressDate"
+    t.integer  "userID"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
@@ -112,10 +115,23 @@ ActiveRecord::Schema.define(version: 20170108014618) do
   end
 
   create_table "shmcooks", force: :cascade do |t|
+    t.string   "merchantID"
     t.string   "taxpayerID"
+    t.string   "firstName"
+    t.string   "surName"
+    t.string   "birthDateString"
+    t.string   "email"
+    t.string   "phoneNumber"
+    t.string   "streetAddress"
+    t.string   "locality"
+    t.string   "region"
+    t.string   "postalCode"
+    t.string   "fundingType"
+    t.string   "accountNumber"
+    t.string   "routingNumber"
     t.integer  "userID"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "shmcustomerpmtmethods", force: :cascade do |t|

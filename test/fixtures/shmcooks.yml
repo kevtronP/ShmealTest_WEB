@@ -1,9 +1,35 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  merchantID: MyString
   taxpayerID: MyString
+  firstName: MyString
+  surName: MyString
+  birthDateString: MyString
+  email: MyString
+  phoneNumber: MyString
+  streetAddress: MyString
+  locality: MyString
+  region: MyString
+  postalCode: MyString
+  fundingType: MyString
+  accountNumber: MyString
+  routingNumber: MyString
   userID: 1
 
 two:
+  merchantID: MyString
   taxpayerID: MyString
+  firstName: MyString
+  surName: MyString
+  birthDateString: MyString
+  email: MyString
+  phoneNumber: MyString
+  streetAddress: MyString
+  locality: MyString
+  region: MyString
+  postalCode: MyString
+  fundingType: MyString
+  accountNumber: MyString
+  routingNumber: MyString
   userID: 1

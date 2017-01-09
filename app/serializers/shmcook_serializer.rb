@@ -1,3 +1,3 @@
 class ShmcookSerializer < ActiveModel::Serializer
-  attributes :id, :taxpayerID, :userID
+  attributes :id, :merchantID, :taxpayerID, :firstName, :surName, :birthDateString, :email, :phoneNumber, :streetAddress, :locality, :region, :postalCode, :fundingType, :accountNumber, :routingNumber, :userID
 end

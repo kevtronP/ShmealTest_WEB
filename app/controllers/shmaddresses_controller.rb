@@ -33,7 +33,6 @@ class ShmaddressesController < ApplicationController
         }
       },
       :funding => {
-        :descriptor => "Blue Ladders",
         :destination => Braintree::MerchantAccount::FundingDestination::Bank,
         :email => "funding@blueladders.com",
         :mobile_phone => "5555555555",
