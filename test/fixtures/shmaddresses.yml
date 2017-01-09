@@ -1,17 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  firstName: MyString
+  lastName: MyString
   streetAddress: MyString
   streetAddress2: MyString
   locality: MyString
   postalCode: MyString
   region: MyString
-  userID: MyString
+  addressDate: 2017-01-08 21:21:32
+  userID: 1
 
 two:
+  firstName: MyString
+  lastName: MyString
   streetAddress: MyString
   streetAddress2: MyString
   locality: MyString
   postalCode: MyString
   region: MyString
-  userID: MyString
+  addressDate: 2017-01-08 21:21:32
+  userID: 1

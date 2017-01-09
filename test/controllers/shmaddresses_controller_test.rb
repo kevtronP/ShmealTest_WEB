@@ -12,7 +12,7 @@ class ShmaddressesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create shmaddress" do
     assert_difference('Shmaddress.count') do
-      post shmaddresses_url, params: { shmaddress: { locality: @shmaddress.locality, postalCode: @shmaddress.postalCode, region: @shmaddress.region, streetAddress2: @shmaddress.streetAddress2, streetAddress: @shmaddress.streetAddress, userID: @shmaddress.userID } }, as: :json
+      post shmaddresses_url, params: { shmaddress: { addressDate: @shmaddress.addressDate, firstName: @shmaddress.firstName, lastName: @shmaddress.lastName, locality: @shmaddress.locality, postalCode: @shmaddress.postalCode, region: @shmaddress.region, streetAddress2: @shmaddress.streetAddress2, streetAddress: @shmaddress.streetAddress, userID: @shmaddress.userID } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class ShmaddressesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update shmaddress" do
-    patch shmaddress_url(@shmaddress), params: { shmaddress: { locality: @shmaddress.locality, postalCode: @shmaddress.postalCode, region: @shmaddress.region, streetAddress2: @shmaddress.streetAddress2, streetAddress: @shmaddress.streetAddress, userID: @shmaddress.userID } }, as: :json
+    patch shmaddress_url(@shmaddress), params: { shmaddress: { addressDate: @shmaddress.addressDate, firstName: @shmaddress.firstName, lastName: @shmaddress.lastName, locality: @shmaddress.locality, postalCode: @shmaddress.postalCode, region: @shmaddress.region, streetAddress2: @shmaddress.streetAddress2, streetAddress: @shmaddress.streetAddress, userID: @shmaddress.userID } }, as: :json
     assert_response 200
   end
 
