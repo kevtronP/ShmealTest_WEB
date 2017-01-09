@@ -74,6 +74,6 @@ class ShmaddressesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def shmaddress_params
-      params.require(:shmaddress).permit(:streetAddress, :streetAddress2, :locality, :postalCode, :region, :userID)
+      params.require(:shmaddress).permit(:firstName, :lastName, :streetAddress, :streetAddress2, :locality, :postalCode, :region, :addressDate, :userID)
     end
 end
