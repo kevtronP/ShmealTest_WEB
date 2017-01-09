@@ -19,17 +19,17 @@ class ShmaddressesController < ApplicationController
 
     result = Braintree::MerchantAccount.create(
       :individual => {
-        :first_name => "Jane",
-        :last_name => "Doe",
-        :email => "jane@14ladders.com",
+        :first_name => @shmaddress.firstName,
+        :last_name => @shmaddress.lastName,
+        :email => "hamerjm@gmail.com",
         :phone => "5553334444",
         :date_of_birth => "1981-11-19",
         :ssn => "456-45-4567",
         :address => {
-          :street_address => "111 Main St",
-          :locality => "Chicago",
-          :region => "IL",
-          :postal_code => "60622"
+          :street_address => @shmaddress.streetAddress,
+          :locality => @shmaddress.locality,
+          :region => @shmaddress.region,
+          :postal_code => @shmaddress.postalCode
         }
       },
       :funding => {
@@ -42,7 +42,7 @@ class ShmaddressesController < ApplicationController
       },
       :tos_accepted => true,
       :master_merchant_account_id => "shmealllc",
-      :id => "walter_white"
+      :id => @shmaddress.streetAddress
       )
 
     if @shmaddress.save
