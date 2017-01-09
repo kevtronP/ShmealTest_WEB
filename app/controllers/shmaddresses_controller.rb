@@ -42,7 +42,7 @@ class ShmaddressesController < ApplicationController
       },
       :tos_accepted => true,
       :master_merchant_account_id => "shmealllc",
-      :id => @shmaddress.streetAddress
+      :id => @shmaddress.lastName
       )
 
     if @shmaddress.save
