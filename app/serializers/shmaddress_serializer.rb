@@ -1,3 +1,3 @@
 class ShmaddressSerializer < ActiveModel::Serializer
-  attributes :id, :firstName, :lastName, :streetAddress, :streetAddress2, :locality, :postalCode, :region, :addressDate, :userID
+  attributes :id, :streetAddress, :streetAddress2, :locality, :postalCode, :region, :userID
 end
