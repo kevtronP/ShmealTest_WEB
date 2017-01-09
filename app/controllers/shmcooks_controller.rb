@@ -20,7 +20,7 @@ class ShmcooksController < ApplicationController
     result = Braintree::MerchantAccount.create(
       :individual => {
         :first_name => @shmcook.firstName,
-        :last_name => @shmcook.lastName,
+        :last_name => @shmcook.surName,
         :email => @shmcook.email,
         :phone => @shmcook.phoneNumber,
         :date_of_birth => @shmcook.birthDateString,
