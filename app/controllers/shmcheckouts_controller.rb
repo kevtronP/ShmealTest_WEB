@@ -21,6 +21,7 @@ class ShmcheckoutsController < ApplicationController
             :amount => @shmcheckout.amount,
             :payment_method_nonce => @shmcheckout.nonce,
             :merchant_account_id => @shmcheckout.merchantID,
+            :service_fee_amount => "0.50",
             :options => {
               :submit_for_settlement => true
             }
