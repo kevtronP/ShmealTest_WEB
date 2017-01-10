@@ -12,7 +12,7 @@ class ShmcheckoutsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create shmcheckout" do
     assert_difference('Shmcheckout.count') do
-      post shmcheckouts_url, params: { shmcheckout: { amount: @shmcheckout.amount, nonce: @shmcheckout.nonce } }, as: :json
+      post shmcheckouts_url, params: { shmcheckout: { amount: @shmcheckout.amount, merchantID: @shmcheckout.merchantID, nonce: @shmcheckout.nonce } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class ShmcheckoutsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update shmcheckout" do
-    patch shmcheckout_url(@shmcheckout), params: { shmcheckout: { amount: @shmcheckout.amount, nonce: @shmcheckout.nonce } }, as: :json
+    patch shmcheckout_url(@shmcheckout), params: { shmcheckout: { amount: @shmcheckout.amount, merchantID: @shmcheckout.merchantID, nonce: @shmcheckout.nonce } }, as: :json
     assert_response 200
   end
 

@@ -3,7 +3,9 @@
 one:
   nonce: MyString
   amount: 1.5
+  merchantID: MyString
 
 two:
   nonce: MyString
   amount: 1.5
+  merchantID: MyString

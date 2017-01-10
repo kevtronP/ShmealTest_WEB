@@ -20,9 +20,11 @@ class ShmcheckoutsController < ApplicationController
     result = Braintree::Transaction.sale(
             :amount => @shmcheckout.amount,
             :payment_method_nonce => @shmcheckout.nonce,
+            :merchant_account_id => @shmcheckout.merchantID,
             :options => {
               :submit_for_settlement => true
             }
+
             )
 
     if @shmcheckout.save
@@ -54,6 +56,6 @@ class ShmcheckoutsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def shmcheckout_params
-      params.require(:shmcheckout).permit(:nonce, :amount)
+      params.require(:shmcheckout).permit(:nonce, :amount, :merchantID)
     end
 end
