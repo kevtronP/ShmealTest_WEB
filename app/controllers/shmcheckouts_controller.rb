@@ -26,6 +26,11 @@ class ShmcheckoutsController < ApplicationController
             }
 
             )
+            if result.success?
+
+            else
+              p result.errors
+            end
 
     if @shmcheckout.save
       render json: @shmcheckout, status: :created, location: @shmcheckout
