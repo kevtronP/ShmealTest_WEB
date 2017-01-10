@@ -28,7 +28,7 @@ class MerchantwebhooksController < ApplicationController
     )
 
     @merchantwebhook.kind = webhook_notification.kind
-    @merchantwebhook.notificationTime = webhook_notification.notificationTime
+    @merchantwebhook.notificationTime = webhook_notification.timestamp
 
     if @merchantwebhook.save
       render json: @merchantwebhook, status: :created, location: @merchantwebhook
