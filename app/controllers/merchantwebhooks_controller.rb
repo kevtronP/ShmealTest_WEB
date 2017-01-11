@@ -19,7 +19,7 @@ class MerchantwebhooksController < ApplicationController
     @merchantwebhook = Merchantwebhook.new(merchantwebhook_params)
 
     sample_notification = Braintree::WebhookTesting.sample_notification(
-      Braintree::WebhookNotification::Kind::SubscriptionWentPastDue,
+      Braintree::WebhookNotification::Kind::SubMerchantAccountApproved,
       "my_id"
     )
 
