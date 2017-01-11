@@ -30,7 +30,7 @@ class MerchantwebhooksController < ApplicationController
     @merchantwebhook.kind = webhook_notification.kind
     @merchantwebhook.notificationTime = webhook_notification.timestamp
     @merchantwebhook.message = webhook_notification.message
-    @merchantwebhook.errorMessages = webhook_notification.errors
+    #@merchantwebhook.errorMessages = webhook_notification.errors
     @merchantwebhook.merchantID = webhook_notification.merchant_account_id
 
     if @merchantwebhook.save
