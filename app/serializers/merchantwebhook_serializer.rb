@@ -1,3 +1,3 @@
 class MerchantwebhookSerializer < ActiveModel::Serializer
-  attributes :id, :kind, :notificationTime
+  attributes :id, :kind, :merchantID, :message, :errors, :notificationTime
 end

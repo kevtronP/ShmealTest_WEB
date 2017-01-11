@@ -18,7 +18,7 @@ class MerchantwebhooksController < ApplicationController
     @merchantwebhook = Merchantwebhook.new(merchantwebhook_params)
 
     sample_notification = Braintree::WebhookTesting.sample_notification(
-      Braintree::WebhookNotification::Kind::SubMerchantAccountApproved,
+      Braintree::WebhookNotification::Kind::SubscriptionWentPastDue,
       "my_id"
     )
 
@@ -29,6 +29,9 @@ class MerchantwebhooksController < ApplicationController
 
     @merchantwebhook.kind = webhook_notification.kind
     @merchantwebhook.notificationTime = webhook_notification.timestamp
+    @merchantwebhook.message = webhook_notification.message
+    @merchantwebhook.errors = webhook_notification.errors
+    @merchantwebhook.merchantID = webhook_notification.merchant_account_id
 
     if @merchantwebhook.save
       render json: @merchantwebhook, status: :created, location: @merchantwebhook
@@ -59,6 +62,6 @@ class MerchantwebhooksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def merchantwebhook_params
-      params.require(:merchantwebhook).permit(:kind, :notificationTime)
+      params.require(:merchantwebhook).permit(:kind, :merchantID, :message, :errors, :notificationTime)
     end
 end

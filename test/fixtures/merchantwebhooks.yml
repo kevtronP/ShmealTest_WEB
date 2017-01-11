@@ -2,8 +2,14 @@
 
 one:
   kind: MyString
-  notificationTime: MyString
+  merchantID: MyString
+  message: MyString
+  errors: MyString
+  notificationTime: 2017-01-11 14:58:19
 
 two:
   kind: MyString
-  notificationTime: MyString
+  merchantID: MyString
+  message: MyString
+  errors: MyString
+  notificationTime: 2017-01-11 14:58:19
