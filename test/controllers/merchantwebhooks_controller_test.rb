@@ -12,7 +12,7 @@ class MerchantwebhooksControllerTest < ActionDispatch::IntegrationTest
 
   test "should create merchantwebhook" do
     assert_difference('Merchantwebhook.count') do
-      post merchantwebhooks_url, params: { merchantwebhook: { errors: @merchantwebhook.errors, kind: @merchantwebhook.kind, merchantID: @merchantwebhook.merchantID, message: @merchantwebhook.message, notificationTime: @merchantwebhook.notificationTime } }, as: :json
+      post merchantwebhooks_url, params: { merchantwebhook: { errorMessages: @merchantwebhook.errorMessages, kind: @merchantwebhook.kind, merchantID: @merchantwebhook.merchantID, message: @merchantwebhook.message, notificationTime: @merchantwebhook.notificationTime } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class MerchantwebhooksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update merchantwebhook" do
-    patch merchantwebhook_url(@merchantwebhook), params: { merchantwebhook: { errors: @merchantwebhook.errors, kind: @merchantwebhook.kind, merchantID: @merchantwebhook.merchantID, message: @merchantwebhook.message, notificationTime: @merchantwebhook.notificationTime } }, as: :json
+    patch merchantwebhook_url(@merchantwebhook), params: { merchantwebhook: { errorMessages: @merchantwebhook.errorMessages, kind: @merchantwebhook.kind, merchantID: @merchantwebhook.merchantID, message: @merchantwebhook.message, notificationTime: @merchantwebhook.notificationTime } }, as: :json
     assert_response 200
   end
 

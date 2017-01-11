@@ -4,12 +4,12 @@ one:
   kind: MyString
   merchantID: MyString
   message: MyString
-  errors: MyString
-  notificationTime: 2017-01-11 14:58:19
+  errorMessages: MyString
+  notificationTime: 2017-01-11 15:40:49
 
 two:
   kind: MyString
   merchantID: MyString
   message: MyString
-  errors: MyString
-  notificationTime: 2017-01-11 14:58:19
+  errorMessages: MyString
+  notificationTime: 2017-01-11 15:40:49
