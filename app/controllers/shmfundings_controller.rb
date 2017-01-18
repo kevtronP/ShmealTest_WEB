@@ -19,6 +19,7 @@ class ShmfundingsController < ApplicationController
 
     result = Braintree::MerchantAccount.update(
               @shmfunding.merchantID,
+              :funding => {
               :destination => Braintree::MerchantAccount::FundingDestination::Bank,
               :account_number => "1123581321",
               :routing_number => "071101399"
