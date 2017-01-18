@@ -22,7 +22,7 @@ class ShmfundingsController < ApplicationController
               :funding => {
               :destination => Braintree::MerchantAccount::FundingDestination::Bank,
               :account_number => "1123581321",
-              :routing_number => "071101399"
+              :routing_number => "071101307"
             })
 
     if result.success?
