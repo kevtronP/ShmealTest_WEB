@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170111214048) do
+ActiveRecord::Schema.define(version: 20170118000155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -171,6 +171,19 @@ ActiveRecord::Schema.define(version: 20170111214048) do
     t.integer  "menuItemID"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "shmfundings", force: :cascade do |t|
+    t.integer  "userID"
+    t.string   "merchantID"
+    t.string   "fundingType"
+    t.string   "email"
+    t.string   "phoneNumber"
+    t.string   "accountNumber"
+    t.string   "routingNumber"
+    t.datetime "fundingDate"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "shmmenuitem_photos", force: :cascade do |t|

@@ -1,0 +1,2 @@
+class Shmfunding < ApplicationRecord
+end

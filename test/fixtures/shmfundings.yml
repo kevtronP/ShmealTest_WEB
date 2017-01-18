@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  userID: 1
+  merchantID: MyString
+  fundingType: MyString
+  email: MyString
+  phoneNumber: MyString
+  accountNumber: MyString
+  routingNumber: MyString
+  fundingDate: 2017-01-17 18:01:55
+
+two:
+  userID: 1
+  merchantID: MyString
+  fundingType: MyString
+  email: MyString
+  phoneNumber: MyString
+  accountNumber: MyString
+  routingNumber: MyString
+  fundingDate: 2017-01-17 18:01:55
