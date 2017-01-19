@@ -3,9 +3,9 @@ class CreateShmshmealattributes < ActiveRecord::Migration[5.0]
     create_table :shmshmealattributes do |t|
       t.string :attributeName
       t.string :shmealAttribute
+      t.datetime :shmealAtrbDate
       t.datetime :attributeDate
       t.integer :shmealID
-      t.integer :menuItemID
 
       t.timestamps
     end

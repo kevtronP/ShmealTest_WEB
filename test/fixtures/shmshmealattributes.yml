@@ -3,13 +3,13 @@
 one:
   attributeName: MyString
   shmealAttribute: MyString
-  attributeDate: 2017-01-07 19:46:18
+  shmealAtrbDate: 2017-01-18 19:17:29
+  attributeDate: 2017-01-18 19:17:29
   shmealID: 1
-  menuItemID: 1
 
 two:
   attributeName: MyString
   shmealAttribute: MyString
-  attributeDate: 2017-01-07 19:46:18
+  shmealAtrbDate: 2017-01-18 19:17:29
+  attributeDate: 2017-01-18 19:17:29
   shmealID: 1
-  menuItemID: 1
