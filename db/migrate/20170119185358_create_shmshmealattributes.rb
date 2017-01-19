@@ -6,6 +6,7 @@ class CreateShmshmealattributes < ActiveRecord::Migration[5.0]
       t.datetime :shmealAtrbDate
       t.datetime :attributeDate
       t.integer :shmealID
+      t.integer :menuItemID
 
       t.timestamps
     end
