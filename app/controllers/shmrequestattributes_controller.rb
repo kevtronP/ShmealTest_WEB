@@ -46,6 +46,6 @@ class ShmrequestattributesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def shmrequestattribute_params
-      params.require(:shmrequestattribute).permit(:attributeName, :requestAttribute, :attributeDate, :requestID)
+      params.require(:shmrequestattribute).permit(:attributeName, :requestAttribute, :requestDateAtrb, :attributeDate, :requestID)
     end
 end

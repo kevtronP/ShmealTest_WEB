@@ -12,7 +12,7 @@ class ShmrequestattributesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create shmrequestattribute" do
     assert_difference('Shmrequestattribute.count') do
-      post shmrequestattributes_url, params: { shmrequestattribute: { attributeDate: @shmrequestattribute.attributeDate, attributeName: @shmrequestattribute.attributeName, requestAttribute: @shmrequestattribute.requestAttribute, requestID: @shmrequestattribute.requestID } }, as: :json
+      post shmrequestattributes_url, params: { shmrequestattribute: { attributeDate: @shmrequestattribute.attributeDate, attributeName: @shmrequestattribute.attributeName, requestAttribute: @shmrequestattribute.requestAttribute, requestDateAtrb: @shmrequestattribute.requestDateAtrb, requestID: @shmrequestattribute.requestID } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class ShmrequestattributesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update shmrequestattribute" do
-    patch shmrequestattribute_url(@shmrequestattribute), params: { shmrequestattribute: { attributeDate: @shmrequestattribute.attributeDate, attributeName: @shmrequestattribute.attributeName, requestAttribute: @shmrequestattribute.requestAttribute, requestID: @shmrequestattribute.requestID } }, as: :json
+    patch shmrequestattribute_url(@shmrequestattribute), params: { shmrequestattribute: { attributeDate: @shmrequestattribute.attributeDate, attributeName: @shmrequestattribute.attributeName, requestAttribute: @shmrequestattribute.requestAttribute, requestDateAtrb: @shmrequestattribute.requestDateAtrb, requestID: @shmrequestattribute.requestID } }, as: :json
     assert_response 200
   end
 

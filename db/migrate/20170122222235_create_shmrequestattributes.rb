@@ -3,6 +3,7 @@ class CreateShmrequestattributes < ActiveRecord::Migration[5.0]
     create_table :shmrequestattributes do |t|
       t.string :attributeName
       t.string :requestAttribute
+      t.datetime :requestDateAtrb
       t.datetime :attributeDate
       t.integer :requestID
 
