@@ -1,23 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  shmealLat: 1.5
-  shmealLon: 1.5
-  shmealPostDate: 2016-07-25 10:41:27
-  shmealDayDate: 2016-07-25 10:41:27
-  shmealStartTime: 2016-07-25 10:41:27
-  shmealEndTime: 2016-07-25 10:41:27
-  shmealQuantity: 1
-  shmealScore: 1.5
+  shmealDayDate: 2017-01-31 17:01:15
   menuItemID: 1
 
 two:
-  shmealLat: 1.5
-  shmealLon: 1.5
-  shmealPostDate: 2016-07-25 10:41:27
-  shmealDayDate: 2016-07-25 10:41:27
-  shmealStartTime: 2016-07-25 10:41:27
-  shmealEndTime: 2016-07-25 10:41:27
-  shmealQuantity: 1
-  shmealScore: 1.5
+  shmealDayDate: 2017-01-31 17:01:15
   menuItemID: 1

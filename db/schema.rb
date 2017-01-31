@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170122222235) do
+ActiveRecord::Schema.define(version: 20170131230115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -160,17 +160,10 @@ ActiveRecord::Schema.define(version: 20170122222235) do
   end
 
   create_table "shmeals", force: :cascade do |t|
-    t.float    "shmealLat"
-    t.float    "shmealLon"
-    t.datetime "shmealPostDate"
     t.datetime "shmealDayDate"
-    t.datetime "shmealStartTime"
-    t.datetime "shmealEndTime"
-    t.integer  "shmealQuantity"
-    t.float    "shmealScore"
     t.integer  "menuItemID"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "shmfundings", force: :cascade do |t|

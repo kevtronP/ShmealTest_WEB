@@ -46,6 +46,6 @@ class ShmealsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def shmeal_params
-      params.require(:shmeal).permit(:shmealLat, :shmealLon, :shmealPostDate, :shmealDayDate, :shmealStartTime, :shmealEndTime, :shmealQuantity, :shmealScore, :menuItemID)
+      params.require(:shmeal).permit(:shmealDayDate, :menuItemID)
     end
 end

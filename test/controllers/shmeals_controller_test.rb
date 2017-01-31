@@ -12,7 +12,7 @@ class ShmealsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create shmeal" do
     assert_difference('Shmeal.count') do
-      post shmeals_url, params: { shmeal: { menuItemID: @shmeal.menuItemID, shmealDayDate: @shmeal.shmealDayDate, shmealEndTime: @shmeal.shmealEndTime, shmealLat: @shmeal.shmealLat, shmealLon: @shmeal.shmealLon, shmealPostDate: @shmeal.shmealPostDate, shmealQuantity: @shmeal.shmealQuantity, shmealScore: @shmeal.shmealScore, shmealStartTime: @shmeal.shmealStartTime } }, as: :json
+      post shmeals_url, params: { shmeal: { menuItemID: @shmeal.menuItemID, shmealDayDate: @shmeal.shmealDayDate } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class ShmealsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update shmeal" do
-    patch shmeal_url(@shmeal), params: { shmeal: { menuItemID: @shmeal.menuItemID, shmealDayDate: @shmeal.shmealDayDate, shmealEndTime: @shmeal.shmealEndTime, shmealLat: @shmeal.shmealLat, shmealLon: @shmeal.shmealLon, shmealPostDate: @shmeal.shmealPostDate, shmealQuantity: @shmeal.shmealQuantity, shmealScore: @shmeal.shmealScore, shmealStartTime: @shmeal.shmealStartTime } }, as: :json
+    patch shmeal_url(@shmeal), params: { shmeal: { menuItemID: @shmeal.menuItemID, shmealDayDate: @shmeal.shmealDayDate } }, as: :json
     assert_response 200
   end
 
