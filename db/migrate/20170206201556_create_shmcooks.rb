@@ -16,6 +16,7 @@ class CreateShmcooks < ActiveRecord::Migration[5.0]
       t.string :accountNumber
       t.string :routingNumber
       t.integer :userID
+      t.datetime :cookDate
 
       t.timestamps
     end

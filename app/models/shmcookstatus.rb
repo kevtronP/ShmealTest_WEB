@@ -1,0 +1,2 @@
+class Shmcookstatus < ApplicationRecord
+end

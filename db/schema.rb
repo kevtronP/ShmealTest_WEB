@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170131230115) do
+ActiveRecord::Schema.define(version: 20170206202650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -141,6 +141,15 @@ ActiveRecord::Schema.define(version: 20170131230115) do
     t.string   "accountNumber"
     t.string   "routingNumber"
     t.integer  "userID"
+    t.datetime "cookDate"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "shmcookstatuses", force: :cascade do |t|
+    t.string   "statusCode"
+    t.integer  "cookID"
+    t.datetime "statusStartDate"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

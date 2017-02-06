@@ -16,6 +16,7 @@ one:
   accountNumber: MyString
   routingNumber: MyString
   userID: 1
+  cookDate: 2017-02-06 14:15:56
 
 two:
   merchantID: MyString
@@ -33,3 +34,4 @@ two:
   accountNumber: MyString
   routingNumber: MyString
   userID: 1
+  cookDate: 2017-02-06 14:15:56

@@ -45,10 +45,12 @@ class ShmcooksController < ApplicationController
       )
 
       if result.success?
-        
+
       else
         p result.errors
       end
+
+
 
     if @shmcook.save
       render json: @shmcook, status: :created, location: @shmcook
@@ -79,6 +81,6 @@ class ShmcooksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def shmcook_params
-      params.require(:shmcook).permit(:merchantID, :taxpayerID, :firstName, :surName, :birthDateString, :email, :phoneNumber, :streetAddress, :locality, :region, :postalCode, :fundingType, :accountNumber, :routingNumber, :userID)
+      params.require(:shmcook).permit(:merchantID, :taxpayerID, :firstName, :surName, :birthDateString, :email, :phoneNumber, :streetAddress, :locality, :region, :postalCode, :fundingType, :accountNumber, :routingNumber, :userID, :cookDate)
     end
 end

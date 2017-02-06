@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :shmcookstatuses
   resources :shmfundings
   resources :merchantwebhooks
   resources :shmshmealattributes
