@@ -12,7 +12,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user" do
     assert_difference('User.count') do
-      post users_url, params: { user: { cookID: @user.cookID, homeAddressLat: @user.homeAddressLat, homeAddressLon: @user.homeAddressLon, lastMenuItemID: @user.lastMenuItemID, profPicURL: @user.profPicURL, userBlurb: @user.userBlurb, userEmail: @user.userEmail, userInstructions: @user.userInstructions, userName: @user.userName, userPhoneNumber: @user.userPhoneNumber, userSurname: @user.userSurname } }, as: :json
+      post users_url, params: { user: { userDate: @user.userDate, userEmail: @user.userEmail, userName: @user.userName, userPhoneNumber: @user.userPhoneNumber } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update user" do
-    patch user_url(@user), params: { user: { cookID: @user.cookID, homeAddressLat: @user.homeAddressLat, homeAddressLon: @user.homeAddressLon, lastMenuItemID: @user.lastMenuItemID, profPicURL: @user.profPicURL, userBlurb: @user.userBlurb, userEmail: @user.userEmail, userInstructions: @user.userInstructions, userName: @user.userName, userPhoneNumber: @user.userPhoneNumber, userSurname: @user.userSurname } }, as: :json
+    patch user_url(@user), params: { user: { userDate: @user.userDate, userEmail: @user.userEmail, userName: @user.userName, userPhoneNumber: @user.userPhoneNumber } }, as: :json
     assert_response 200
   end
 
