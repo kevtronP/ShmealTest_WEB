@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170207004844) do
+ActiveRecord::Schema.define(version: 20170207205520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,12 +101,6 @@ ActiveRecord::Schema.define(version: 20170207004844) do
 
   create_table "shmconversations", force: :cascade do |t|
     t.string   "convChannel"
-    t.datetime "convCheckIn1"
-    t.datetime "convCheckIn2"
-    t.datetime "convLastDate"
-    t.string   "convLastMessage"
-    t.string   "convUser1"
-    t.string   "convUser2"
     t.integer  "originalCookID"
     t.integer  "originalEaterID"
     t.datetime "created_at",      null: false

@@ -2,22 +2,10 @@
 
 one:
   convChannel: MyString
-  convCheckIn1: 2016-07-31 20:27:40
-  convCheckIn2: 2016-07-31 20:27:40
-  convLastDate: 2016-07-31 20:27:40
-  convLastMessage: MyString
-  convUser1: MyString
-  convUser2: MyString
   originalCookID: 1
   originalEaterID: 1
 
 two:
   convChannel: MyString
-  convCheckIn1: 2016-07-31 20:27:40
-  convCheckIn2: 2016-07-31 20:27:40
-  convLastDate: 2016-07-31 20:27:40
-  convLastMessage: MyString
-  convUser1: MyString
-  convUser2: MyString
   originalCookID: 1
   originalEaterID: 1
