@@ -4,6 +4,7 @@ class CreateShmconversations < ActiveRecord::Migration[5.0]
       t.string :convChannel
       t.integer :originalCookID
       t.integer :originalEaterID
+      t.datetime :convStartDate
 
       t.timestamps
     end

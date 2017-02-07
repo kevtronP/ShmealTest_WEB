@@ -4,8 +4,10 @@ one:
   convChannel: MyString
   originalCookID: 1
   originalEaterID: 1
+  convStartDate: 2017-02-07 15:22:10
 
 two:
   convChannel: MyString
   originalCookID: 1
   originalEaterID: 1
+  convStartDate: 2017-02-07 15:22:10

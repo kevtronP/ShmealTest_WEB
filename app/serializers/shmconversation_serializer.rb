@@ -1,3 +1,3 @@
 class ShmconversationSerializer < ActiveModel::Serializer
-  attributes :id, :convChannel, :originalCookID, :originalEaterID
+  attributes :id, :convChannel, :originalCookID, :originalEaterID, :convStartDate
 end
