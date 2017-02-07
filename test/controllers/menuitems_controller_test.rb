@@ -12,7 +12,7 @@ class MenuitemsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create menuitem" do
     assert_difference('Menuitem.count') do
-      post menuitems_url, params: { menuitem: { mealAllergen1: @menuitem.mealAllergen1, mealAllergen2: @menuitem.mealAllergen2, mealAllergen3: @menuitem.mealAllergen3, mealAllergen4: @menuitem.mealAllergen4, mealAllergen5: @menuitem.mealAllergen5, mealAllergen6: @menuitem.mealAllergen6, mealBlurb: @menuitem.mealBlurb, mealLastDate: @menuitem.mealLastDate, mealName: @menuitem.mealName, mealPhotoURL: @menuitem.mealPhotoURL, mealQuantity: @menuitem.mealQuantity, mealScore: @menuitem.mealScore, mealScoreQuantity: @menuitem.mealScoreQuantity, mealTotalQuantity: @menuitem.mealTotalQuantity, userID: @menuitem.userID } }, as: :json
+      post menuitems_url, params: { menuitem: { mealName: @menuitem.mealName, menuItemDate: @menuitem.menuItemDate, userID: @menuitem.userID } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class MenuitemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update menuitem" do
-    patch menuitem_url(@menuitem), params: { menuitem: { mealAllergen1: @menuitem.mealAllergen1, mealAllergen2: @menuitem.mealAllergen2, mealAllergen3: @menuitem.mealAllergen3, mealAllergen4: @menuitem.mealAllergen4, mealAllergen5: @menuitem.mealAllergen5, mealAllergen6: @menuitem.mealAllergen6, mealBlurb: @menuitem.mealBlurb, mealLastDate: @menuitem.mealLastDate, mealName: @menuitem.mealName, mealPhotoURL: @menuitem.mealPhotoURL, mealQuantity: @menuitem.mealQuantity, mealScore: @menuitem.mealScore, mealScoreQuantity: @menuitem.mealScoreQuantity, mealTotalQuantity: @menuitem.mealTotalQuantity, userID: @menuitem.userID } }, as: :json
+    patch menuitem_url(@menuitem), params: { menuitem: { mealName: @menuitem.mealName, menuItemDate: @menuitem.menuItemDate, userID: @menuitem.userID } }, as: :json
     assert_response 200
   end
 

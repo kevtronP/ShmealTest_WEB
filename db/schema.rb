@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170206233744) do
+ActiveRecord::Schema.define(version: 20170207001423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,22 +42,10 @@ ActiveRecord::Schema.define(version: 20170206233744) do
 
   create_table "menuitems", force: :cascade do |t|
     t.string   "mealName"
-    t.string   "mealBlurb"
-    t.datetime "mealLastDate"
-    t.integer  "mealQuantity"
-    t.float    "mealScore"
-    t.integer  "mealScoreQuantity"
-    t.integer  "mealTotalQuantity"
-    t.string   "mealAllergen1"
-    t.string   "mealAllergen2"
-    t.string   "mealAllergen3"
-    t.string   "mealAllergen4"
-    t.string   "mealAllergen5"
-    t.string   "mealAllergen6"
     t.integer  "userID"
-    t.string   "mealPhotoURL"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.string   "menuItemDate"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "merchantwebhooks", force: :cascade do |t|

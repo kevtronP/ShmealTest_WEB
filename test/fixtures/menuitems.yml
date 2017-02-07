@@ -2,34 +2,10 @@
 
 one:
   mealName: MyString
-  mealBlurb: MyString
-  mealLastDate: 2016-09-14 02:40:50
-  mealQuantity: 1
-  mealScore: 1.5
-  mealScoreQuantity: 1
-  mealTotalQuantity: 1
-  mealAllergen1: MyString
-  mealAllergen2: MyString
-  mealAllergen3: MyString
-  mealAllergen4: MyString
-  mealAllergen5: MyString
-  mealAllergen6: MyString
   userID: 1
-  mealPhotoURL: MyString
+  menuItemDate: MyString
 
 two:
   mealName: MyString
-  mealBlurb: MyString
-  mealLastDate: 2016-09-14 02:40:50
-  mealQuantity: 1
-  mealScore: 1.5
-  mealScoreQuantity: 1
-  mealTotalQuantity: 1
-  mealAllergen1: MyString
-  mealAllergen2: MyString
-  mealAllergen3: MyString
-  mealAllergen4: MyString
-  mealAllergen5: MyString
-  mealAllergen6: MyString
   userID: 1
-  mealPhotoURL: MyString
+  menuItemDate: MyString
