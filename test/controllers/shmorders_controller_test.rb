@@ -12,7 +12,7 @@ class ShmordersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create shmorder" do
     assert_difference('Shmorder.count') do
-      post shmorders_url, params: { shmorder: { conversationID: @shmorder.conversationID, cookID: @shmorder.cookID, eaterID: @shmorder.eaterID, orderActualTime: @shmorder.orderActualTime, orderApproved: @shmorder.orderApproved, orderDay: @shmorder.orderDay, orderPickedUp: @shmorder.orderPickedUp, orderPickupTime: @shmorder.orderPickupTime, orderPrice: @shmorder.orderPrice, orderQuantity: @shmorder.orderQuantity, orderReviewIgnored: @shmorder.orderReviewIgnored, orderScore: @shmorder.orderScore, orderTime: @shmorder.orderTime, shmealID: @shmorder.shmealID } }, as: :json
+      post shmorders_url, params: { shmorder: { conversationID: @shmorder.conversationID, cookID: @shmorder.cookID, eaterID: @shmorder.eaterID, orderDay: @shmorder.orderDay, orderTime: @shmorder.orderTime, shmealID: @shmorder.shmealID } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class ShmordersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update shmorder" do
-    patch shmorder_url(@shmorder), params: { shmorder: { conversationID: @shmorder.conversationID, cookID: @shmorder.cookID, eaterID: @shmorder.eaterID, orderActualTime: @shmorder.orderActualTime, orderApproved: @shmorder.orderApproved, orderDay: @shmorder.orderDay, orderPickedUp: @shmorder.orderPickedUp, orderPickupTime: @shmorder.orderPickupTime, orderPrice: @shmorder.orderPrice, orderQuantity: @shmorder.orderQuantity, orderReviewIgnored: @shmorder.orderReviewIgnored, orderScore: @shmorder.orderScore, orderTime: @shmorder.orderTime, shmealID: @shmorder.shmealID } }, as: :json
+    patch shmorder_url(@shmorder), params: { shmorder: { conversationID: @shmorder.conversationID, cookID: @shmorder.cookID, eaterID: @shmorder.eaterID, orderDay: @shmorder.orderDay, orderTime: @shmorder.orderTime, shmealID: @shmorder.shmealID } }, as: :json
     assert_response 200
   end
 

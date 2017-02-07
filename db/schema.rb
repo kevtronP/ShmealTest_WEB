@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170207001423) do
+ActiveRecord::Schema.define(version: 20170207004844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -212,22 +212,14 @@ ActiveRecord::Schema.define(version: 20170207001423) do
   end
 
   create_table "shmorders", force: :cascade do |t|
-    t.datetime "orderActualTime"
-    t.boolean  "orderApproved"
     t.datetime "orderDay"
-    t.datetime "orderPickupTime"
-    t.boolean  "orderPickedUp"
-    t.float    "orderPrice"
-    t.integer  "orderQuantity"
-    t.float    "orderScore"
-    t.boolean  "orderReviewIgnored"
     t.datetime "orderTime"
     t.integer  "conversationID"
     t.integer  "shmealID"
     t.integer  "eaterID"
     t.integer  "cookID"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "shmpaymentmethodstatuses", force: :cascade do |t|
