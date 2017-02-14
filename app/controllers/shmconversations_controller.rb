@@ -46,6 +46,6 @@ class ShmconversationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def shmconversation_params
-      params.require(:shmconversation).permit(:convChannel, :originalCookID, :originalEaterID, :convStartDate)
+      params.require(:shmconversation).permit(:convChannel, :originalCookID, :originalEaterID, :convStartDate, :origCookCheckInDate, :origEaterCheckInDate, :lastMessageDate)
     end
 end

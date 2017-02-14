@@ -5,6 +5,9 @@ class CreateShmconversations < ActiveRecord::Migration[5.0]
       t.integer :originalCookID
       t.integer :originalEaterID
       t.datetime :convStartDate
+      t.datetime :origCookCheckInDate
+      t.datetime :origEaterCheckInDate
+      t.datetime :lastMessageDate
 
       t.timestamps
     end
