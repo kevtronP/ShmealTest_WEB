@@ -17,7 +17,7 @@ class ShmcooksController < ApplicationController
   def create
     @shmcook = Shmcook.new(shmcook_params)
 
-    if @shmcook.fundingType = "Venmo"
+    if @shmcook.fundingType == "Venmo_email"
 
       result = Braintree::MerchantAccount.create(
         :individual => {
@@ -35,11 +35,8 @@ class ShmcooksController < ApplicationController
           }
         },
         :funding => {
-          :destination => Braintree::MerchantAccount::FundingDestination::Bank,
-          :email => "funding@blueladders.com",
-          :mobile_phone => "5555555555",
-          :account_number => "1123581321",
-          :routing_number => "071101307"
+          :destination => Braintree::MerchantAccount::FundingDestination::Venmo,
+          :email => @shmcook.email,
         },
         :tos_accepted => true,
         :master_merchant_account_id => "shmealllc",
@@ -54,8 +51,41 @@ class ShmcooksController < ApplicationController
 
     end
 
+    if @shmcook.fundingType == "Venmo_phone"
 
-    if @shmcook.fundingType = "Bank"
+      result = Braintree::MerchantAccount.create(
+        :individual => {
+          :first_name => @shmcook.firstName,
+          :last_name => @shmcook.surName,
+          :email => @shmcook.email,
+          :phone => @shmcook.phoneNumber,
+          :date_of_birth => @shmcook.birthDateString,
+          :ssn => @shmcook.taxpayerID,
+          :address => {
+            :street_address => @shmcook.streetAddress,
+            :locality => @shmcook.locality,
+            :region => @shmcook.region,
+            :postal_code => @shmcook.postalCode
+          }
+        },
+        :funding => {
+          :destination => Braintree::MerchantAccount::FundingDestination::Venmo,
+          :mobile_phone => @shmcook.phoneNumber,
+        },
+        :tos_accepted => true,
+        :master_merchant_account_id => "shmealllc",
+        :id => @shmcook.merchantID
+        )
+
+        if result.success?
+
+        else
+          p result.errors
+        end
+
+    end
+
+    if @shmcook.fundingType == "Bank"
 
       result = Braintree::MerchantAccount.create(
         :individual => {
@@ -74,10 +104,8 @@ class ShmcooksController < ApplicationController
         },
         :funding => {
           :destination => Braintree::MerchantAccount::FundingDestination::Bank,
-          :email => "funding@blueladders.com",
-          :mobile_phone => "5555555555",
-          :account_number => "1123581321",
-          :routing_number => "071101307"
+          :account_number => @shmcook.accountNumber,
+          :routing_number => @shmcook.routingNumber
         },
         :tos_accepted => true,
         :master_merchant_account_id => "shmealllc",
