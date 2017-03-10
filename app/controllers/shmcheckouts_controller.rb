@@ -17,22 +17,6 @@ class ShmcheckoutsController < ApplicationController
   def create
     @shmcheckout = Shmcheckout.new(shmcheckout_params)
 
-    result = Braintree::Transaction.sale(
-            :amount => @shmcheckout.amount,
-            :payment_method_nonce => @shmcheckout.nonce,
-            :merchant_account_id => @shmcheckout.merchantID,
-            :service_fee_amount => "0.50",
-            :options => {
-              :submit_for_settlement => true
-            }
-
-            )
-            if result.success?
-
-            else
-              p result.errors
-            end
-
     if @shmcheckout.save
       render json: @shmcheckout, status: :created, location: @shmcheckout
     else
@@ -62,6 +46,6 @@ class ShmcheckoutsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def shmcheckout_params
-      params.require(:shmcheckout).permit(:nonce, :amount, :merchantID)
+      params.require(:shmcheckout).permit(:nonce, :amount, :merchantID, :deviceData)
     end
 end

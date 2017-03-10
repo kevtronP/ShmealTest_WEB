@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214185740) do
+ActiveRecord::Schema.define(version: 20170310184846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20170214185740) do
     t.string   "nonce"
     t.float    "amount"
     t.string   "merchantID"
+    t.string   "deviceData"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

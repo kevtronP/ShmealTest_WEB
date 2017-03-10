@@ -4,6 +4,7 @@ class CreateShmcheckouts < ActiveRecord::Migration[5.0]
       t.string :nonce
       t.float :amount
       t.string :merchantID
+      t.string :deviceData
 
       t.timestamps
     end
