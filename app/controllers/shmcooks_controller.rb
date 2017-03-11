@@ -35,7 +35,7 @@ class ShmcooksController < ApplicationController
           }
         },
         :funding => {
-          :destination => Braintree::MerchantAccount::FundingDestination::Venmo,
+          :destination => Braintree::MerchantAccount::FundingDestination::Email,
           :email => @shmcook.email,
         },
         :tos_accepted => true,
@@ -69,7 +69,7 @@ class ShmcooksController < ApplicationController
           }
         },
         :funding => {
-          :destination => Braintree::MerchantAccount::FundingDestination::Venmo,
+          :destination => Braintree::MerchantAccount::FundingDestination::MobilePhone,
           :mobile_phone => @shmcook.phoneNumber,
         },
         :tos_accepted => true,
