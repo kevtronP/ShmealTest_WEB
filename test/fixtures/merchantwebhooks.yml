@@ -5,11 +5,15 @@ one:
   merchantID: MyString
   message: MyString
   errorMessages: MyString
-  notificationTime: 2017-01-11 15:57:29
+  bt_signature: MyString
+  bt_payload: MyString
+  notificationTime: 2017-03-14 16:19:05
 
 two:
   kind: MyString
   merchantID: MyString
   message: MyString
   errorMessages: MyString
-  notificationTime: 2017-01-11 15:57:29
+  bt_signature: MyString
+  bt_payload: MyString
+  notificationTime: 2017-03-14 16:19:05

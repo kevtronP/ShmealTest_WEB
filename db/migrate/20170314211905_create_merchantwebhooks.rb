@@ -5,6 +5,8 @@ class CreateMerchantwebhooks < ActiveRecord::Migration[5.0]
       t.string :merchantID
       t.string :message
       t.string :errorMessages
+      t.string :bt_signature
+      t.string :bt_payload
       t.datetime :notificationTime
 
       t.timestamps
