@@ -18,14 +18,9 @@ class MerchantwebhooksController < ApplicationController
   def create
     @merchantwebhook = Merchantwebhook.new(merchantwebhook_params)
 
-    sample_notification = Braintree::WebhookTesting.sample_notification(
-      Braintree::WebhookNotification::Kind::SubMerchantAccountDeclined,
-      "my_id"
-    )
-
     webhook_notification = Braintree::WebhookNotification.parse(
-      sample_notification[:bt_signature],
-      sample_notification[:bt_payload]
+      bt_signature,
+      bt_payload
     )
 
     @merchantwebhook.kind = webhook_notification.kind

@@ -72,16 +72,6 @@ ActiveRecord::Schema.define(version: 20170310184846) do
     t.datetime "updated_at",     null: false
   end
 
-  create_table "shmchatchannels", force: :cascade do |t|
-    t.string   "chatChannel"
-    t.datetime "chatCheckIn1"
-    t.datetime "chatCheckIn2"
-    t.string   "chatUser1"
-    t.string   "chatUser2"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "shmcheckins", force: :cascade do |t|
     t.datetime "checkInTime"
     t.boolean  "messageSent"
