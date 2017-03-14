@@ -17,6 +17,17 @@ class MerchantwebhooksController < ApplicationController
   def create
     @merchantwebhook = Merchantwebhook.new(merchantwebhook_params)
 
+    webhook_notification = Braintree::WebhookNotification.parse(
+      @merchantwebhook.bt_signature,
+      @merchantwebhook.bt_payload
+    )
+
+    @merchantwebhook.kind = webhook_notification.kind
+    @merchantwebhook.notificationTime = webhook_notification.timestamp
+    @merchantwebhook.message = webhook_notification.message
+    @merchantwebhook.errorMessages = webhook_notification.errors
+    @merchantwebhook.merchantID = webhook_notification.merchant_account.id
+
     if @merchantwebhook.save
       render json: @merchantwebhook, status: :created, location: @merchantwebhook
     else
