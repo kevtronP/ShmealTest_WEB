@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   get 'transactions/new'
 
   resources :devices
-  resources :shmchatchannels
   resources :menuitems
   resources :shmnotifications
   resources :shmmenuitem_photos

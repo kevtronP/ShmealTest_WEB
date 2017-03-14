@@ -1,2 +1,0 @@
-class Shmchatchannel < ApplicationRecord
-end
