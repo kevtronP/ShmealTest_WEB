@@ -39,7 +39,7 @@ class ShmcooksController < ApplicationController
           :email => @shmcook.email,
         },
         :tos_accepted => true,
-        :master_merchant_account_id => "shmealllc",
+        :master_merchant_account_id => "Shmeal_marketplace",
         :id => @shmcook.merchantID
         )
 
@@ -73,7 +73,7 @@ class ShmcooksController < ApplicationController
           :mobile_phone => @shmcook.phoneNumber,
         },
         :tos_accepted => true,
-        :master_merchant_account_id => "shmealllc",
+        :master_merchant_account_id => "Shmeal_marketplace",
         :id => @shmcook.merchantID
         )
 
@@ -108,7 +108,7 @@ class ShmcooksController < ApplicationController
           :routing_number => @shmcook.routingNumber
         },
         :tos_accepted => true,
-        :master_merchant_account_id => "shmealllc",
+        :master_merchant_account_id => "Shmeal_marketplace",
         :id => @shmcook.merchantID
         )
 
