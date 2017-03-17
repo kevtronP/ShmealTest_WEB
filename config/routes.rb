@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   resources :devices
   resources :menuitems
   resources :shmnotifications
-  resources :shmmenuitem_photos
   resources :shmorders
   resources :shmconversations
   resources :shmeals

@@ -167,13 +167,6 @@ ActiveRecord::Schema.define(version: 20170314220243) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "shmmenuitem_photos", force: :cascade do |t|
-    t.binary   "data"
-    t.integer  "menuItem"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "shmmenuitemstatuses", force: :cascade do |t|
     t.string   "statusCode"
     t.integer  "menuItemID"
