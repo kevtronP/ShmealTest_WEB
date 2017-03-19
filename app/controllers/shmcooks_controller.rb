@@ -39,7 +39,7 @@ class ShmcooksController < ApplicationController
           :email => @shmcook.email,
         },
         :tos_accepted => true,
-        :master_merchant_account_id => "Shmeal_marketplace",
+        :master_merchant_account_id => "shmealllc",
         :id => @shmcook.merchantID
         )
 
