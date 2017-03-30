@@ -15,31 +15,6 @@ ActiveRecord::Schema.define(version: 20170314220243) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "devices", force: :cascade do |t|
-    t.string   "deviceToken"
-    t.boolean  "pushNotificationsOn"
-    t.datetime "deviceTokenBeginDate"
-    t.integer  "userID"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
-  create_table "menu_items", force: :cascade do |t|
-    t.string   "mealAllergen1"
-    t.string   "mealBlurb"
-    t.datetime "mealLastDate"
-    t.string   "mealName"
-    t.integer  "mealQuantity"
-    t.float    "mealScore"
-    t.binary   "mealThumbnail"
-    t.integer  "mealTotalQuantity"
-    t.integer  "lastShmeal_id"
-    t.integer  "photo_id"
-    t.integer  "user_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-  end
-
   create_table "menuitems", force: :cascade do |t|
     t.string   "mealName"
     t.integer  "userID"
@@ -70,15 +45,6 @@ ActiveRecord::Schema.define(version: 20170314220243) do
     t.string   "region"
     t.datetime "addressDate"
     t.integer  "userID"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  create_table "shmcheckins", force: :cascade do |t|
-    t.datetime "checkInTime"
-    t.boolean  "messageSent"
-    t.integer  "userID"
-    t.integer  "conversationID"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
@@ -173,17 +139,6 @@ ActiveRecord::Schema.define(version: 20170314220243) do
     t.datetime "statusStartDate"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-  end
-
-  create_table "shmnotifications", force: :cascade do |t|
-    t.integer  "userID"
-    t.integer  "otherUserID"
-    t.integer  "menuItemID"
-    t.string   "notificationMessage"
-    t.datetime "notificationDate"
-    t.datetime "unfollowTimeStamp"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
   end
 
   create_table "shmorderfeedbacks", force: :cascade do |t|

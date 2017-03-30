@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :shmorderfeedbacks
   resources :shmuserattributes
   resources :shmrequestattributes
-  resources :shmcheckins
   resources :shmpaymentmethodstatuses
   resources :shmmenuitemstatuses
   resources :shmshmealstatuses
@@ -20,13 +19,10 @@ Rails.application.routes.draw do
   resources :shmtransactions
   get 'transactions/new'
 
-  resources :devices
   resources :menuitems
-  resources :shmnotifications
   resources :shmorders
   resources :shmconversations
   resources :shmeals
-  resources :menu_items
   resources :users
   resources :transactions, only: [:new, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

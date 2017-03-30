@@ -1,2 +1,0 @@
-class Shmnotification < ApplicationRecord
-end

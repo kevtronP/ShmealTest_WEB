@@ -1,2 +1,0 @@
-class Shmcheckin < ApplicationRecord
-end
