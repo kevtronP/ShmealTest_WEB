@@ -1,11 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  payment_token: MyString
   client_token: MyString
-  paymentType: MyString
 
 two:
-  payment_token: MyString
   client_token: MyString
-  paymentType: MyString
