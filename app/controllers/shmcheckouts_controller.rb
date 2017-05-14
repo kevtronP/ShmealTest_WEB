@@ -21,7 +21,7 @@ class ShmcheckoutsController < ApplicationController
             :amount => @shmcheckout.amount,
             :payment_method_nonce => @shmcheckout.nonce,
             :merchant_account_id => @shmcheckout.merchantID,
-            :service_fee_amount => "0.50",
+            :service_fee_amount => @shmcheckout.feeAmount,
             :device_data => @shmcheckout.deviceData,
             :options => {
               :submit_for_settlement => true
@@ -62,6 +62,6 @@ class ShmcheckoutsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def shmcheckout_params
-      params.require(:shmcheckout).permit(:nonce, :amount, :merchantID, :deviceData)
+      params.require(:shmcheckout).permit(:nonce, :amount, :feeAmount, :deviceData, :merchantID)
     end
 end

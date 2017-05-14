@@ -3,8 +3,9 @@ class CreateShmcheckouts < ActiveRecord::Migration[5.0]
     create_table :shmcheckouts do |t|
       t.string :nonce
       t.float :amount
-      t.string :merchantID
+      t.float :feeAmount
       t.string :deviceData
+      t.string :merchantID
 
       t.timestamps
     end

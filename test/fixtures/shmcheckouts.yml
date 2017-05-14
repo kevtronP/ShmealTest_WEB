@@ -3,11 +3,13 @@
 one:
   nonce: MyString
   amount: 1.5
-  merchantID: MyString
+  feeAmount: 1.5
   deviceData: MyString
+  merchantID: MyString
 
 two:
   nonce: MyString
   amount: 1.5
-  merchantID: MyString
+  feeAmount: 1.5
   deviceData: MyString
+  merchantID: MyString

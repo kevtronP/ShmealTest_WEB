@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170331001506) do
+ActiveRecord::Schema.define(version: 20170513212228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,8 +52,9 @@ ActiveRecord::Schema.define(version: 20170331001506) do
   create_table "shmcheckouts", force: :cascade do |t|
     t.string   "nonce"
     t.float    "amount"
-    t.string   "merchantID"
+    t.float    "feeAmount"
     t.string   "deviceData"
+    t.string   "merchantID"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
