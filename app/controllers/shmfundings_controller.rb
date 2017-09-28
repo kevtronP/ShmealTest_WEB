@@ -17,18 +17,59 @@ class ShmfundingsController < ApplicationController
   def create
     @shmfunding = Shmfunding.new(shmfunding_params)
 
-    result = Braintree::MerchantAccount.update(
-              @shmfunding.merchantID,
-              :funding => {
-              :destination => Braintree::MerchantAccount::FundingDestination::Bank,
-              :account_number => "1123581321",
-              :routing_number => "071101307"
-            })
+    if @shmfunding.fundingType == "Venmo_email"
 
-    if result.success?
-      p "Merchant account successfully updated"
-    else
-      p result.errors
+      result = Braintree::MerchantAccount.update(
+                @shmfunding.merchantID,
+                :funding => {
+                :destination => Braintree::MerchantAccount::FundingDestination::Email,
+                :email => @shmfunding.email,
+              })
+
+              if result.success?
+                p "Merchant account successfully updated with Venmo email"
+              else
+                p result.errors
+              end
+
+
+    end
+
+    if @shmfunding.fundingType == "Venmo_phone"
+
+      result = Braintree::MerchantAccount.update(
+                @shmfunding.merchantID,
+                :funding => {
+                :destination => Braintree::MerchantAccount::FundingDestination::MobilePhone,
+                :mobile_phone => @shmfunding.phoneNumber,
+              })
+
+              if result.success?
+                p "Merchant account successfully updated with Venmo phone"
+              else
+                p result.errors
+              end
+
+
+    end
+
+    if @shmfunding.fundingType == "Bank"
+
+      result = Braintree::MerchantAccount.update(
+                @shmfunding.merchantID,
+                :funding => {
+                :destination => Braintree::MerchantAccount::FundingDestination::Bank,
+                :account_number => @shmfunding.accountNumber,
+                :routing_number => @shmfunding.routingNumber
+              })
+
+              if result.success?
+                p "Merchant account successfully updated with bank"
+              else
+                p result.errors
+              end
+
+
     end
 
     if @shmfunding.save
