@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources :shmrequestattributes
   resources :shmpaymentmethodstatuses
   resources :shmmenuitemstatuses
-  resources :shmshmealstatuses
   resources :shmrequeststatuses
   resources :shmuserstatuses
   resources :shmpaymentnonces
@@ -18,11 +17,12 @@ Rails.application.routes.draw do
   resources :shmcheckouts
   resources :shmtransactions
   get 'transactions/new'
-
   resources :menuitems
   resources :shmorders
   resources :shmconversations
-  resources :shmeals
+  resources :shmeals do
+    resources :shmshmealstatuses
+  end
   resources :users
   resources :transactions, only: [:new, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
