@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :shmconversations
   resources :shmeals do
     #resources :shmshmealstatuses, only: [:show, :new, :create]
-    resources :shmshmealstatuses, except: [:index]
+    resources :shmshmealstatuses, except: [:index], controller: 'shmeals/shmshmealstatuses'
   end
   resources :shmshmealstatuses, only: [:index]
   resources :users

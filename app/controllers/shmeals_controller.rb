@@ -10,6 +10,8 @@ class ShmealsController < ApplicationController
 
   # GET /shmeals/1
   def show
+    @shmeal = Shmeal.find(params[:id])
+    @shmshmealstatuses = @shmeal.shmshmealstatuses
     render json: @shmeal
   end
 
