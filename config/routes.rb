@@ -21,9 +21,9 @@ Rails.application.routes.draw do
   resources :shmorders
   resources :shmconversations
   resources :shmeals do
-    resources :shmshmealstatuses, only: [:index, :new, :create]
+    resources :shmshmealstatuses, only: [:show, :index, :new, :create]
   end
-  resources :shmshmealstatuses, only: [:show, :edit, :update, :destroy]
+  resources :shmshmealstatuses, only: [:edit, :update, :destroy]
   resources :users
   resources :transactions, only: [:new, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
