@@ -1,4 +1,4 @@
-class ShmshmealstatusesController < ApplicationController
+class Shmeals::ShmshmealstatusesController < ApplicationController
   before_action :set_shmshmealstatus, only: [:show, :update, :destroy]
 
   # GET /shmshmealstatuses
