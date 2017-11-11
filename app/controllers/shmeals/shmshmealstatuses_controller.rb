@@ -4,8 +4,8 @@ class Shmeals::ShmshmealstatusesController < ApplicationController
   # GET /shmshmealstatuses
   def index
     #@shmshmealstatuses = Shmshmealstatus.all
-    params[:shmealID] = params[:shmeal_id]
-    @shmeal = Shmeal.find(params[:shmealID])
+    #params[:shmealID] = params[:shmeal_id]
+    @shmeal = Shmeal.find(params[:shmeal_id])
     @shmshmealstatuses = @shmeal.shmshmealstatuses
 
     render json: @shmshmealstatuses
@@ -49,6 +49,6 @@ class Shmeals::ShmshmealstatusesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def shmshmealstatus_params
-      params.require(:shmshmealstatus).permit(:statusCode, :shmealID, :statusStartDate)
+      params.require(:shmshmealstatus).permit(:shmeal_id, :statusCode, :shmealID, :statusStartDate)
     end
 end
