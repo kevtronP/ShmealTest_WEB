@@ -5,7 +5,7 @@ class Shmeals::ShmshmealstatusesController < ApplicationController
   def index
     #@shmshmealstatuses = Shmshmealstatus.all
     #params[:shmealID] = params[:shmeal_id]
-    @shmeal = Shmeal.find(shmeal_params[:shmeal_id])
+    @shmeal = Shmeal.find[:shmeal_id]
     @shmshmealstatuses = @shmeal.shmshmealstatuses
 
     render json: @shmshmealstatuses
