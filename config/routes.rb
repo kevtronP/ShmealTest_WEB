@@ -21,11 +21,11 @@ Rails.application.routes.draw do
   resources :shmorders
   resources :shmconversations
   resources :shmeals do
-    resources :shmshmealstatuses, except: [:index]
+    resources :shmshmealstatuses, only: [:index]
     #resources :shmshmealstatuses, only: [:show, :new, :create]
     #resources :shmshmealstatuses, except: [:index], controller: 'shmeals/shmshmealstatuses'
   end
-  resources :shmshmealstatuses, only: [:index]
+  #resources :shmshmealstatuses, only: [:index]
   resources :users
   resources :transactions, only: [:new, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
