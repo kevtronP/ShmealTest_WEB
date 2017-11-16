@@ -10,10 +10,6 @@ class MenuitemsController < ApplicationController
 
   # GET /menuitems/1
   def show
-    @menuitem = Menuitem.find(params[:id])
-    @shmeals = @menuitem.shmeals
-    @shmmenuitemstatuses = @menuitem.shmmenuitemstatuses
-    @shmshmealattributes = @menuitem.shmshmealattributes
     render json: @menuitem
   end
 

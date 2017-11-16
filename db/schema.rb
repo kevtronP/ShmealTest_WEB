@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171112033205) do
+ActiveRecord::Schema.define(version: 20171115045743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20171112033205) do
     t.string   "menuItemDate"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "user_id"
   end
 
   create_table "merchantwebhooks", force: :cascade do |t|
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 20171112033205) do
     t.integer  "userID"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "user_id"
   end
 
   create_table "shmcheckouts", force: :cascade do |t|
@@ -69,6 +71,8 @@ ActiveRecord::Schema.define(version: 20171112033205) do
     t.datetime "lastMessageDate"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.integer  "user_id"
+    t.integer  "shmcook_id"
   end
 
   create_table "shmcooks", force: :cascade do |t|
@@ -90,6 +94,7 @@ ActiveRecord::Schema.define(version: 20171112033205) do
     t.datetime "cookDate"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "user_id"
   end
 
   create_table "shmcookstatuses", force: :cascade do |t|
@@ -98,6 +103,7 @@ ActiveRecord::Schema.define(version: 20171112033205) do
     t.datetime "statusStartDate"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "shmcook_id"
   end
 
   create_table "shmcustomerpmtmethods", force: :cascade do |t|
@@ -112,6 +118,7 @@ ActiveRecord::Schema.define(version: 20171112033205) do
     t.integer  "userID"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "user_id"
   end
 
   create_table "shmeals", force: :cascade do |t|
@@ -119,6 +126,7 @@ ActiveRecord::Schema.define(version: 20171112033205) do
     t.integer  "menuItemID"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "menuitem_id"
   end
 
   create_table "shmfundings", force: :cascade do |t|
@@ -132,6 +140,7 @@ ActiveRecord::Schema.define(version: 20171112033205) do
     t.datetime "fundingDate"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "user_id"
   end
 
   create_table "shmmenuitemstatuses", force: :cascade do |t|
@@ -140,6 +149,7 @@ ActiveRecord::Schema.define(version: 20171112033205) do
     t.datetime "statusStartDate"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "menuitem_id"
   end
 
   create_table "shmorderfeedbacks", force: :cascade do |t|
@@ -149,6 +159,7 @@ ActiveRecord::Schema.define(version: 20171112033205) do
     t.datetime "feedbackTime"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "shmorder_id"
   end
 
   create_table "shmorders", force: :cascade do |t|
@@ -158,16 +169,21 @@ ActiveRecord::Schema.define(version: 20171112033205) do
     t.integer  "shmealID"
     t.integer  "eaterID"
     t.integer  "cookID"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "shmcook_id"
+    t.integer  "user_id"
+    t.integer  "shmeal_id"
+    t.integer  "shmconversation_id"
   end
 
   create_table "shmpaymentmethodstatuses", force: :cascade do |t|
     t.string   "statusCode"
     t.integer  "paymentMethodID"
     t.datetime "statusStartDate"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "shmcustomerpmtmethod_id"
   end
 
   create_table "shmpaymentnonces", force: :cascade do |t|
@@ -185,6 +201,7 @@ ActiveRecord::Schema.define(version: 20171112033205) do
     t.integer  "requestID"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "shmorder_id"
   end
 
   create_table "shmrequeststatuses", force: :cascade do |t|
@@ -193,6 +210,7 @@ ActiveRecord::Schema.define(version: 20171112033205) do
     t.datetime "statusStartDate"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "shmorder_id"
   end
 
   create_table "shmshmealattributes", force: :cascade do |t|
@@ -204,6 +222,8 @@ ActiveRecord::Schema.define(version: 20171112033205) do
     t.integer  "menuItemID"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "shmeal_id"
+    t.integer  "menuitem_id"
   end
 
   create_table "shmshmealstatuses", force: :cascade do |t|
@@ -228,6 +248,7 @@ ActiveRecord::Schema.define(version: 20171112033205) do
     t.integer  "userID"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "user_id"
   end
 
   create_table "shmuserstatuses", force: :cascade do |t|
@@ -237,6 +258,8 @@ ActiveRecord::Schema.define(version: 20171112033205) do
     t.datetime "statusStartDate"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "user_id"
+    t.integer  "shmcook_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -10,8 +10,6 @@ class ShmconversationsController < ApplicationController
 
   # GET /shmconversations/1
   def show
-    @shmconversation = Shmconversation.find(params[:id])
-    @shmorders = @shmconversation.shmorders
     render json: @shmconversation
   end
 

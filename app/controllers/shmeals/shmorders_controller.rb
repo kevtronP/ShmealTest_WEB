@@ -10,10 +10,6 @@ class ShmordersController < ApplicationController
 
   # GET /shmorders/1
   def show
-    @shmorder = Shmorder.find(params[:id])
-    @shmorderfeedbacks = @shmorder.shmorderfeedbacks
-    @shmrequestattributes = @shmorder.shmrequestattributes
-    @shmrequeststatuses = @shmorder.shmrequeststatuses
     render json: @shmorder
   end
 

@@ -10,8 +10,6 @@ class ShmcustomerpmtmethodsController < ApplicationController
 
   # GET /shmcustomerpmtmethods/1
   def show
-    @shmcustomerpmtmethod = Shmcustomerpmtmethod.find(params[:id])
-    @shmpaymentmethodstatuses = @shmcustomerpmtmethod.shmpaymentmethodstatuses
     render json: @shmcustomerpmtmethod
   end
 

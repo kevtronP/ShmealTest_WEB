@@ -10,6 +10,16 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
+    @user = User.find(params[:id])
+    @menuitems = @user.menuitems
+    @shmaddresses = @user.shmaddresses
+    @shmconversations = @user.shmconversations
+    @shmcooks = @user.shmcooks
+    @shmcustomerpmtmethods = @user.shmcustomerpmtmethods
+    @shmfundings = @user.shmfundings
+    @shmorders = @user.shmorders
+    @shmuserattributes = @user.shmuserattributes
+    @shmuserstatuses = @user.shmuserstatuses
     render json: @user
   end
 

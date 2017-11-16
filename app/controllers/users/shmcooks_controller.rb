@@ -10,11 +10,6 @@ class ShmcooksController < ApplicationController
 
   # GET /shmcooks/1
   def show
-    @shmcook = Shmcook.find(params[:id])
-    @shmconversations = @shmcook.shmconversations
-    @shmcookstatuses = @shmcook.shmcookstatuses
-    @shmorders = @shmcook.shmorders
-    @shmuserstatuses = @shmcook.shmuserstatuses
     render json: @shmcook
   end
 

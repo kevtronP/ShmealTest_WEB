@@ -12,8 +12,6 @@ class ShmealsController < ApplicationController
   def show
     @shmeal = Shmeal.find(params[:id])
     @shmshmealstatuses = @shmeal.shmshmealstatuses
-    @shmorders = @shmeal.shmorders
-    @shmshmealattributes = @shmeal.shmshmealattributes
     render json: @shmeal
   end
 
