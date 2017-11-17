@@ -1,4 +1,4 @@
-class ShmordersController < ApplicationController
+class Users::ShmordersController < ApplicationController
   before_action :set_shmorder, only: [:show, :update, :destroy]
 
   # GET /shmorders

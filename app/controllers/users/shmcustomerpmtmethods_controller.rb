@@ -1,4 +1,4 @@
-class ShmcustomerpmtmethodsController < ApplicationController
+class Users::ShmcustomerpmtmethodsController < ApplicationController
   before_action :set_shmcustomerpmtmethod, only: [:show, :update, :destroy]
 
   # GET /shmcustomerpmtmethods

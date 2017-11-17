@@ -1,4 +1,4 @@
-class ShmfundingsController < ApplicationController
+class Users::ShmfundingsController < ApplicationController
   before_action :set_shmfunding, only: [:show, :update, :destroy]
 
   # GET /shmfundings

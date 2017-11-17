@@ -1,4 +1,4 @@
-class ShmorderfeedbacksController < ApplicationController
+class Shmorders::ShmorderfeedbacksController < ApplicationController
   before_action :set_shmorderfeedback, only: [:show, :update, :destroy]
 
   # GET /shmorderfeedbacks

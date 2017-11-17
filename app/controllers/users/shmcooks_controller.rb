@@ -1,4 +1,4 @@
-class ShmcooksController < ApplicationController
+class Users::ShmcooksController < ApplicationController
   before_action :set_shmcook, only: [:show, :update, :destroy]
 
   # GET /shmcooks

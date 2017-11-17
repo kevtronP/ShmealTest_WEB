@@ -1,4 +1,4 @@
-class ShmpaymentmethodstatusesController < ApplicationController
+class Shmcustomerpmtmethods::ShmpaymentmethodstatusesController < ApplicationController
   before_action :set_shmpaymentmethodstatus, only: [:show, :update, :destroy]
 
   # GET /shmpaymentmethodstatuses

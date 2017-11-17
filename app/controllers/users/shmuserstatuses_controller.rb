@@ -1,4 +1,4 @@
-class ShmuserstatusesController < ApplicationController
+class Users::ShmuserstatusesController < ApplicationController
   before_action :set_shmuserstatus, only: [:show, :update, :destroy]
 
   # GET /shmuserstatuses

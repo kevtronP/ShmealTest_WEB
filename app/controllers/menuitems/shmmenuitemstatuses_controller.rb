@@ -1,4 +1,4 @@
-class ShmmenuitemstatusesController < ApplicationController
+class Menuitems::ShmmenuitemstatusesController < ApplicationController
   before_action :set_shmmenuitemstatus, only: [:show, :update, :destroy]
 
   # GET /shmmenuitemstatuses

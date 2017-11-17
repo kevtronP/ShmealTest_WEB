@@ -1,4 +1,4 @@
-class ShmrequestattributesController < ApplicationController
+class Shmorders::ShmrequestattributesController < ApplicationController
   before_action :set_shmrequestattribute, only: [:show, :update, :destroy]
 
   # GET /shmrequestattributes

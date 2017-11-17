@@ -1,4 +1,4 @@
-class ShmrequeststatusesController < ApplicationController
+class Shmorders::ShmrequeststatusesController < ApplicationController
   before_action :set_shmrequeststatus, only: [:show, :update, :destroy]
 
   # GET /shmrequeststatuses

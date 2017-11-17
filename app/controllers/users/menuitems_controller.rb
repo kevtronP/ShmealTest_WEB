@@ -1,4 +1,4 @@
-class MenuitemsController < ApplicationController
+class Users::MenuitemsController < ApplicationController
   before_action :set_menuitem, only: [:show, :update, :destroy]
 
   # GET /menuitems

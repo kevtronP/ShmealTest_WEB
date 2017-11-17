@@ -1,4 +1,4 @@
-class ShmshmealattributesController < ApplicationController
+class Shmeals::ShmshmealattributesController < ApplicationController
   before_action :set_shmshmealattribute, only: [:show, :update, :destroy]
 
   # GET /shmshmealattributes

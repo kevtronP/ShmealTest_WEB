@@ -1,4 +1,4 @@
-class ShmcookstatusesController < ApplicationController
+class Shmcooks::ShmcookstatusesController < ApplicationController
   before_action :set_shmcookstatus, only: [:show, :update, :destroy]
 
   # GET /shmcookstatuses

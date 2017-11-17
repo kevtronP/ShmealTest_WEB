@@ -1,4 +1,4 @@
-class ShmuserattributesController < ApplicationController
+class Users::ShmuserattributesController < ApplicationController
   before_action :set_shmuserattribute, only: [:show, :update, :destroy]
 
   # GET /shmuserattributes

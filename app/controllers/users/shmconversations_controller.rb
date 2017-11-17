@@ -1,4 +1,4 @@
-class ShmconversationsController < ApplicationController
+class Users::ShmconversationsController < ApplicationController
   before_action :set_shmconversation, only: [:show, :update, :destroy]
 
   # GET /shmconversations

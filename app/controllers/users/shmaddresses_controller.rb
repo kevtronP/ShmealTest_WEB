@@ -1,4 +1,4 @@
-class ShmaddressesController < ApplicationController
+class Users::ShmaddressesController < ApplicationController
   before_action :set_shmaddress, only: [:show, :update, :destroy]
 
   # GET /shmaddresses
