@@ -23,8 +23,8 @@ class ShmealsController < ApplicationController
 
     @shmshmealstatus = Shmshmealstatus.new(
       :statusCode => "A",
-      :shmealID => @shmeal.shmeal_id,
-      :shmeal_id => @shmeal.shmeal_id,
+      :shmealID => @shmeal.id,
+      :shmeal_id => @shmeal.id,
       :statusStartDate => @shmeal.created_at
     )
 
