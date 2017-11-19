@@ -17,9 +17,9 @@ class ShmshmealattributesController < ApplicationController
   def create
     @shmshmealattribute = Shmshmealattribute.new(shmshmealattribute_params)
 
-    @shmeal = Shmeal.find(params[:shmealID])
+    #@shmeal = Shmeal.find(params[:shmealID])
     #@shmshmealattribute.shmeal = @shmeal
-    @menuitem = Menuitem.find(params:@shmeal.menuItemID)
+    #@menuitem = Menuitem.find(params:@shmeal.menuItemID)
     #@shmshmeals
 
     if @shmshmealattribute.save
