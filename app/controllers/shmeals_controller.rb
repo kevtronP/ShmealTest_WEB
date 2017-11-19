@@ -21,17 +21,12 @@ class ShmealsController < ApplicationController
   def create
     @shmeal = Shmeal.new(shmeal_params)
 
-    @shmshmealstatus = Shmshmealstatus.new(
+    @shmshmealstatus = Shmshmealstatus.create(
       :statusCode => "A",
       :shmealID => @shmeal.id,
       :shmeal_id => @shmeal.id,
       :statusStartDate => @shmeal.created_at
     )
-    if @shmshmealstatus.save
-      render json: @shmealstatus, status: :created, location: @shmealstatus
-    else
-      render json: @shmealstatus.errors, status: :unprocessable_entity
-    end
 
 
     if @shmeal.save
