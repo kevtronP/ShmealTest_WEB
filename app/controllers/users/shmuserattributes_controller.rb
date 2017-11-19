@@ -3,7 +3,9 @@ class Users::ShmuserattributesController < ApplicationController
 
   # GET /shmuserattributes
   def index
-    @shmuserattributes = Shmuserattribute.all
+
+    @user = User.find(params[:user_id])
+    @shmuserattributes = @user.shmuserattributes
 
     render json: @shmuserattributes
   end
