@@ -18,7 +18,9 @@ class ShmshmealattributesController < ApplicationController
     @shmshmealattribute = Shmshmealattribute.new(shmshmealattribute_params)
 
     @shmeal = Shmeal.find(params[:shmealID])
-    @shmshmealstatuse.shmeal = @shmeal
+    #@shmshmealattribute.shmeal = @shmeal
+    @menuitem = Menuitem.find(params:@shmeal.menuItemID)
+    #@shmshmeals
 
     if @shmshmealattribute.save
       render json: @shmshmealattribute, status: :created, location: @shmshmealattribute
