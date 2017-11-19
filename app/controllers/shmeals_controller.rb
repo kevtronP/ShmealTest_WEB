@@ -27,6 +27,12 @@ class ShmealsController < ApplicationController
       :shmeal_id => @shmeal.id,
       :statusStartDate => @shmeal.created_at
     )
+    if @shmshmealstatus.save
+      render json: @shmealstatus, status: :created, location: @shmealstatus
+    else
+      render json: @shmealstatus.errors, status: :unprocessable_entity
+    end
+
 
     if @shmeal.save
       render json: @shmeal, status: :created, location: @shmeal
