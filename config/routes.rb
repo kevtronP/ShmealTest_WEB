@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   end
   resources :shmeals do
     resources :shmshmealstatuses, only: [:index], controller: 'shmeals/shmshmealstatuses'
-    resources :shmshmealattributes, only: [:index], controller: 'shmeals/shmshmealattributes'
+    resources :shmshmealattributes, only: [:index, :create], controller: 'shmeals/shmshmealattributes'
     resources :shmorders, only: [:index], controller: 'shmeals/shmorders'
     #resources :shmshmealstatuses, only: [:show, :new, :create]
     #resources :shmshmealstatuses, except: [:index], controller: 'shmeals/shmshmealstatuses'

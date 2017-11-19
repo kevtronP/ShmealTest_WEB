@@ -3,7 +3,8 @@ class Shmeals::ShmshmealattributesController < ApplicationController
 
   # GET /shmshmealattributes
   def index
-    @shmshmealattributes = Shmshmealattribute.all
+    @shmeal = Shmeal.find(params[:shmeal_id])
+    @shmshmealattributes = @shmeal.shmshmealattributes
 
     render json: @shmshmealattributes
   end
@@ -16,6 +17,9 @@ class Shmeals::ShmshmealattributesController < ApplicationController
   # POST /shmshmealattributes
   def create
     @shmshmealattribute = Shmshmealattribute.new(shmshmealattribute_params)
+
+    @shmeal = Shmeal.find(params[:shmeal_id])
+    @shmshmealattribute.shmeal = @shmeal
 
     if @shmshmealattribute.save
       render json: @shmshmealattribute, status: :created, location: @shmshmealattribute
