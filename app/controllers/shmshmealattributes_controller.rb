@@ -17,6 +17,9 @@ class ShmshmealattributesController < ApplicationController
   def create
     @shmshmealattribute = Shmshmealattribute.new(shmshmealattribute_params)
 
+    @shmeal = Shmeal.find(params[@shmshmealattribute.shmealID])
+    @shmshmealstatuse.shmeal = @shmeal
+
     if @shmshmealattribute.save
       render json: @shmshmealattribute, status: :created, location: @shmshmealattribute
     else
