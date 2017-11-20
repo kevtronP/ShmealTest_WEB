@@ -3,7 +3,8 @@ class Shmcustomerpmtmethods::ShmpaymentmethodstatusesController < ApplicationCon
 
   # GET /shmpaymentmethodstatuses
   def index
-    @shmpaymentmethodstatuses = Shmpaymentmethodstatus.all
+    @shmcustomerpmtmethod = Shmcustomerpmtmethod.find(params[:shmcustomerpmtmethod_id])
+    @shmpaymentmethodstatuses = @shmeal.shmpaymentmethodstatuses
 
     render json: @shmpaymentmethodstatuses
   end

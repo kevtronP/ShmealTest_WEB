@@ -3,7 +3,8 @@ class Shmorders::ShmorderfeedbacksController < ApplicationController
 
   # GET /shmorderfeedbacks
   def index
-    @shmorderfeedbacks = Shmorderfeedback.all
+    @shmorder = Shmorder.find(params[:shmorder_id])
+    @shmorderfeedbacks = @shmorder.shmorderfeedbacks
 
     render json: @shmorderfeedbacks
   end

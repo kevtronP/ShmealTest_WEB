@@ -3,7 +3,9 @@ class Menuitems::ShmealsController < ApplicationController
 
   # GET /shmeals
   def index
-    @shmeals = Shmeal.all
+
+    @menuitem = Menuitem.find(params[:menuitem_id])
+    @shmeals = @menuitem.shmeals
 
     render json: @shmeals
   end

@@ -3,7 +3,8 @@ class Shmorders::ShmrequestattributesController < ApplicationController
 
   # GET /shmrequestattributes
   def index
-    @shmrequestattributes = Shmrequestattribute.all
+    @shmorder = Shmorder.find(params[:shmorder_id])
+    @shmrequestattributes = @shmorder.shmrequestattributes
 
     render json: @shmrequestattributes
   end

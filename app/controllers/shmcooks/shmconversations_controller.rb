@@ -3,7 +3,8 @@ class Shmcooks::ShmconversationsController < ApplicationController
 
   # GET /shmconversations
   def index
-    @shmconversations = Shmconversation.all
+    @shmcook = Shmcook.find(params[:shmcook_id])
+    @shmconversations = @shmcook.shmconversations
 
     render json: @shmconversations
   end

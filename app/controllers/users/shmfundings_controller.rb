@@ -3,7 +3,8 @@ class Users::ShmfundingsController < ApplicationController
 
   # GET /shmfundings
   def index
-    @shmfundings = Shmfunding.all
+    @user = User.find(params[:user_id])
+    @shmfundings = @user.shmfundings
 
     render json: @shmfundings
   end

@@ -3,7 +3,8 @@ class Users::ShmconversationsController < ApplicationController
 
   # GET /shmconversations
   def index
-    @shmconversations = Shmconversation.all
+    @user = User.find(params[:user_id])
+    @shmconversations = @user.shmconversations
 
     render json: @shmconversations
   end

@@ -3,7 +3,8 @@ class Shmorders::ShmrequeststatusesController < ApplicationController
 
   # GET /shmrequeststatuses
   def index
-    @shmrequeststatuses = Shmrequeststatus.all
+    @shmorder = Shmorder.find(params[:shmorder_id])
+    @shmrequeststatuses = @shmorder.shmrequeststatuses
 
     render json: @shmrequeststatuses
   end

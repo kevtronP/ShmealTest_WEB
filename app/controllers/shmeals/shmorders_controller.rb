@@ -3,7 +3,8 @@ class Shmeals::ShmordersController < ApplicationController
 
   # GET /shmorders
   def index
-    @shmorders = Shmorder.all
+    @shmeal = Shmeal.find(params[:shmeal_id])
+    @shmorders = @shmeal.shmorders
 
     render json: @shmorders
   end

@@ -3,7 +3,9 @@ class Menuitems::ShmmenuitemstatusesController < ApplicationController
 
   # GET /shmmenuitemstatuses
   def index
-    @shmmenuitemstatuses = Shmmenuitemstatus.all
+
+    @menuitem = Menuitem.find(params[:menuitem_id])
+    @shmmenuitemstatuses = @menuitem.shmmenuitemstatuses
 
     render json: @shmmenuitemstatuses
   end

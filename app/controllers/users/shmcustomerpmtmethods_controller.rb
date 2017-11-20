@@ -3,7 +3,8 @@ class Users::ShmcustomerpmtmethodsController < ApplicationController
 
   # GET /shmcustomerpmtmethods
   def index
-    @shmcustomerpmtmethods = Shmcustomerpmtmethod.all
+    @user = User.find(params[:user_id])
+    @shmcustomerpmtmethods = @user.shmcustomerpmtmethods
 
     render json: @shmcustomerpmtmethods
   end

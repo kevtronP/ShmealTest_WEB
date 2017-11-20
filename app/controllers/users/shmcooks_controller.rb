@@ -3,7 +3,8 @@ class Users::ShmcooksController < ApplicationController
 
   # GET /shmcooks
   def index
-    @shmcooks = Shmcook.all
+    @user = User.find(params[:user_id])
+    @shmcooks = @user.shmcooks
 
     render json: @shmcooks
   end

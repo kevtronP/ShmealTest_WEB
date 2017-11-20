@@ -3,7 +3,8 @@ class Menuitems::ShmshmealattributesController < ApplicationController
 
   # GET /shmshmealattributes
   def index
-    @shmshmealattributes = Shmshmealattribute.all
+    @menuitem = Menuitem.find(params[:menuitem_id])
+    @shmshmealattributes = @menuitem.shmshmealattributes
 
     render json: @shmshmealattributes
   end

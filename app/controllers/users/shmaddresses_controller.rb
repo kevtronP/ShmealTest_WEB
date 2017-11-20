@@ -3,7 +3,8 @@ class Users::ShmaddressesController < ApplicationController
 
   # GET /shmaddresses
   def index
-    @shmaddresses = Shmaddress.all
+    @user = User.find(params[:user_id])
+    @shmaddresses = @user.shmaddresses
 
     render json: @shmaddresses
   end

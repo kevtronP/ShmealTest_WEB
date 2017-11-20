@@ -3,7 +3,8 @@ class Shmconversations::ShmordersController < ApplicationController
 
   # GET /shmorders
   def index
-    @shmorders = Shmorder.all
+    @shmconversation = Shmconversation.find(params[:shmconversation_id])
+    @shmorders = @shmconversation.shmorders
 
     render json: @shmorders
   end

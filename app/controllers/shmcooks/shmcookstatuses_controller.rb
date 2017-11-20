@@ -3,7 +3,8 @@ class Shmcooks::ShmcookstatusesController < ApplicationController
 
   # GET /shmcookstatuses
   def index
-    @shmcookstatuses = Shmcookstatus.all
+    @shmcook = Shmcook.find(params[:shmcook_id])
+    @shmcookstatuses = @shmcook.shmcookstatuses
 
     render json: @shmcookstatuses
   end

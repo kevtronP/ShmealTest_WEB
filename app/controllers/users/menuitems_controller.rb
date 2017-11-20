@@ -3,7 +3,8 @@ class Users::MenuitemsController < ApplicationController
 
   # GET /menuitems
   def index
-    @menuitems = Menuitem.all
+    @user = User.find(params[:user_id])
+    @menuitems = @user.menuitems
 
     render json: @menuitems
   end

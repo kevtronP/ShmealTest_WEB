@@ -3,7 +3,8 @@ class Users::ShmordersController < ApplicationController
 
   # GET /shmorders
   def index
-    @shmorders = Shmorder.all
+    @user = User.find(params[:user_id])
+    @shmorders = @user.shmorders
 
     render json: @shmorders
   end
