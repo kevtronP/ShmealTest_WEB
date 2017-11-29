@@ -1,4 +1,4 @@
-class Menuitems::ShmealsController < ApplicationController
+class ShmealsController < ApplicationController
   before_action :set_shmeal, only: [:show, :update, :destroy]
 
   # GET /shmeals
