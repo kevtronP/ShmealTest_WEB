@@ -21,7 +21,7 @@ class ShmealsController < ApplicationController
   def create
     @shmeal = Shmeal.new(shmeal_params)
 
-    @menuitem = Menuitem.find(params[:id => @shmeal.menuItemID])
+    @shmeal.menuitem_id = @shmeal.menuItemID
 
     if @shmeal.save
       render json: @shmeal, status: :created, location: @shmeal
