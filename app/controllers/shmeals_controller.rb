@@ -1,4 +1,4 @@
-class ShmealsController < ApplicationController
+class Menuitems::ShmealsController < ApplicationController
   before_action :set_shmeal, only: [:show, :update, :destroy]
 
   # GET /shmeals
@@ -21,7 +21,8 @@ class ShmealsController < ApplicationController
   def create
     @shmeal = Shmeal.new(shmeal_params)
 
-    #@menuitem = Menuitem.find(params[@shmeal.menuItemID])
+    @menuitem = Menuitem.find(params[:menuitem_id])
+
     if @shmeal.save
       render json: @shmeal, status: :created, location: @shmeal
     else
