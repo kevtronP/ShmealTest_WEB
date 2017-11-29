@@ -19,7 +19,8 @@ class ShmshmealstatusesController < ApplicationController
   # POST /shmshmealstatuses
   def create
     @shmshmealstatus = Shmshmealstatus.new(shmshmealstatus_params)
-    #@shmeal = Shmeal.find(params[@shmshmealstatus.shmealID])
+    
+    @shmshmealstatus.shmeal_id = @shmshmealstatus.shmealID
 
     if @shmshmealstatus.save
       render json: @shmshmealstatus, status: :created, location: @shmshmealstatus

@@ -17,6 +17,8 @@ class ShmshmealattributesController < ApplicationController
   def create
     @shmshmealattribute = Shmshmealattribute.new(shmshmealattribute_params)
 
+    @shmshmealattribute.shmeal_id = @shmeal.shmealID
+
     #@shmeal = Shmeal.find(params[:shmealID])
     #@shmshmealattribute.shmeal = @shmeal
     #@menuitem = Menuitem.find(params:@shmeal.menuItemID)

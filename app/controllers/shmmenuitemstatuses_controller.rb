@@ -17,6 +17,8 @@ class ShmmenuitemstatusesController < ApplicationController
   def create
     @shmmenuitemstatus = Shmmenuitemstatus.new(shmmenuitemstatus_params)
 
+    @shmmenuitemstatus.menuitem_id = @shmmenuitemstatus.menuItemID
+    
     if @shmmenuitemstatus.save
       render json: @shmmenuitemstatus, status: :created, location: @shmmenuitemstatus
     else
