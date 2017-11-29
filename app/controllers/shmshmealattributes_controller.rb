@@ -17,7 +17,7 @@ class ShmshmealattributesController < ApplicationController
   def create
     @shmshmealattribute = Shmshmealattribute.new(shmshmealattribute_params)
 
-    @shmshmealattribute.shmeal_id = @shmeal.shmealID
+    @shmshmealattribute.shmeal_id = @shmshmealattribute.shmealID
 
     #@shmeal = Shmeal.find(params[:shmealID])
     #@shmshmealattribute.shmeal = @shmeal
