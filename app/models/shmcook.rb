@@ -1,5 +1,5 @@
 class Shmcook < ApplicationRecord
-  belongs_to :user
+  #belongs_to :user
   has_many :shmcookstatuses
   has_many :shmuserstatuses
   has_many :shmconversations

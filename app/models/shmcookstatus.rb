@@ -1,3 +1,3 @@
 class Shmcookstatus < ApplicationRecord
-  belongs_to :shmcook
+  #belongs_to :shmcook
 end

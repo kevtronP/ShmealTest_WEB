@@ -1,3 +1,3 @@
 class Shmrequestattribute < ApplicationRecord
-  belongs_to :shmorder
+  #belongs_to :shmorder
 end

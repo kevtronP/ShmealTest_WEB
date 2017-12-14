@@ -1,3 +1,3 @@
 class Shmpaymentmethodstatus < ApplicationRecord
-  belongs_to :shmcustomerpmtmethod
+  #belongs_to :shmcustomerpmtmethod
 end
