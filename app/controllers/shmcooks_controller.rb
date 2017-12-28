@@ -125,6 +125,8 @@ class ShmcooksController < ApplicationController
 
     end
 
+    @shmcook.user_id = @shmcook.userID;
+        
     if @shmcook.save
       render json: @shmcook, status: :created, location: @shmcook
     else
