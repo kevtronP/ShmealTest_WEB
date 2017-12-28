@@ -19,6 +19,9 @@ class ShmconversationsController < ApplicationController
   def create
     @shmconversation = Shmconversation.new(shmconversation_params)
 
+    @shmconversation.shmcook_id = @shmconversation.originalCookID;
+    @shmconversation.user_id = @shmconversation.originalEaterID;
+
     if @shmconversation.save
       render json: @shmconversation, status: :created, location: @shmconversation
     else

@@ -17,6 +17,8 @@ class ShmorderfeedbacksController < ApplicationController
   def create
     @shmorderfeedback = Shmorderfeedback.new(shmorderfeedback_params)
 
+    @shmorderfeedback.shmorder_id = @shmorderfeedback.requestID
+
     if @shmorderfeedback.save
       render json: @shmorderfeedback, status: :created, location: @shmorderfeedback
     else

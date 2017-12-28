@@ -17,6 +17,8 @@ class ShmrequestattributesController < ApplicationController
   def create
     @shmrequestattribute = Shmrequestattribute.new(shmrequestattribute_params)
 
+    @shmrequestattribute.shmorder_id = @shmrequestattribute.requestID
+
     if @shmrequestattribute.save
       render json: @shmrequestattribute, status: :created, location: @shmrequestattribute
     else

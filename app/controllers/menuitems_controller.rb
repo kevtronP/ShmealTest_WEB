@@ -21,6 +21,8 @@ class MenuitemsController < ApplicationController
   def create
     @menuitem = Menuitem.new(menuitem_params)
 
+    @menuitem.user_id = @menuitem.userID;
+
     if @menuitem.save
       render json: @menuitem, status: :created, location: @menuitem
     else

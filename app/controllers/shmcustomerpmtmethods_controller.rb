@@ -24,6 +24,9 @@ class ShmcustomerpmtmethodsController < ApplicationController
       :last_name => @shmcustomerpmtmethod.lastName,
       :payment_method_nonce => @shmcustomerpmtmethod.nonce
       )
+
+      @shmcustomerpmtmethod.user_id = @shmcustomerpmtmethod.userID
+
       if result.success?
         @shmcustomerpmtmethod.customerIDString = result.customer.id
         @shmcustomerpmtmethod.paymentMethodToken = result.customer.payment_methods[0].token

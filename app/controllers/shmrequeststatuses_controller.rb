@@ -17,6 +17,8 @@ class ShmrequeststatusesController < ApplicationController
   def create
     @shmrequeststatus = Shmrequeststatus.new(shmrequeststatus_params)
 
+    @shmrequeststatus.shmorder_id = @shmrequeststatus.requestID
+
     if @shmrequeststatus.save
       render json: @shmrequeststatus, status: :created, location: @shmrequeststatus
     else

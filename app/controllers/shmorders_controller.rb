@@ -21,6 +21,10 @@ class ShmordersController < ApplicationController
   def create
     @shmorder = Shmorder.new(shmorder_params)
 
+    @shmorder.shmeal_id = @shmorder.shmealID
+    @shmorder.shmconversation_id = @shmorder.conversationID
+    @shmorder.user_id = @shmorder.eaterID
+
     if @shmorder.save
       render json: @shmorder, status: :created, location: @shmorder
     else

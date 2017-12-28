@@ -17,6 +17,8 @@ class ShmuserattributesController < ApplicationController
   def create
     @shmuserattribute = Shmuserattribute.new(shmuserattribute_params)
 
+    @shmuserattribute.user_id = @shmuserattribute.userID
+
     if @shmuserattribute.save
       render json: @shmuserattribute, status: :created, location: @shmuserattribute
     else

@@ -17,6 +17,9 @@ class ShmuserstatusesController < ApplicationController
   def create
     @shmuserstatus = Shmuserstatus.new(shmuserstatus_params)
 
+    @shmuserstatus.user_id = @shmuserstatus.sendingUserID
+    #@shmuserstatus.shmcook_id = @shmuserstatus.receivingUserID
+
     if @shmuserstatus.save
       render json: @shmuserstatus, status: :created, location: @shmuserstatus
     else

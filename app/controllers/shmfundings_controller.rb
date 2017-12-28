@@ -72,6 +72,8 @@ class ShmfundingsController < ApplicationController
 
     end
 
+    @shmfunding.user_id = @shmfunding.userID
+
     if @shmfunding.save
       render json: @shmfunding, status: :created, location: @shmfunding
     else

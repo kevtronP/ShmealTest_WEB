@@ -17,6 +17,8 @@ class ShmcookstatusesController < ApplicationController
   def create
     @shmcookstatus = Shmcookstatus.new(shmcookstatus_params)
 
+    @shmcookstatus.shmcook_id = @shmcookstatus.cookID
+
     if @shmcookstatus.save
       render json: @shmcookstatus, status: :created, location: @shmcookstatus
     else

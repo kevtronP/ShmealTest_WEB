@@ -17,6 +17,8 @@ class ShmpaymentmethodstatusesController < ApplicationController
   def create
     @shmpaymentmethodstatus = Shmpaymentmethodstatus.new(shmpaymentmethodstatus_params)
 
+    @shmpaymentmethodstatus.shmcustomerpmtmethod_id = @shmpaymentmethodstatus.paymentMethodID
+    
     if @shmpaymentmethodstatus.save
       render json: @shmpaymentmethodstatus, status: :created, location: @shmpaymentmethodstatus
     else

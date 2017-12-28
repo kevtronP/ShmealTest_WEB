@@ -124,9 +124,9 @@ class ShmcooksController < ApplicationController
         end
 
     end
-
+    # for copying relationship id
     @shmcook.user_id = @shmcook.userID;
-        
+
     if @shmcook.save
       render json: @shmcook, status: :created, location: @shmcook
     else
