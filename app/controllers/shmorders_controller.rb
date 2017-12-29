@@ -25,6 +25,10 @@ class ShmordersController < ApplicationController
     @shmorder.shmconversation_id = @shmorder.conversationID
     @shmorder.user_id = @shmorder.eaterID
 
+    #find cook since this cookID reflects cook's userID
+    @shmcook = Shmcook.find(:first, :conditions => [ "userID = ?", @shmorder.cookID])
+    @shmorder.shmcook_id = @shmcook.id
+    
     if @shmorder.save
       render json: @shmorder, status: :created, location: @shmorder
     else
