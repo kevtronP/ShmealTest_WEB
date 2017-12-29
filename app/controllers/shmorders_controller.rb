@@ -27,7 +27,7 @@ class ShmordersController < ApplicationController
 
     #find cook since this cookID reflects cook's userID
     @shmcook = Shmcook.where(:userID => @shmorder.cookID)
-    @shmorder.shmcook_id = @shmcook.id
+    @shmorder.shmcook_id = @shmcook.params[:id]
 
     if @shmorder.save
       render json: @shmorder, status: :created, location: @shmorder
