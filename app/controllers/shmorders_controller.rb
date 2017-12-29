@@ -26,7 +26,7 @@ class ShmordersController < ApplicationController
     @shmorder.user_id = @shmorder.eaterID
 
     #find cook since this cookID reflects cook's userID
-    @shmcook = Shmcook.find(1, :userID => @shmorder.cookID)
+    @shmcook = Shmcook.where(:userID => @shmorder.cookID)
     @shmorder.shmcook_id = @shmcook.id
 
     if @shmorder.save
