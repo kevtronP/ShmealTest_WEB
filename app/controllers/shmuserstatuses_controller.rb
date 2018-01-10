@@ -20,6 +20,9 @@ class ShmuserstatusesController < ApplicationController
     @shmuserstatus.user_id = @shmuserstatus.sendingUserID
     #@shmuserstatus.shmcook_id = @shmuserstatus.receivingUserID
 
+    @shmcook = Shmcook.where(:userID => @shmuserstatus.receivingUserID).first
+    @shmuserstatus.shmcook_id = @shmcook.id
+
     if @shmuserstatus.save
       render json: @shmuserstatus, status: :created, location: @shmuserstatus
     else
