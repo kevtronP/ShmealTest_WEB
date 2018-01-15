@@ -19,6 +19,9 @@ class ShmshmealattributesController < ApplicationController
 
     @shmshmealattribute.shmeal_id = @shmshmealattribute.shmealID
 
+    @menuitem = Menuitem.where(:menuItemID => @shmshmealattribute.menuItemID).first
+    @shmshmealattribute.menuitem_id = @menuitem.id
+
     #@shmeal = Shmeal.find(params[:shmealID])
     #@shmshmealattribute.shmeal = @shmeal
     #@menuitem = Menuitem.find(params:@shmeal.menuItemID)
