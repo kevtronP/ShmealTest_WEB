@@ -11,10 +11,13 @@ class UsersController < ApplicationController
   # GET /users/1
   def show
     @user = User.find(params[:id])
+
+    @shmcooks = Shmcook.where(:userID => @user.id)
+    
     @menuitems = @user.menuitems
     @shmaddresses = @user.shmaddresses
     @shmconversations = @user.shmconversations
-    @shmcooks = @user.shmcooks
+    @user.shmcooks = @shmcooks
     @shmcustomerpmtmethods = @user.shmcustomerpmtmethods
     @shmfundings = @user.shmfundings
     @shmorders = @user.shmorders
