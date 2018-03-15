@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @shmorders = @user.shmorders
     @shmuserattributes = @user.shmuserattributes
     @shmuserstatuses = @user.shmuserstatuses
-    render json: @user
+    render json: {@user, @user.menuitems}
   end
 
   # POST /users
