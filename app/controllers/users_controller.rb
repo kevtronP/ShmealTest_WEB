@@ -12,8 +12,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    @shmcooks = Shmcook.where(:userID => @user.id)
-    
+    @cooksArray = Shmcook.where(:userID => @user.id)
+
+    cooksArray.push(@user)
+
     @menuitems = @user.menuitems
     @shmaddresses = @user.shmaddresses
     @shmconversations = @user.shmconversations
@@ -23,7 +25,7 @@ class UsersController < ApplicationController
     @shmorders = @user.shmorders
     @shmuserattributes = @user.shmuserattributes
     @shmuserstatuses = @user.shmuserstatuses
-    render json: @user
+    render json: cooksArray
   end
 
   # POST /users
