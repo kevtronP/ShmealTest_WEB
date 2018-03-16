@@ -1,4 +1,3 @@
 class MenuitemSerializer < ActiveModel::Serializer
-  attributes :id, :mealName, :userID, :menuItemDate, :user
-  has_one :user
+  attributes :id, :mealName, :userID, :menuItemDate
 end
