@@ -23,7 +23,11 @@ class UsersController < ApplicationController
     @shmorders = @user.shmorders
     @shmuserattributes = @user.shmuserattributes
     @shmuserstatuses = @user.shmuserstatuses
-    render json: @user, json: @cooks
+
+    #render json: @user, json: @cooks
+
+    render :json => {:user => @user,
+                                  :menuitems => @menuitems }
   end
 
   # POST /users
