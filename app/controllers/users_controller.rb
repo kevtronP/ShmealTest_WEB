@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    Array cooksArray = Array.new(@user)
+    Array cooksArray = Array.new(1, @user)
 
     @cooks = Shmcook.where(:userID => @user.id)
 
