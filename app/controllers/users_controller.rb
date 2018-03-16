@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
     @cooksArray = Shmcook.where(:userID => @user.id)
 
-    cooksArray.push(@user)
+    @cooksArray.push(@user)
 
     @menuitems = @user.menuitems
     @shmaddresses = @user.shmaddresses
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @shmorders = @user.shmorders
     @shmuserattributes = @user.shmuserattributes
     @shmuserstatuses = @user.shmuserstatuses
-    render json: cooksArray
+    render json: @cooksArray
   end
 
   # POST /users
