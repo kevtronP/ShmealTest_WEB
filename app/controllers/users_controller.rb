@@ -12,9 +12,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    Array cooksArray = Shmcook.where(:userID => @user.id)
+    Array cooksArray = Array.new(@user)
 
-    cooksArray.push(@user)
+    @cooks = Shmcook.where(:userID => @user.id)
+
+    cooksArray.push(@cooks)
 
     @menuitems = @user.menuitems
     @shmaddresses = @user.shmaddresses
