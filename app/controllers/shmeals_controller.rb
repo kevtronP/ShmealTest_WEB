@@ -5,7 +5,7 @@ class ShmealsController < ApplicationController
   def index
     #@shmeals = Shmeal.all
 
-    @shmeals = Shmeal.where(:shmealDayDate > Date.today)
+    @shmeals = Shmeal.having(:shmealDayDate > Date.today)
 
     render json: @shmeals
   end
