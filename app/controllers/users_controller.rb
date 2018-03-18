@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     #@cooks = Shmcook.where(:userID => @user.id)
 
     @menuitems = Menuitem.where(:userID => @user.id)
+
     @user.menuitems = @menuitems
     #@menuitems = @user.menuitems
     @shmaddresses = @user.shmaddresses
@@ -26,7 +27,7 @@ class UsersController < ApplicationController
     @shmuserattributes = @user.shmuserattributes
     @shmuserstatuses = @user.shmuserstatuses
 
-    render json: @user
+    render json: @user, json: @menuitems
 
   end
 
