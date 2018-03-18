@@ -23,11 +23,10 @@ class UsersController < ApplicationController
     #@user.shmcooks = @shmcooks
     @shmcustomerpmtmethods = @user.shmcustomerpmtmethods
     @shmfundings = @user.shmfundings
-    @shmorders = @user.shmorders
     @shmuserattributes = @user.shmuserattributes
     @shmuserstatuses = @user.shmuserstatuses
 
-    render json: @user, json: @menuitems
+    render json: @user
 
   end
 
