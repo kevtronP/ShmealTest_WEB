@@ -3,9 +3,9 @@ class ShmealsController < ApplicationController
 
   # GET /shmeals
   def index
-    #@shmeals = Shmeal.all
+    @shmeals = Shmeal.all
 
-    @shmeals = Shmeal.where({shmealDayDate: Date.today..Date.today.next_month})
+    #@shmeals = Shmeal.where({shmealDayDate: Date.today..Date.today.next_month})
 
     render json: @shmeals
   end
