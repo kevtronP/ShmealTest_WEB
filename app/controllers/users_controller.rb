@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     @shmuserattributes = @user.shmuserattributes
     @shmuserstatuses = @user.shmuserstatuses
 
-    render json: {@user, @menuitems}
+    render json: @user, :include @menuitems
 
   end
 
