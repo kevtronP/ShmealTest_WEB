@@ -3,10 +3,18 @@ class ShmealsController < ApplicationController
 
   # GET /shmeals
   def index
-    @shmeals = Shmeal.all
+    #@shmeals = Shmeal.all
+
+    @shmeals = Shmeal.where(:shmealDayDate >= Date.today)
 
     render json: @shmeals
   end
+
+  #def future
+
+  #  @shmeals = Shmeal.where(:shmealDayDate >= Date.today)
+
+  #end
 
   # GET /shmeals/1
   def show
