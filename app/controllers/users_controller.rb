@@ -14,10 +14,10 @@ class UsersController < ApplicationController
 
     #@cooks = Shmcook.where(:userID => @user.id)
 
-    @menuitems = Menuitem.where(:userID => @user.id)
+    #@menuitems = Menuitem.where(:userID => @user.id)
 
-    @user.menuitems = @menuitems
-    #@menuitems = @user.menuitems
+    #@user.menuitems = @menuitems
+    @menuitems = @user.menuitems
     @shmaddresses = @user.shmaddresses
     @shmconversations = @user.shmconversations
     #@user.shmcooks = @shmcooks
