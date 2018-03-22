@@ -15,7 +15,7 @@ class ShmcooksController < ApplicationController
     @shmcookstatuses = @shmcook.shmcookstatuses
     @shmorders = @shmcook.shmorders
     @shmuserstatuses = @shmcook.shmuserstatuses
-    render json: @shmcook
+    render json: @shmcook, serializer: ShmcookAltSerializer
   end
 
   # POST /shmcooks

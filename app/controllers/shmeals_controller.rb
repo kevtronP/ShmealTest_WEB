@@ -22,7 +22,7 @@ class ShmealsController < ApplicationController
     @shmshmealstatuses = @shmeal.shmshmealstatuses
     @shmorders = @shmeal.shmorders
     @shmshmealattributes = @shmeal.shmshmealattributes
-    render json: @shmeal
+    render json: @shmeal, serializer: ShmealAltSerializer
   end
 
   # POST /shmeals

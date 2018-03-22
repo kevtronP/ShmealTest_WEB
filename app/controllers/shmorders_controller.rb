@@ -14,7 +14,7 @@ class ShmordersController < ApplicationController
     @shmorderfeedbacks = @shmorder.shmorderfeedbacks
     @shmrequestattributes = @shmorder.shmrequestattributes
     @shmrequeststatuses = @shmorder.shmrequeststatuses
-    render json: @shmorder
+    render json: @shmorder, serializer: ShmorderAltSerializer
   end
 
   # POST /shmorders

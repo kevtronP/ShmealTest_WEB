@@ -14,7 +14,7 @@ class MenuitemsController < ApplicationController
     @shmeals = @menuitem.shmeals
     @shmmenuitemstatuses = @menuitem.shmmenuitemstatuses
     @shmshmealattributes = @menuitem.shmshmealattributes
-    render json: @menuitem
+    render json: @menuitem, serializer: MenuitemAltSerializer
   end
 
   # POST /menuitems
