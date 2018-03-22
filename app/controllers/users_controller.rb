@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @shmuserattributes = @user.shmuserattributes
     @shmuserstatuses = @user.shmuserstatuses
 
-    render json: @user
+    render json: @user, serializer: UserAltSerializer
 
   end
 
