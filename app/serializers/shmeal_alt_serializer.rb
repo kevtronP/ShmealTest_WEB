@@ -1,6 +1,4 @@
-class ShmealAltSerializer < ActiveModel::Serializer
-  attributes :id, :shmealDayDate, :menuItemID
+class ShmealAltSerializer < ShmealSerializer
   has_many :shmshmealstatuses
   has_many :shmshmealattributes
-  belongs_to :menuitem
 end
