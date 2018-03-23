@@ -5,7 +5,7 @@ class ShmealAltSerializer < ShmealSerializer
 
   def shmealMenuItems
 
-    Shmshmealattribute.where(:menuItemID => self.menuitem_id)
+    Shmshmealattribute.where(:menuItemID => :menuitem_id)
 
   end
 
