@@ -3,5 +3,4 @@ class Shmeal < ApplicationRecord
   has_many :shmshmealstatuses
   has_many :shmshmealattributes
   has_many :shmorders
-  has_one :menuitem
 end
