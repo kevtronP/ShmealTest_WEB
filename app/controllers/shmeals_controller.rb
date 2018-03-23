@@ -5,6 +5,8 @@ class ShmealsController < ApplicationController
   def index
     #@shmeals = Shmeal.all
 
+    #Looks for upcoming shmeals between now and next month
+
     @shmeals = Shmeal.where({shmealDayDate: Date.today..Date.today.next_month})
 
     render json: @shmeals, each_serializer: ShmealAltSerializer
