@@ -3,8 +3,8 @@ class ShmealAltSerializer < ShmealSerializer
   has_many :shmshmealattributes
   belongs_to :menuitem
 
-  def menuitem
-    MenuitemAltSerializer.new(object.menuitem).attributes
+  def menuitemattributes
+    MenuitemAltSerializer.new(object.menuitem).shmshmealattributes
   end
 
 end
