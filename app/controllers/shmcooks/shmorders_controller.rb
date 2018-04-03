@@ -6,7 +6,7 @@ class Shmcooks::ShmordersController < ApplicationController
     @shmcook = Shmcook.find(params[:shmcook_id])
     @shmorders = @shmcook.shmorders
 
-    render json: @shmorders
+    render json: @shmorders, each_serializer: ShmorderAltSerializer
   end
 
   # GET /shmorders/1
