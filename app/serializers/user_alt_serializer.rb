@@ -4,5 +4,6 @@ class UserAltSerializer < UserSerializer
   has_many :shmuserattributes
   has_many :shmuserstatuses
   has_many :shmcooks
+  has_many :shmcookstatuses, through: :shmcooks
   has_many :shmcustomerpmtmethods
 end
