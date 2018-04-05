@@ -6,7 +6,7 @@ class Users::ShmordersController < ApplicationController
     @user = User.find(params[:user_id])
     @shmorders = @user.shmorders
 
-    render json: @shmorders
+    render json: @shmorders, each_serializer: ShmorderAltSerializer
   end
 
   # GET /shmorders/1
