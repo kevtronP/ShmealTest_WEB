@@ -9,7 +9,7 @@ class ShmealsController < ApplicationController
 
     @shmeals = Shmeal.where({shmealDayDate: Date.today..Date.today.next_month})
 
-    render json: @shmeals, each_serializer: ShmealAltSerializer, include: 'menuitem,shmshmealattributes,shmshmealstatuses,menuitem.shmshmealattributes,menuitem.user'
+    render json: @shmeals, each_serializer: ShmealAltSerializer, include: 'menuitem,shmshmealattributes,shmshmealstatuses,menuitem.shmshmealattributes'
   end
 
   #def future
