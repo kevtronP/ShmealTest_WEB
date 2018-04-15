@@ -7,7 +7,7 @@ class ShmealsController < ApplicationController
 
     #Looks for upcoming shmeals between now and next month
 
-    @shmeals = Shmeal.where({shmealDayDate: Date.today..Date.today.next_month})
+    @shmeals = Shmeal.where({shmealDayDate: Date.today.prev_day..Date.today.next_month})
 
     render json: @shmeals, each_serializer: ShmealAltSerializer, include: 'menuitem,shmshmealattributes,shmshmealstatuses,menuitem.shmshmealattributes,menuitem.user,menuitem.user.shmuserattributes'
   end
