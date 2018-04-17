@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :shmaddresses
   resources :shmcheckouts
   resources :shmtransactions
+  get 'upcoming', action: :future, controller: 'shmeals'
   get 'transactions/new'
   resources :menuitems do
     resources :shmshmealattributes, only: [:index], controller: 'menuitems/shmshmealattributes'
