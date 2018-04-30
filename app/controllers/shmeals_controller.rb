@@ -24,7 +24,7 @@ class ShmealsController < ApplicationController
     @shmshmealstatuses = @shmeal.shmshmealstatuses
     @shmorders = @shmeal.shmorders
     @shmshmealattributes = @shmeal.shmshmealattributes
-    render json: @shmeal, serializer: ShmealAltSerializer
+    render json: @shmeal, serializer: ShmealAltSerializer, include: 'menuitem,shmshmealattributes,shmshmealstatuses,menuitem.shmshmealattributes,menuitem.user,menuitem.user.shmuserattributes'
   end
 
   # POST /shmeals
