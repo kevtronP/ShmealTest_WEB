@@ -58,6 +58,6 @@ class ShmordersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def shmorder_params
-      params.require(:shmorder).permit(:orderDay, :orderTime, :conversationID, :shmealID, :eaterID, :cookID)
+      params.require(:shmorder).permit(:orderDay, :orderTime, :conversationID, :shmealID, :eaterID, :cookID, :review_ignored)
     end
 end
