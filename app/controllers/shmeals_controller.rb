@@ -18,6 +18,12 @@ class ShmealsController < ApplicationController
 
   end
 
+  # def latlng
+  #   @shmeals = Shmeal.where({shmealDayDate: Date.today.prev_day..Date.today.next_month})
+
+  #   render json: @shmeals, each_serializer: ShmealAltSerializer, include:'menuitem.user.shmuserattributes'
+  # end
+
   # GET /shmeals/1
   def show
     @shmeal = Shmeal.find(params[:id])
