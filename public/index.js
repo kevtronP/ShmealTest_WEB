@@ -1,4 +1,4 @@
-/* global Vue, VueRouter, axios, google */
+/* global Vue, VueRouter, axios, google, moment, AWS */
 
 var HomePage = {
   template: "#home-page",
@@ -6,10 +6,13 @@ var HomePage = {
     return {
       message: "Hello there,",
       shmeals: [],
+      shmealsWithData: [],
       idFilter: "",
       MenuItemIDFilter: "",
       sortAttribute: "attributeDate",
       sortAscending: true,
+      updatedShmeals: {},
+      dz: {},
       currentShmeal: {
         menuitem: {
           shmshmealattributes: [],
@@ -25,12 +28,6 @@ var HomePage = {
       function(response) {
         this.shmeals = response.data;
 
-        var shmealLATLNG = {
-          lat: this.shmeals[0].menuitem.user.shmuserattributes[0].userAttribute,
-          lng: this.shmeals[0].menuitem.user.shmuserattributes[1].userAttribute
-        };
-        console.log(shmealLATLNG);
-
         var locations = [];
 
         var map = new google.maps.Map(document.getElementById("map"), {
@@ -41,12 +38,12 @@ var HomePage = {
         var i = 1;
         var n = 1;
 
+        var updatedShmeals = [];
+
         this.shmeals.forEach(function(shmeal) {
           var lat = [];
           var lng = [];
 
-          // console.log("shmeal " + i, shmeal);
-          // console.log(shmeal.menuitem.user.shmuserattributes);
           shmeal.menuitem.user.shmuserattributes.forEach(function(attribute) {
             if (attribute.attributeName === "userHomeLat") {
               lat.push(attribute.userAttribute);
@@ -56,8 +53,6 @@ var HomePage = {
           });
           i++;
 
-          // console.log(lat);
-          // console.log(lng);
           var infowindow = new google.maps.InfoWindow();
           var marker = new google.maps.Marker({
             position: {
@@ -67,26 +62,138 @@ var HomePage = {
             title: "Hello World!"
           });
           marker.setMap(map);
+
+          var shmealPlus = {
+            shmeal: shmeal,
+            lat: lat[0],
+            lng: lng[0],
+
+            startTime: function() {
+              var startTimesArray = [];
+              this.shmeal.shmshmealattributes.forEach(function(attribute) {
+                if (attribute.attributeName === "startTime") {
+                  startTimesArray.push(attribute);
+                }
+              });
+
+              var sortedStartTimes = startTimesArray.sort(
+                function(startTime1, startTime2) {
+                  var startTimeDate1 = new Date(startTime1.shmealAtrbDate);
+                  var startTimeDate2 = new Date(startTime2.shmealAtrbDate);
+
+                  var compare = startTimeDate1 - startTimeDate2;
+
+                  return compare;
+                }.bind(this)
+              );
+
+              var dz = sortedStartTimes[0];
+              var time = new Date(dz.shmealAtrbDate);
+              var hh = time.getHours();
+              var mm = time.getMinutes();
+              if (mm < 10) {
+                mm = "0" + mm;
+              }
+
+              if (hh > 12) {
+                hh = hh - 12;
+              }
+
+              var gg = hh + ":" + mm;
+
+              return gg;
+            },
+
+            endTime: function() {
+              var endTimesArray = [];
+              this.shmeal.shmshmealattributes.forEach(function(attribute) {
+                if (attribute.attributeName === "endTime") {
+                  endTimesArray.push(attribute);
+                }
+              });
+
+              var sortedEndTimes = endTimesArray.sort(
+                function(endTime1, endTime2) {
+                  var endTimeDate1 = new Date(endTime1.shmealAtrbDate);
+                  var endTimeDate2 = new Date(endTime2.shmealAtrbDate);
+
+                  var compare = endTimeDate1 - endTimeDate2;
+
+                  return compare;
+                }.bind(this)
+              );
+
+              var dz = sortedEndTimes[0];
+              var time = new Date(dz.shmealAtrbDate);
+              var hh = time.getHours();
+              var mm = time.getMinutes();
+              var ampm = "pm";
+
+              if (mm < 10) {
+                mm = "0" + mm;
+              }
+
+              if (hh < 12) {
+                ampm = "am";
+              }
+
+              if (hh > 12) {
+                hh = hh - 12;
+              }
+
+              var gg = hh + ":" + mm + ampm;
+              return gg;
+            },
+            description: function() {
+              var blurbsArray = [];
+
+              this.shmeal.menuitem.shmshmealattributes.forEach(function(
+                attribute
+              ) {
+                if (attribute.attributeName === "shmealBlurb") {
+                  blurbsArray.push(attribute);
+                }
+              });
+
+              var sortedBlurbs = blurbsArray.sort(
+                function(blurb1, blurb2) {
+                  var blurbDate1 = new Date(blurb1.attributeDate);
+                  var blurbDate2 = new Date(blurb2.attributeDate);
+
+                  var compare = blurbDate1 - blurbDate2;
+                  return compare;
+                }.bind(this)
+              );
+              return sortedBlurbs[sortedBlurbs.length - 1];
+            },
+
+            imageURL: function() {
+              AWS.config.update({
+                accessKeyId: "AKIAJOQYIXM32CTCLIFA",
+                secretAccessKey: "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"
+              });
+              var s3 = new AWS.S3();
+              const url = s3.getSignedUrl("getObject", {
+                Bucket: "kevinshmealphotos",
+                Key: "Grilled Salmon 🐟@2x.png",
+                Expires: 600
+              });
+              console.log(url);
+              return url;
+            }
+          };
+
+          updatedShmeals.push(shmealPlus);
         });
 
-        // for (i = 0; i < locations.length; i++) {
-        //   marker = new google.maps.Marker({
-        //     position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        //     map: map
-        //   });
-
-        //   google.maps.event.addListener(
-        //     marker,
-        //     "click",
-        //     (function(marker, i) {
-        //       return function() {
-        //         infowindow.setContent(locations[i][0]);
-        //         infowindow.open(map, marker);
-        //       };
-        //     })(marker, i)
-        //   );
-        // }
-        console.log("shmeals:", this.shmeals);
+        console.log("shmeal_start_time:", updatedShmeals[0].startTime());
+        console.log("shmeal_end_time:", updatedShmeals[0].endTime());
+        console.log(
+          "shmeal_blurb:",
+          updatedShmeals[0].description().shmealAttribute
+        );
+        this.updatedShmeals = updatedShmeals;
+        console.log("updated_shmeals:", updatedShmeals);
       }.bind(this)
     );
   },
@@ -96,16 +203,19 @@ var HomePage = {
     setCurrentShmeal: function(inputShmeal) {
       this.currentShmeal = inputShmeal;
 
-      console.log(this.sortedShmealBlurbAttributes);
       this.currentShmeal.description = this.sortedShmealBlurbAttributes[
         this.sortedShmealBlurbAttributes.length - 1
       ].shmealAttribute;
+
+      console.log("data:", this.currentShmeal);
     }
   },
+
   computed: {
+    sortedShmeals: function() {},
+
     sortedShmealBlurbAttributes: function() {
       var blurbsArray = [];
-
       this.currentShmeal.menuitem.shmshmealattributes.forEach(function(
         attribute
       ) {
@@ -121,29 +231,6 @@ var HomePage = {
           var blurbDate2 = new Date(blurb2.attributeDate);
 
           var compare = blurbDate1 - blurbDate2;
-
-          return compare;
-        }.bind(this)
-      );
-    },
-
-    sortedShmealStartTimeAttributes: function() {
-      var startTimesArray = [];
-
-      this.currentShmeal.shmshmealattributes.forEach(function(attribute) {
-        if (attribute.attributeName === "startTime") {
-          startTimesArray.push(attribute);
-          // this.currentShmeal.description = attribute.shmealAttribute;
-        }
-      });
-
-      return startTimesArray.sort(
-        function(startTime1, startTime2) {
-          var startTimeDate1 = new Date(startTime1.attributeDate);
-          var startTimeDate2 = new Date(startTime2.attributeDate);
-
-          var compare = startTimeDate1 - startTimeDate2;
-
           return compare;
         }.bind(this)
       );
@@ -270,7 +357,13 @@ var router = new VueRouter({
   }
 });
 
-var app = new Vue({
+var app = Vue.filter("formatDate", function(value) {
+  if (value) {
+    return moment(String(value)).format("MM/DD/YYYY hh:mm");
+  }
+});
+
+new Vue({
   el: "#vue-app",
   router: router,
   created: function() {
