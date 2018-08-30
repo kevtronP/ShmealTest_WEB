@@ -14,12 +14,10 @@ var HomePage = {
       updatedShmeals: {},
       dz: {},
       currentShmeal: {
-        menuitem: {
-          shmshmealattributes: [],
-          user: {}
-        },
         shmeal: {},
-        description: "hello"
+        CSdescription: "hello",
+        CSstartTime: "",
+        CSendTime: ""
       }
     };
   },
@@ -165,35 +163,35 @@ var HomePage = {
                 }.bind(this)
               );
               return sortedBlurbs[sortedBlurbs.length - 1];
-            },
-
-            imageURL: function() {
-              AWS.config.update({
-                accessKeyId: "AKIAJOQYIXM32CTCLIFA",
-                secretAccessKey: "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"
-              });
-              var s3 = new AWS.S3();
-              const url = s3.getSignedUrl("getObject", {
-                Bucket: "kevinshmealphotos",
-                Key: "Grilled Salmon 🐟@2x.png",
-                Expires: 600
-              });
-              console.log(url);
-              return url;
             }
+
+            // imageURL: function() {
+            //   AWS.config.update({
+            //     accessKeyId: "Key",
+            //     secretAccessKey: "sKey"
+            //   });
+            //   var s3 = new AWS.S3();
+            //   const url = s3.getSignedUrl("getObject", {
+            //     Bucket: "kevinshmealphotos",
+            //     Key: "Grilled Salmon 🐟@2x.png",
+            //     Expires: 600
+            //   });
+            //   console.log(url);
+            //   return url;
+            // }
           };
 
           updatedShmeals.push(shmealPlus);
         });
 
-        console.log("shmeal_start_time:", updatedShmeals[0].startTime());
-        console.log("shmeal_end_time:", updatedShmeals[0].endTime());
-        console.log(
-          "shmeal_blurb:",
-          updatedShmeals[0].description().shmealAttribute
-        );
+        // console.log("shmeal_start_time:", updatedShmeals[0].startTime());
+        // console.log("shmeal_end_time:", updatedShmeals[0].endTime());
+        // console.log(
+        //   "shmeal_blurb:",
+        //   updatedShmeals[0].description().shmealAttribute
+        // );
         this.updatedShmeals = updatedShmeals;
-        console.log("updated_shmeals:", updatedShmeals);
+        // console.log("updated_shmeals:", updatedShmeals);
       }.bind(this)
     );
   },
@@ -202,39 +200,40 @@ var HomePage = {
   methods: {
     setCurrentShmeal: function(inputShmeal) {
       this.currentShmeal = inputShmeal;
+      this.currentShmeal.CSdescription = this.currentShmeal.description();
+      this.currentShmeal.CSstartTime = this.currentShmeal.startTime();
+      this.currentShmeal.CSendTime = this.currentShmeal.endTime();
 
-      this.currentShmeal.description = this.sortedShmealBlurbAttributes[
-        this.sortedShmealBlurbAttributes.length - 1
-      ].shmealAttribute;
+      var index = this.currentShmeal.CSstartTime;
 
       console.log("data:", this.currentShmeal);
+      console.log("index:", index);
     }
   },
 
   computed: {
-    sortedShmeals: function() {},
+    // description: function() {
+    //   var blurbsArray = [];
 
-    sortedShmealBlurbAttributes: function() {
-      var blurbsArray = [];
-      this.currentShmeal.menuitem.shmshmealattributes.forEach(function(
-        attribute
-      ) {
-        if (attribute.attributeName === "shmealBlurb") {
-          blurbsArray.push(attribute);
-          // this.currentShmeal.description = attribute.shmealAttribute;
-        }
-      });
+    //   this.shmeal.menuitem.shmshmealattributes.forEach(function(attribute) {
+    //     if (attribute.attributeName === "shmealBlurb") {
+    //       blurbsArray.push(attribute);
+    //     }
+    //   });
 
-      return blurbsArray.sort(
-        function(blurb1, blurb2) {
-          var blurbDate1 = new Date(blurb1.attributeDate);
-          var blurbDate2 = new Date(blurb2.attributeDate);
+    //   var sortedBlurbs = blurbsArray.sort(
+    //     function(blurb1, blurb2) {
+    //       var blurbDate1 = new Date(blurb1.attributeDate);
+    //       var blurbDate2 = new Date(blurb2.attributeDate);
 
-          var compare = blurbDate1 - blurbDate2;
-          return compare;
-        }.bind(this)
-      );
-    }
+    //       var compare = blurbDate1 - blurbDate2;
+    //       return compare;
+    //     }.bind(this)
+    //   );
+    //   return sortedBlurbs[sortedBlurbs.length - 1];
+    // },
+
+    availableTimes: function() {}
   }
 };
 

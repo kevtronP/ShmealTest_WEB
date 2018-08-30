@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   resources :shmcheckouts
   resources :shmtransactions
   get 'upcoming', action: :future, controller: 'shmeals'
+
+  get "login/:userEmail", action: :login, controller: 'users'
+
   # get 'locationp', action: :latlng, controller: 'shmeals'
   get 'transactions/new'
   resources :menuitems do

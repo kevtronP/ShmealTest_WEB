@@ -8,6 +8,11 @@ class UsersController < ApplicationController
     render json: @users
   end
 
+  def login
+    user = User.where(userEmail: params[:userEmail]+".com")
+    render json: user, each_serializer: UserAltSerializer
+  end
+
   # GET /users/1
   def show
     @user = User.find(params[:id])
@@ -21,7 +26,6 @@ class UsersController < ApplicationController
     @shmuserstatuses = @user.shmuserstatuses
 
     render json: @user, serializer: UserAltSerializer
-
   end
 
   # POST /users
