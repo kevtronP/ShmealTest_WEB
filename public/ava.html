@@ -1,0 +1,38 @@
+    <!DOCTYPE html>
+<html>
+<body>
+
+<p>Populate a 15 minute increment time pull down for the entire 24 hours</p>
+
+<p id="demo"></p>
+<select id="pulldown"></select>
+<script>
+var time = "6:00";
+var endtime = "8:00";
+var mm = 0;
+var hh = 6;
+var timeArray = [];
+if (mm < 10) {
+  mm = "0" + mm;
+}
+if (hh > 12) {
+  hh = hh - 12;
+}
+timeArray.push(time);
+for (var i = time; i < endtime; i++) {
+  for () {}
+}
+// for (var i = 0; i < 3; i++) {
+//   for (mm = (mm + 15 - mm % 15) % 60; mm < 60; mm = mm + 15) {
+//     timeArray.push(hh + ":" + mm);
+//   }
+//   hh = hh + 1;
+//   timeArray.push(hh + ":" + "00");
+// }
+console.log("TA", timeArray);
+
+
+</script>
+
+</body>
+</html>

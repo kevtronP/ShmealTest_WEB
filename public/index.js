@@ -12,11 +12,13 @@ var HomePage = {
       sortAttribute: "attributeDate",
       sortAscending: true,
       updatedShmeals: {},
+      clg: [],
       dz: {},
+      timeArray: [],
       currentShmeal: {
         shmeal: {},
         CSdescription: "hello",
-        CSstartTime: "",
+        CSstartTime: 0,
         CSendTime: ""
       }
     };
@@ -138,8 +140,9 @@ var HomePage = {
               if (hh > 12) {
                 hh = hh - 12;
               }
-
               var gg = hh + ":" + mm + ampm;
+              var clg = gg;
+              this.clg = clg;
               return gg;
             },
             description: function() {
@@ -203,72 +206,129 @@ var HomePage = {
       this.currentShmeal.CSdescription = this.currentShmeal.description();
       this.currentShmeal.CSstartTime = this.currentShmeal.startTime();
       this.currentShmeal.CSendTime = this.currentShmeal.endTime();
+      this.clg = this.clg;
+      console.log("clg", this.clg);
+      var endTimesArrayAVA = [];
+      this.currentShmeal.shmeal.shmshmealattributes.forEach(function(
+        attribute
+      ) {
+        if (attribute.attributeName === "endTime") {
+          endTimesArrayAVA.push(attribute);
+        }
+      });
 
-      var index = this.currentShmeal.CSstartTime;
+      var sortedEndTimesAVA = endTimesArrayAVA.sort(
+        function(endTime1, endTime2) {
+          var endTimeDate1 = new Date(endTime1.shmealAtrbDate);
+          var endTimeDate2 = new Date(endTime2.shmealAtrbDate);
 
+          var compare = endTimeDate1 - endTimeDate2;
+
+          return compare;
+        }.bind(this)
+      );
+
+      var dzE = sortedEndTimesAVA[0];
+      var timeE = new Date(dzE.shmealAtrbDate);
+      var hhE = timeE.getHours();
+      var mmE = timeE.getMinutes();
+      var ampm = "pm";
+
+      if (mmE < 10) {
+        mmE = "0" + mmE;
+      }
+
+      if (hhE < 12) {
+        ampm = "am";
+      }
+
+      if (hhE > 12) {
+        hhE = hhE - 12;
+      }
+
+      var startTimesArrayAVA = [];
+      this.currentShmeal.shmeal.shmshmealattributes.forEach(function(
+        attribute
+      ) {
+        if (attribute.attributeName === "startTime") {
+          startTimesArrayAVA.push(attribute);
+        }
+      });
+
+      var sortedStartTimesAVA = startTimesArrayAVA.sort(
+        function(startTime1, startTime2) {
+          var startTimeDate1 = new Date(startTime1.shmealAtrbDate);
+          var startTimeDate2 = new Date(startTime2.shmealAtrbDate);
+
+          var compare = startTimeDate1 - startTimeDate2;
+
+          return compare;
+        }.bind(this)
+      );
+      var dz = sortedStartTimesAVA[0];
+      var time = new Date(dz.shmealAtrbDate);
+      var hh = time.getHours();
+      var mm = time.getMinutes();
+      var timeArray = [];
+      if (mm < 10) {
+        mm = "0" + mm;
+      }
+      if (hh > 12) {
+        hh = hh - 12;
+      }
+      timeArray.push(hh + ":" + mm);
+      var index = hhE - hh;
+      for (var i = 0; i < index; i++) {
+        for (mm = (mm + 15 - mm % 15) % 60; mm < 60; mm = mm + 15) {
+          timeArray.push(hh + ":" + mm);
+        }
+        hh = hh + 1;
+        timeArray.push(hh + ":" + "00");
+      }
+      console.log("TA", timeArray);
+      console.log("wha", this.updatedShmeals);
       console.log("data:", this.currentShmeal);
-      console.log("index:", index);
+      this.timeArray = timeArray;
     }
   },
 
   computed: {
-    // description: function() {
-    //   var blurbsArray = [];
-
-    //   this.shmeal.menuitem.shmshmealattributes.forEach(function(attribute) {
-    //     if (attribute.attributeName === "shmealBlurb") {
-    //       blurbsArray.push(attribute);
-    //     }
-    //   });
-
-    //   var sortedBlurbs = blurbsArray.sort(
-    //     function(blurb1, blurb2) {
-    //       var blurbDate1 = new Date(blurb1.attributeDate);
-    //       var blurbDate2 = new Date(blurb2.attributeDate);
-
-    //       var compare = blurbDate1 - blurbDate2;
-    //       return compare;
-    //     }.bind(this)
-    //   );
-    //   return sortedBlurbs[sortedBlurbs.length - 1];
-    // },
-
     availableTimes: function() {}
   }
 };
 
-// var SignupPage = {
-//   template: "#signup-page",
-//   data: function() {
-//     return {
-//       name: "",
-//       email: "",
-//       password: "",
-//       passwordConfirmation: "",
-//       errors: []
-//     };
-//   },
-//   methods: {
-//     submit: function() {
-//       var params = {
-//         name: this.name,
-//         email: this.email,
-//         password: this.password,
-//         password_confirmation: this.passwordConfirmation
-//       };
-//       axios
-//         .post("/v1/users", params)
-//         .then(function(response) {
-//           router.push("/login");
-//         })
-//         .catch(
-//           function(error) {
-//             this.errors = error.response.data.errors;
-//           }.bind(this)
-//         );
-//     }
-//   }
-// };g
+var SignupPage = {
+  template: "#signup-page",
+  data: function() {
+    return {
+      name: "",
+      email: "",
+      password: "",
+      passwordConfirmation: "",
+      errors: []
+    };
+  },
+  methods: {
+    submit: function() {
+      var params = {
+        name: this.name,
+        email: this.email,
+        password: this.password,
+        password_confirmation: this.passwordConfirmation
+      };
+      axios
+        .post("/v1/users", params)
+        .then(function(response) {
+          router.push("/login");
+        })
+        .catch(
+          function(error) {
+            this.errors = error.response.data.errors;
+          }.bind(this)
+        );
+    }
+  }
+};
 
 // var LoginPage = {
 //   template: "#login-page",
