@@ -80,13 +80,13 @@
     <div class="row" is="transition-group" name="fade">
       <div class="col-md-4" v-for="shmeal in updatedShmeals" v-bind:key="shmeal.shmeal.id">
         <div class="card mb-5">
-          <!-- <img class="card-img-top" alt="Card image cap"> -->
-          <!-- src="https://picsum.photos/200/300/?random" -->
+<!--           <img class="card-img-top" alt="Card image cap">
+          src="https://picsum.photos/200/300/?random" -->
           <div class="card-body">
             <h4 class="card-title">{{ shmeal.shmeal.menuitem.mealName}}</h4>
             <p class="card-text body">{{ shmeal.shmeal.menuitem.user.userName }} {{ shmeal.shmeal.menuitem.user.lastName }}</p>
             <!-- <p class="card-text body">{{shmeal.startTime()}} - {{shmeal.endTime()}}</p> -->
-            <!-- <img class="card-img-bottom" v-bind:src="shmeal.imageURL()" alt="Card image cap"> -->
+            <img class="card-img-top" v-bind:src="shmeal.imageURL()" alt="Card image cap">
             <a href="#" class="btn btn-primary" v-on:click="setCurrentShmeal(shmeal)" data-toggle="modal" data-target="#exampleModal">More info</a>
           </div>
         </div>

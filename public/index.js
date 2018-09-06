@@ -166,22 +166,21 @@ var HomePage = {
                 }.bind(this)
               );
               return sortedBlurbs[sortedBlurbs.length - 1];
+            },
+            imageURL: function() {
+              AWS.config.update({
+                accessKeyId: "AWS_KEY",
+                secretAccessKey: "AWS_SECRET_KEY"
+              });
+              var s3 = new AWS.S3();
+              const url = s3.getSignedUrl("getObject", {
+                Bucket: "kevinshmealphotos",
+                Key: "Grilled Salmon 🐟@2x.png",
+                Expires: 600
+              });
+              console.log(url);
+              return url;
             }
-
-            // imageURL: function() {
-            //   AWS.config.update({
-            //     accessKeyId: "Key",
-            //     secretAccessKey: "sKey"
-            //   });
-            //   var s3 = new AWS.S3();
-            //   const url = s3.getSignedUrl("getObject", {
-            //     Bucket: "kevinshmealphotos",
-            //     Key: "Grilled Salmon 🐟@2x.png",
-            //     Expires: 600
-            //   });
-            //   console.log(url);
-            //   return url;
-            // }
           };
 
           updatedShmeals.push(shmealPlus);
