@@ -405,8 +405,8 @@ var SignupPage = {
 
 var router = new VueRouter({
   routes: [
-    { path: "/", component: HomePage }
-    // { path: "/signup", component: SignupPage },
+    { path: "/", component: HomePage },
+    { path: "/signup", component: SignupPage }
     // { path: "/login", component: LoginPage },
     // { path: "/logout", component: LogoutPage },
     // { path: "/newpost", component: PostsNewPage }
