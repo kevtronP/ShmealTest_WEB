@@ -284,7 +284,7 @@ var HomePage = {
         hh = hh + 1;
         timeArray.push(hh + ":" + "00");
       }
-      console.log("TA", window.process.env);
+      // console.log("TA", window.process.env);
       console.log("wha", this.updatedShmeals);
       console.log("data:", this.currentShmeal);
       this.timeArray = timeArray;
