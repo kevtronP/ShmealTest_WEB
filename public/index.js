@@ -169,8 +169,8 @@ var HomePage = {
             },
             imageURL: function() {
               AWS.config.update({
-                accessKeyId: "AWS_KEY",
-                secretAccessKey: "AWS_SECRET_KEY"
+                accessKeyId: process.env.AWS_KEY,
+                secretAccessKey: process.env.AWS_SECRET_KEY
               });
               var s3 = new AWS.S3();
               const url = s3.getSignedUrl("getObject", {
