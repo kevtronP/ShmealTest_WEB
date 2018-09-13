@@ -186,9 +186,9 @@ var HomePage = {
           updatedShmeals.push(shmealPlus);
         });
 
-        const awsKey = this.process.env.AWS_KEY;
+        // const awsKey = this.process.env.AWS_KEY;
 
-        console.log("key", awsKey);
+        // console.log("key", awsKey);
 
         // console.log("shmeal_start_time:", updatedShmeals[0].startTime());
         // console.log("shmeal_end_time:", updatedShmeals[0].endTime());
