@@ -14,7 +14,6 @@
 
   <!-- Custom styles for this template -->
   <link href="css/one-page-wonder.min.css" rel="stylesheet">
-
   <title>My App</title>
   <!-- <script>window.process = { env: { NODE_ENV: 'production' } };</script> -->
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -85,7 +84,7 @@
             <h4 class="card-title">{{ shmeal.shmeal.menuitem.mealName}}</h4>
             <p class="card-text body">{{ shmeal.shmeal.menuitem.user.userName }} {{ shmeal.shmeal.menuitem.user.lastName }}</p>
             <!-- <p class="card-text body">{{shmeal.startTime()}} - {{shmeal.endTime()}}</p> -->
-            <img class="card-img-top" v-bind:src="shmeal.imageURL()" alt="Card image cap">
+            <!-- <img class="card-img-top" v-bind:src="shmeal.imageURL()" alt="Card image cap"> -->
             <a href="#" class="btn btn-primary" v-on:click="setCurrentShmeal(shmeal)" data-toggle="modal" data-target="#exampleModal">More info</a>
           </div>
         </div>

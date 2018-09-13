@@ -1,5 +1,4 @@
 /* global Vue, VueRouter, axios, google, moment, AWS */
-
 var HomePage = {
   template: "#home-page",
   data: function() {
@@ -23,6 +22,7 @@ var HomePage = {
       }
     };
   },
+
   created: function() {
     axios.get("/upcoming").then(
       function(response) {
