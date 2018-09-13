@@ -166,11 +166,11 @@ var HomePage = {
                 }.bind(this)
               );
               return sortedBlurbs[sortedBlurbs.length - 1];
-            },
-            imageURL: function() {
+            }
+            /*imageURL: function() {
               AWS.config.update({
-                accessKeyId: window.process.env.AWS_KEY,
-                secretAccessKey: window.process.env.AWS_SECRET_KEY
+                accessKeyId: process.env.AWS_KEY,
+                secretAccessKey: process.env.AWS_SECRET_KEY
               });
               var s3 = new AWS.S3();
               const url = s3.getSignedUrl("getObject", {
@@ -180,11 +180,15 @@ var HomePage = {
               });
               console.log(url);
               return url;
-            }
+            }*/
           };
 
           updatedShmeals.push(shmealPlus);
         });
+
+        const awsKey = this.process.env.AWS_KEY;
+
+        console.log("key", awsKey);
 
         // console.log("shmeal_start_time:", updatedShmeals[0].startTime());
         // console.log("shmeal_end_time:", updatedShmeals[0].endTime());
@@ -284,7 +288,7 @@ var HomePage = {
         hh = hh + 1;
         timeArray.push(hh + ":" + "00");
       }
-      // console.log("TA", window.process.env);
+      console.log("TA", hh);
       console.log("wha", this.updatedShmeals);
       console.log("data:", this.currentShmeal);
       this.timeArray = timeArray;
