@@ -1,4 +1,5 @@
 /* global Vue, VueRouter, axios, google, moment, AWS */
+
 var HomePage = {
   template: "#home-page",
   data: function() {
@@ -39,6 +40,7 @@ var HomePage = {
         var n = 1;
 
         var updatedShmeals = [];
+        var bounds = new google.maps.LatLngBounds();
 
         this.shmeals.forEach(function(shmeal) {
           var lat = [];
@@ -59,7 +61,32 @@ var HomePage = {
               lat: Number(lat[0]),
               lng: Number(lng[0])
             },
+            map: map,
             title: "Hello World!"
+          });
+
+          //extend the bounds to include each marker's position
+          bounds.extend(marker.position);
+
+          google.maps.event.addListener(
+            marker,
+            "click",
+            (function(marker, i) {
+              return function() {
+                infowindow.setContent(locations[i][0]);
+                infowindow.open(map, marker);
+              };
+            })(marker, i)
+          );
+
+          //now fit the map to the newly inclusive bounds
+          map.fitBounds(bounds);
+          map.panToBounds(bounds);
+
+          // (optional) restore the zoom level after the map is done scaling
+          var listener = google.maps.event.addListener(map, "idle", function() {
+            map.setZoom(map.getZoom() - 0.4);
+            google.maps.event.removeListener(listener);
           });
           marker.setMap(map);
 
@@ -185,19 +212,10 @@ var HomePage = {
 
           updatedShmeals.push(shmealPlus);
         });
-
-        // const awsKey = this.process.env.AWS_KEY;
+        // var awsKey = process.env.AWS_KEY;
 
         // console.log("key", awsKey);
-
-        // console.log("shmeal_start_time:", updatedShmeals[0].startTime());
-        // console.log("shmeal_end_time:", updatedShmeals[0].endTime());
-        // console.log(
-        //   "shmeal_blurb:",
-        //   updatedShmeals[0].description().shmealAttribute
-        // );
         this.updatedShmeals = updatedShmeals;
-        // console.log("updated_shmeals:", updatedShmeals);
       }.bind(this)
     );
   },
@@ -433,5 +451,8 @@ new Vue({
     if (jwt) {
       axios.defaults.headers.common["Authorization"] = jwt;
     }
+    var awsKey = process.env.AWS_KEY;
+
+    console.log("key", awsKey);
   }
 });

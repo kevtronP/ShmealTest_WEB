@@ -8,6 +8,12 @@ class ShmcooksController < ApplicationController
     render json: @shmcooks
   end
 
+  def validshmcooks
+    validshmcooks = shmcookstatuses.where(statusCode: "A")
+
+    render json: validshmcooks, serializer: ShmcookAltSerializer
+  end
+
   # GET /shmcooks/1
   def show
     @shmcook = Shmcook.find(params[:id])

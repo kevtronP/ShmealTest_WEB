@@ -15,7 +15,7 @@ gem "braintree", "~> 2.66.0"
 gem 'figaro', '~> 1.1.1'
 # amazon web services
 gem 'aws-sdk', '~> 2'
-
+gem 'webpacker'
 
 # Use ActiveModelSerializers to serialize JSON responses
 gem 'active_model_serializers', '~> 0.10.0.rc1'

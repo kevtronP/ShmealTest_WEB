@@ -17,8 +17,10 @@ Rails.application.routes.draw do
   resources :shmtransactions
   get 'upcoming', action: :future, controller: 'shmeals'
 
-  get "login/:userEmail", action: :login, controller: 'users'
+  get 'login/:userEmail', action: :login, controller: 'users'
 
+  get 'validshmcooks', action: :validshmcooks, controller: 'shmcooks'
+  
   # get 'locationp', action: :latlng, controller: 'shmeals'
   get 'transactions/new'
   resources :menuitems do
