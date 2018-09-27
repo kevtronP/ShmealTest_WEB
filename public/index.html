@@ -76,6 +76,7 @@
         <div class="col-md-4 card-deck" v-for="shmeal in updatedShmeals" v-bind:key="shmeal.shmeal.id">
           <div class="card mb-5">
             <div class="card-body">
+              <img class="card-img-top" v-bind:src="shmeal.imageURL()" alt="Card image cap">
               <h4 class="card-title">{{ shmeal.shmeal.menuitem.mealName}}</h4>
               <p class="card-text body">{{ shmeal.shmeal.menuitem.user.userName }}</p>
               <p class="card-text body line-clamp" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden">{{ shmeal.description().shmealAttribute }}</p>

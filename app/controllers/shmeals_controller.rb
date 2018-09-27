@@ -14,7 +14,18 @@ class ShmealsController < ApplicationController
 
     @shmeals = Shmeal.where({shmealDayDate: Date.today.prev_day..Date.today.next_month})
 
+
     render json: @shmeals, each_serializer: ShmealAltSerializer, include: 'menuitem,shmshmealattributes,shmshmealstatuses,menuitem.shmshmealattributes,menuitem.user,menuitem.user.shmuserattributes'
+
+  end
+
+  def fetchs3key
+
+    s3credentials = {
+      access_key_id:ENV.fetch('AWS_KEY'),
+      secret_access_key: ENV.fetch('AWS_SECRET_KEY'),
+    }
+    render json: s3credentials.as_json
 
   end
 

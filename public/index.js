@@ -193,21 +193,39 @@ var HomePage = {
                 }.bind(this)
               );
               return sortedBlurbs[sortedBlurbs.length - 1];
+            },
+            imageURL: function() {
+              axios.get("/fetchimage").then(function(response) {
+                this.key = response.data;
+                console.log(this.key);
+                AWS.config.update({
+                  accessKeyId: this.key.AWS_KEY,
+                  secretAccessKey: this.key.AWS_SECRET_KEY
+                });
+                var s3 = new AWS.S3();
+                const url = s3.getSignedUrl("getObject", {
+                  Bucket: "kevinshmealphotos",
+                  Key: "Grilled Salmon 🐟@2x.png",
+                  Expires: 600
+                });
+                console.log(url);
+                return url;
+              });
+
+              // imageURL: function() {
+              //   AWS.config.update({
+              //     accessKeyId: process.env.AWS_KEY,
+              //     secretAccessKey: process.env.AWS_SECRET_KEY
+              //   });
+              //   var s3 = new AWS.S3();
+              //   const url = s3.getSignedUrl("getObject", {
+              //     Bucket: "kevinshmealphotos",
+              //     Key: "Grilled Salmon 🐟@2x.png",
+              //     Expires: 600
+              //   });
+              //   console.log(url);
+              //   return url;
             }
-            /*imageURL: function() {
-              AWS.config.update({
-                accessKeyId: process.env.AWS_KEY,
-                secretAccessKey: process.env.AWS_SECRET_KEY
-              });
-              var s3 = new AWS.S3();
-              const url = s3.getSignedUrl("getObject", {
-                Bucket: "kevinshmealphotos",
-                Key: "Grilled Salmon 🐟@2x.png",
-                Expires: 600
-              });
-              console.log(url);
-              return url;
-            }*/
           };
 
           updatedShmeals.push(shmealPlus);
@@ -451,8 +469,5 @@ new Vue({
     if (jwt) {
       axios.defaults.headers.common["Authorization"] = jwt;
     }
-    var awsKey = process.env.AWS_KEY;
-
-    console.log("key", awsKey);
   }
 });
