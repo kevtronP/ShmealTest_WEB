@@ -7,6 +7,7 @@ var HomePage = {
       message: "Hello there,",
       shmeals: [],
       shmealsWithData: [],
+      key: {},
       idFilter: "",
       MenuItemIDFilter: "",
       sortAttribute: "attributeDate",
@@ -25,6 +26,10 @@ var HomePage = {
   },
 
   created: function() {
+    axios.get("/fetchimage").then(function(response) {
+      this.key = response.data;
+    });
+
     axios.get("/upcoming").then(
       function(response) {
         this.shmeals = response.data;
@@ -195,22 +200,18 @@ var HomePage = {
               return sortedBlurbs[sortedBlurbs.length - 1];
             },
             imageURL: function() {
-              axios.get("/fetchimage").then(function(response) {
-                this.key = response.data;
-                console.log(this.key);
-                AWS.config.update({
-                  accessKeyId: this.key.AWS_KEY,
-                  secretAccessKey: this.key.AWS_SECRET_KEY
-                });
-                var s3 = new AWS.S3();
-                const url = s3.getSignedUrl("getObject", {
-                  Bucket: "kevinshmealphotos",
-                  Key: "Grilled Salmon 🐟@2x.png",
-                  Expires: 600
-                });
-                console.log(url);
-                return url;
+              AWS.config.update({
+                accessKeyId: key.access_key_id,
+                secretAccessKey: key.secret_access_key
               });
+              var s3 = new AWS.S3();
+              const url = s3.getSignedUrl("getObject", {
+                Bucket: "kevinshmealphotos",
+                Key: "Grilled Salmon 🐟@2x.png",
+                Expires: 600
+              });
+              console.log(url);
+              return url;
 
               // imageURL: function() {
               //   AWS.config.update({
