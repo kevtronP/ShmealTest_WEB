@@ -28,6 +28,7 @@ var HomePage = {
   created: function() {
     axios.get("/fetchimage").then(function(response) {
       this.key = response.data;
+      console.log(this.key);
     });
 
     axios.get("/upcoming").then(
