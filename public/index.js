@@ -201,6 +201,31 @@ var HomePage = {
               return sortedBlurbs[sortedBlurbs.length - 1];
             },
             imageURL: function() {
+              var imageURLsArray = [];
+
+              this.shmeal.menuitem.shmshmealattributes.forEach(function(
+                attribute
+              ) {
+                if (attribute.attributeName === "shmealImageURL") {
+                  imageURLsArray.push(attribute);
+                }
+              });
+
+              var sortedimageURLs = imageURLsArray.sort(
+                function(imageURL1, imageURL2) {
+                  var shmealImageURL1 = new Date(imageURL1.shmealAtrbDate);
+                  var shmealImageURL2 = new Date(imageURL2.shmealAtrbDate);
+
+                  var compare = shmealImageURL1 - shmealImageURL2;
+
+                  return compare;
+                }.bind(this)
+              );
+
+              var imageKey =
+                sortedimageURLs[sortedimageURLs.length - 1].shmealAttribute;
+              console.log(imageKey);
+
               AWS.config.update({
                 accessKeyId: key.access_key_id,
                 secretAccessKey: key.secret_access_key
@@ -208,25 +233,11 @@ var HomePage = {
               var s3 = new AWS.S3();
               const url = s3.getSignedUrl("getObject", {
                 Bucket: "kevinshmealphotos",
-                Key: "Grilled Salmon 🐟@2x.png",
+                Key: imageKey,
                 Expires: 600
               });
               console.log(url);
               return url;
-
-              // imageURL: function() {
-              //   AWS.config.update({
-              //     accessKeyId: process.env.AWS_KEY,
-              //     secretAccessKey: process.env.AWS_SECRET_KEY
-              //   });
-              //   var s3 = new AWS.S3();
-              //   const url = s3.getSignedUrl("getObject", {
-              //     Bucket: "kevinshmealphotos",
-              //     Key: "Grilled Salmon 🐟@2x.png",
-              //     Expires: 600
-              //   });
-              //   console.log(url);
-              //   return url;
             }
           };
 
