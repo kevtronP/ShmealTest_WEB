@@ -353,26 +353,41 @@ var SignupPage = {
   template: "#signup-page",
   data: function() {
     return {
-      name: "",
-      email: "",
+      userName: "",
+      lastName: "",
+      userPhoneNumber: "",
+      location: "",
+      userEmail: "",
       password: "",
       passwordConfirmation: "",
-      errors: []
+      errors: [],
+      user: {
+        params: {}
+      }
     };
   },
   methods: {
     submit: function() {
-      var params = {
-        name: this.name,
-        email: this.email,
-        password: this.password,
-        password_confirmation: this.passwordConfirmation
+      // var user = {};
+
+      var user = {
+        userName: this.userName,
+        lastName: this.lastName,
+        userPhoneNumber: this.userPhoneNumber,
+        // location: this.location,
+        userEmail: this.userEmail
+        // userDate: "date",
+        // freeShmeals: "1",
+        // menuitems: { mealName: "food", userID: "5187", menuItemDate: "date" }
+        // password: this.password,
+        // password_confirmation: this.passwordConfirmation
       };
+
       axios
-        .post("/v1/users", params)
-        .then(function(response) {
-          router.push("/login");
-        })
+        .post("users", user)
+        // .then(function(response) {
+        //   router.push("/login");
+        // })
         .catch(
           function(error) {
             this.errors = error.response.data.errors;
