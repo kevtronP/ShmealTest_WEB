@@ -258,8 +258,8 @@ var HomePage = {
       this.currentShmeal.CSdescription = this.currentShmeal.description();
       this.currentShmeal.CSstartTime = this.currentShmeal.startTime();
       this.currentShmeal.CSendTime = this.currentShmeal.endTime();
-      this.clg = this.clg;
-      console.log("clg", this.clg);
+      // this.clg = this.clg;
+      // console.log("clg", this.clg);
       var endTimesArrayAVA = [];
       this.currentShmeal.shmeal.shmshmealattributes.forEach(function(
         attribute
