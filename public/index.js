@@ -353,6 +353,7 @@ var SignupPage = {
   template: "#signup-page",
   data: function() {
     return {
+      selectedFile: null,
       userName: "",
       lastName: "",
       userPhoneNumber: "",
@@ -366,15 +367,40 @@ var SignupPage = {
       }
     };
   },
+  created: function() {
+    var userlocation = {};
+    var infoWindow = new google.maps.InfoWindow();
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+
+          infoWindow.setPosition(pos);
+          console.log(pos);
+          userlocation = pos;
+          console.log(userlocation);
+          this.userlocation = userlocation;
+        },
+        function() {
+          handleLocationError(true, infoWindow);
+        }
+      );
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow);
+    }
+  },
+
   methods: {
     submit: function() {
-      // var user = {};
-
       var user = {
         userName: this.userName,
         lastName: this.lastName,
         userPhoneNumber: this.userPhoneNumber,
-        // location: this.location,
+        location: userlocation,
         userEmail: this.userEmail
         // userDate: "date",
         // freeShmeals: "1",
@@ -393,7 +419,13 @@ var SignupPage = {
             this.errors = error.response.data.errors;
           }.bind(this)
         );
-    }
+    },
+
+    onFileSelected: function(event) {
+      this.selectedFile = event.targer.files[0];
+    },
+
+    onUpload: function() {}
   }
 };
 
