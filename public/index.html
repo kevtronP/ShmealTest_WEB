@@ -164,7 +164,11 @@
         <label>Upload Image</label>
         <br>
         <input type="file" @change="onFileSelected">
-        <button class="btn btn-primary" v-on:click="onUpload()"></button>
+        <button class="btn btn-primary" v-on:click="addPhoto()"></button>
+        <br>
+        <br>
+        <img id="preview" alt="Image Preview" style="max-width:300px; max-height:300px; width:auto; height:auto">
+
       </div>
 
 <!--       <div> <button class="btn btn-primary" v-on:click="checklocation()">click here</button> </div>

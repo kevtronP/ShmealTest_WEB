@@ -32,6 +32,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
+
     @user.freeShmeals = 1;
 
     if @user.save

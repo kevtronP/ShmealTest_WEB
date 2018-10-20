@@ -29,6 +29,10 @@ var HomePage = {
     axios.get("/fetchimage").then(function(response) {
       this.key = response.data;
       console.log(this.key);
+      AWS.config.update({
+        accessKeyId: this.key.access_key_id,
+        secretAccessKey: this.key.secret_access_key
+      });
     });
 
     axios.get("/upcoming").then(
@@ -226,10 +230,6 @@ var HomePage = {
                 sortedimageURLs[sortedimageURLs.length - 1].shmealAttribute;
               console.log(imageKey);
 
-              AWS.config.update({
-                accessKeyId: key.access_key_id,
-                secretAccessKey: key.secret_access_key
-              });
               var s3 = new AWS.S3();
               const url = s3.getSignedUrl("getObject", {
                 Bucket: "kevinshmealphotos",
@@ -369,6 +369,16 @@ var SignupPage = {
   },
   created: function() {
     var userlocation = {};
+
+    axios.get("/fetchimage").then(function(response) {
+      this.key = response.data;
+      console.log(this.key);
+      AWS.config.update({
+        accessKeyId: this.key.access_key_id,
+        secretAccessKey: this.key.secret_access_key
+      });
+    });
+
     var infoWindow = new google.maps.InfoWindow();
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -396,14 +406,24 @@ var SignupPage = {
 
   methods: {
     submit: function() {
+      var userAtrbsArray = [];
+
+      var profPicAtrb = {
+        attributeName: "profPicURL",
+        userAttribute: this.userEmail + "profpic.png",
+        attributeDate: new Date()
+      };
+
+      userAtrbsArray.push(profPicAtrb);
+
       var user = {
         userName: this.userName,
         lastName: this.lastName,
         userPhoneNumber: this.userPhoneNumber,
-        location: userlocation,
-        userEmail: this.userEmail
-        // userDate: "date",
-        // freeShmeals: "1",
+        userEmail: this.userEmail,
+        userDate: new Date(),
+        freeShmeals: "1",
+        shmuserattributes: userAtrbsArray
         // menuitems: { mealName: "food", userID: "5187", menuItemDate: "date" }
         // password: this.password,
         // password_confirmation: this.passwordConfirmation
@@ -412,7 +432,7 @@ var SignupPage = {
       axios
         .post("users", user)
         // .then(function(response) {
-        //   router.push("/login");
+        // router.push("/login");
         // })
         .catch(
           function(error) {
@@ -422,10 +442,39 @@ var SignupPage = {
     },
 
     onFileSelected: function(event) {
-      this.selectedFile = event.targer.files[0];
+      this.selectedFile = event.target.files[0];
+      document.getElementById("preview").src = window.URL.createObjectURL(
+        this.selectedFile
+      );
     },
 
-    onUpload: function() {}
+    addPhoto: function(albumName) {
+      console.log("ping");
+
+      var s3 = new AWS.S3({
+        params: { Bucket: "kevinshmealphotos" }
+      });
+
+      console.log(this.selectedFile);
+
+      s3.upload(
+        {
+          Key: this.userEmail + "profpic.png",
+          Body: this.selectedFile,
+          ACL: "public-read"
+        },
+        function(err, data) {
+          if (err) {
+            return alert(
+              "There was an error uploading your photo: ",
+              err.message
+            );
+          }
+
+          alert("Successfully uploaded photo.");
+        }
+      );
+    }
   }
 };
 
