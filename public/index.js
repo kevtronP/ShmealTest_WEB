@@ -362,6 +362,7 @@ var SignupPage = {
       password: "",
       passwordConfirmation: "",
       errors: [],
+      userid: {},
       user: {
         params: {}
       }
@@ -406,51 +407,6 @@ var SignupPage = {
 
   methods: {
     submit: function() {
-      var userAtrbsArray = [];
-
-      var profPicAtrb = {
-        attributeName: "profPicURL",
-        userAttribute: this.userEmail + "profpic.png",
-        attributeDate: new Date()
-      };
-
-      userAtrbsArray.push(profPicAtrb);
-
-      var user = {
-        userName: this.userName,
-        lastName: this.lastName,
-        userPhoneNumber: this.userPhoneNumber,
-        userEmail: this.userEmail,
-        userDate: new Date(),
-        freeShmeals: "1",
-        shmuserattributes: userAtrbsArray
-        // menuitems: { mealName: "food", userID: "5187", menuItemDate: "date" }
-        // password: this.password,
-        // password_confirmation: this.passwordConfirmation
-      };
-
-      axios
-        .post("users", user)
-        // .then(function(response) {
-        // router.push("/login");
-        // })
-        .catch(
-          function(error) {
-            this.errors = error.response.data.errors;
-          }.bind(this)
-        );
-    },
-
-    onFileSelected: function(event) {
-      this.selectedFile = event.target.files[0];
-      document.getElementById("preview").src = window.URL.createObjectURL(
-        this.selectedFile
-      );
-    },
-
-    addPhoto: function(albumName) {
-      console.log("ping");
-
       var s3 = new AWS.S3({
         params: { Bucket: "kevinshmealphotos" }
       });
@@ -473,6 +429,68 @@ var SignupPage = {
 
           alert("Successfully uploaded photo.");
         }
+      );
+
+      var user = {
+        userName: this.userName,
+        lastName: this.lastName,
+        userPhoneNumber: this.userPhoneNumber,
+        userEmail: this.userEmail,
+        userDate: new Date()
+      };
+
+      axios
+        .post("users", user)
+
+        .then(function(response) {
+          this.userid = response.data;
+          // router.push("/login");
+          var shmuserattribute = {
+            shmuserattribute: {
+              attributeName: "userHomeLat",
+              userAttribute: this.userlocation.lat,
+              attributeDate: new Date(),
+              userID: this.userid.id
+            }
+          };
+
+          axios.post("shmuserattributes", shmuserattribute);
+        })
+        .then(function() {
+          var shmuserattribute = {
+            shmuserattribute: {
+              attributeName: "userHomeLon",
+              userAttribute: this.userlocation.lng,
+              attributeDate: new Date(),
+              userID: this.userid.id
+            }
+          };
+
+          axios.post("shmuserattributes", shmuserattribute);
+        })
+        .then(function() {
+          var shmuserattribute = {
+            shmuserattribute: {
+              attributeName: "profPicURL",
+              userAttribute: user.userEmail + "profpic.png",
+              attributeDate: new Date(),
+              userID: this.userid.id
+            }
+          };
+
+          axios.post("shmuserattributes", shmuserattribute);
+        })
+        .catch(
+          function(error) {
+            this.errors = error.response.data.errors;
+          }.bind(this)
+        );
+    },
+
+    onFileSelected: function(event) {
+      this.selectedFile = event.target.files[0];
+      document.getElementById("preview").src = window.URL.createObjectURL(
+        this.selectedFile
       );
     }
   }
