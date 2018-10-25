@@ -444,7 +444,6 @@ var SignupPage = {
 
         .then(function(response) {
           this.userid = response.data;
-          // router.push("/login");
           var shmuserattribute = {
             shmuserattribute: {
               attributeName: "userHomeLat",
@@ -485,6 +484,7 @@ var SignupPage = {
             this.errors = error.response.data.errors;
           }.bind(this)
         );
+      router.push("/login");
     },
 
     onFileSelected: function(event) {
