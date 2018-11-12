@@ -341,6 +341,24 @@ var HomePage = {
       console.log("wha", this.updatedShmeals);
       console.log("data:", this.currentShmeal);
       this.timeArray = timeArray;
+    },
+    checkuser: function() {
+      var data = {
+        UserPoolId: key.pool_id,
+        ClientId: key.client_id
+      };
+      var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
+      var cognitoUser = userPool.getCurrentUser();
+
+      if (cognitoUser != null) {
+        cognitoUser.getSession(function(err, session) {
+          if (err) {
+            alert(err);
+            return;
+          }
+          console.log("session validity: " + session.isValid());
+        });
+      }
     }
   },
 
@@ -500,32 +518,211 @@ var LoginPage = {
   template: "#login-page",
   data: function() {
     return {
-      email: "",
-      password: "",
+      email: "kmerc5187@gmail.com",
+      password: "K@ppa123",
       errors: []
     };
   },
+  created: function() {
+    axios.get("/fetchimage").then(function(response) {
+      this.key = response.data;
+      console.log(this.key);
+      var poolData = {
+        UserPoolId: this.key.pool_id,
+        ClientId: this.key.client_id
+      };
+      this.poolData = poolData;
+    });
+  },
+
   methods: {
     submit: function() {
-      var params = {
-        auth: { email: this.email, password: this.password }
+      var authenticationData = {
+        Username: this.email,
+        Password: this.password
       };
-      axios
-        .post("/user_token", params)
-        .then(function(response) {
-          axios.defaults.headers.common["Authorization"] =
-            "Bearer " + response.data.jwt;
-          localStorage.setItem("jwt", response.data.jwt);
-          router.push("/");
-        })
-        .catch(
-          function(error) {
-            this.errors = ["Invalid email or password."];
-            this.email = "";
-            this.password = "";
-          }.bind(this)
-        );
+      var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(
+        authenticationData
+      );
+      var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+      var userData = {
+        Username: this.email,
+        Pool: userPool
+      };
+      var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+      cognitoUser.authenticateUser(authenticationDetails, {
+        onSuccess: function(result) {
+          var accessToken = result.getAccessToken().getJwtToken();
+
+          /* Use the idToken for Logins Map when Federating User Pools with identity pools or when passing through an Authorization Header to an API Gateway Authorizer*/
+          var idToken = result.idToken.jwtToken;
+        },
+
+        onFailure: function(err) {
+          alert(err);
+        }
+      });
+      router.push("/");
     }
+  }
+};
+
+var CreateAccount = {
+  template: "#createaccount-page",
+  data: function() {
+    return {
+      userName: "Kevin",
+      lastName: "Mercado",
+      userPhoneNumber: "+17083360936",
+      location: "",
+      userEmail: "kmerc5187@gmail.com",
+      userPassword: "K@ppa123",
+      passwordConfirmation: "K@ppa123",
+      poolData: {},
+      newUser: {},
+      emailVerification: "",
+      phoneVerification: "",
+      cognitoUser: "",
+      errors: []
+    };
+  },
+  created: function() {
+    axios.get("/fetchimage").then(function(response) {
+      this.key = response.data;
+      console.log(this.key);
+      var poolData = {
+        UserPoolId: this.key.pool_id,
+        ClientId: this.key.client_id
+      };
+      this.poolData = poolData;
+    });
+  },
+  methods: {
+    sendData: function() {
+      var newUser = {
+        firstname: this.userName,
+        lastname: this.lastName,
+        email: this.userEmail,
+        phone: this.userPhoneNumber,
+        password: this.userPassword
+      };
+      this.newUser = newUser;
+      console.log(this.newUser);
+    },
+
+    submit: function() {
+      // var AmazonCognitoIdentity = require("amazon-cognito-identity-js");
+      console.log(this.newUser);
+      var CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
+      console.log(poolData);
+      var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+
+      var attributeList = [];
+
+      var dataEmail = {
+        Name: "email",
+        Value: this.newUser.email
+      };
+      var dataPhoneNumber = {
+        Name: "phone_number",
+        Value: this.newUser.phone
+      };
+      var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(
+        dataEmail
+      );
+      var attributePhoneNumber = new AmazonCognitoIdentity.CognitoUserAttribute(
+        dataPhoneNumber
+      );
+      console.log(dataEmail.Value);
+      attributeList.push(attributeEmail);
+      attributeList.push(attributePhoneNumber);
+
+      userPool.signUp(
+        dataEmail.Value,
+        this.newUser.password,
+        attributeList,
+        null,
+        function(err, result) {
+          if (err) {
+            alert(err);
+            return;
+          }
+          cognitoUser = result.user;
+          console.log("user name is " + cognitoUser.getUsername());
+        }
+      );
+    },
+    check: function() {
+      console.log(this.newUser);
+    },
+    verifyphone: function() {
+      cognitoUser.confirmRegistration(this.phoneVerification, true, function(
+        err,
+        result
+      ) {
+        if (err) {
+          alert(err);
+          return;
+        }
+        console.log("call result: " + result);
+      });
+    },
+    login: function() {
+      // console.log(this.newUser, poolData);
+      var authenticationData = {
+        Username: this.newUser.email,
+        Password: this.newUser.password
+      };
+      var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(
+        authenticationData
+      );
+      var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+      var userData = {
+        Username: this.newUser.email,
+        Pool: userPool
+      };
+      var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+
+      cognitoUser.authenticateUser(authenticationDetails, {
+        onSuccess: function(result) {
+          var accessToken = result.getAccessToken().getJwtToken();
+
+          /* Use the idToken for Logins Map when Federating User Pools with identity pools or when passing through an Authorization Header to an API Gateway Authorizer*/
+          var idToken = result.idToken.jwtToken;
+          if (cognitoUser != null) {
+            cognitoUser.getSession(function(err, session) {
+              if (err) {
+                alert(err);
+                return;
+              }
+              console.log(
+                "session validity: " + session.isValid() + cognitoUser.username
+              );
+            });
+            cognitoUser.getAttributeVerificationCode("email", {
+              onSuccess: function(result) {
+                console.log("call result: " + result);
+              },
+              onFailure: function(err) {
+                alert(err);
+              },
+              inputVerificationCode: function() {
+                var verificationCode = prompt(
+                  "Please input verification code: ",
+                  ""
+                );
+                cognitoUser.verifyAttribute("email", verificationCode, this);
+              }
+            });
+          }
+        },
+
+        onFailure: function(err) {
+          alert(err);
+        }
+      });
+    },
+    verifyemail: function() {}
   }
 };
 
@@ -560,21 +757,35 @@ var LoginPage = {
 //   }
 // };
 
-// var LogoutPage = {
-//   template: "<h1>Logout</h1>",
-//   created: function() {
-//     axios.defaults.headers.common["Authorization"] = undefined;
-//     localStorage.removeItem("jwt");
-//     router.push("/");
-//   }
-// };
+var LogoutPage = {
+  template: "<h1>Logout</h1>",
+  created: function() {
+    axios.get("/fetchimage").then(function(response) {
+      this.key = response.data;
+      console.log(this.key);
+      var poolData = {
+        UserPoolId: this.key.pool_id,
+        ClientId: this.key.client_id
+      };
+      var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+
+      var cognitoUser = userPool.getCurrentUser();
+
+      if (cognitoUser != null) {
+        cognitoUser.signOut();
+      }
+      router.push("/");
+    });
+  }
+};
 
 var router = new VueRouter({
   routes: [
     { path: "/", component: HomePage },
     { path: "/signup", component: SignupPage },
-    { path: "/login", component: LoginPage }
-    // { path: "/logout", component: LogoutPage },
+    { path: "/login", component: LoginPage },
+    { path: "/createaccount", component: CreateAccount },
+    { path: "/logout", component: LogoutPage }
     // { path: "/newpost", component: PostsNewPage }
   ],
   scrollBehavior: function(to, from, savedPosition) {

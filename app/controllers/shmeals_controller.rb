@@ -19,13 +19,15 @@ class ShmealsController < ApplicationController
 
   end
 
-  def fetchs3key
+  def fetchaws
 
-    s3credentials = {
+    awscredentials = {
       access_key_id:ENV.fetch('AWS_KEY'),
       secret_access_key: ENV.fetch('AWS_SECRET_KEY'),
-    }
-    render json: s3credentials.as_json
+      pool_id: ENV.fetch('POOL_ID'),
+      client_id: ENV.fetch('CLIENT_ID')
+          }
+    render json: awscredentials.as_json
 
   end
 
