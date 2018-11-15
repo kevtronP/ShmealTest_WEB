@@ -372,13 +372,13 @@ var SignupPage = {
   data: function() {
     return {
       selectedFile: null,
-      userName: "Kevin",
-      lastName: "Mercado",
-      userPhoneNumber: "+17083360936",
+      userName: "",
+      lastName: "",
+      userPhoneNumber: "",
       location: "",
-      userEmail: "kmerc5187@gmail.com",
-      userPassword: "K@ppa123",
-      userPasswordConfirmation: "K@ppa123",
+      userEmail: "",
+      userPassword: "",
+      userPasswordConfirmation: "",
       poolData: {},
       newUser: {},
       emailVerification: "",
@@ -543,6 +543,7 @@ var SignupPage = {
                   }
                 });
               }
+              router.push("/createaccount");
             },
 
             onFailure: function(err) {
@@ -617,13 +618,13 @@ var CreateAccount = {
   template: "#createaccount-page",
   data: function() {
     return {
-      userName: "Kevin",
-      lastName: "Mercado",
-      userPhoneNumber: "+17083360936",
+      userName: "",
+      lastName: "",
+      userPhoneNumber: "",
       location: "",
-      userEmail: "kmerc5187@gmail.com",
-      userPassword: "K@ppa123",
-      passwordConfirmation: "K@ppa123",
+      userEmail: "",
+      userPassword: "",
+      passwordConfirmation: "",
       poolData: {},
       newUser: {},
       emailVerification: "",
@@ -749,7 +750,6 @@ var CreateAccount = {
             this.errors = error.response.data.errors;
           }.bind(this)
         );
-      router.push("/login");
     },
 
     onFileSelected: function(event) {
