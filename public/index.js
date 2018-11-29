@@ -26,15 +26,6 @@ var HomePage = {
   },
 
   created: function() {
-    axios.get("/fetchimage").then(function(response) {
-      this.key = response.data;
-      console.log(this.key);
-      AWS.config.update({
-        accessKeyId: this.key.access_key_id,
-        secretAccessKey: this.key.secret_access_key
-      });
-    });
-
     axios.get("/upcoming").then(
       function(response) {
         this.shmeals = response.data;
@@ -243,6 +234,7 @@ var HomePage = {
 
           updatedShmeals.push(shmealPlus);
         });
+        console.log(updatedShmeals);
         // var awsKey = process.env.AWS_KEY;
 
         // console.log("key", awsKey);
@@ -337,9 +329,6 @@ var HomePage = {
         hh = hh + 1;
         timeArray.push(hh + ":" + "00");
       }
-      console.log("TA", hh);
-      console.log("wha", this.updatedShmeals);
-      console.log("data:", this.currentShmeal);
       this.timeArray = timeArray;
     },
     checkuser: function() {
@@ -374,11 +363,11 @@ var SignupPage = {
       selectedFile: null,
       userName: "",
       lastName: "",
-      userPhoneNumber: "",
+      userPhoneNumber: "+17083360936",
       location: "",
-      userEmail: "",
-      userPassword: "",
-      userPasswordConfirmation: "",
+      userEmail: "kmerc5187@gmail.com",
+      userPassword: "K@ppa123",
+      userPasswordConfirmation: "K@ppa123",
       poolData: {},
       newUser: {},
       emailVerification: "",
@@ -391,70 +380,24 @@ var SignupPage = {
       }
     };
   },
-  created: function() {
-    var userlocation = {};
-
-    axios.get("/fetchimage").then(function(response) {
-      this.key = response.data;
-      console.log(this.key);
-      AWS.config.update({
-        accessKeyId: this.key.access_key_id,
-        secretAccessKey: this.key.secret_access_key
-      });
-      var poolData = {
-        UserPoolId: this.key.pool_id,
-        ClientId: this.key.client_id
-      };
-      this.poolData = poolData;
-    });
-
-    var infoWindow = new google.maps.InfoWindow();
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        function(position) {
-          var pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-
-          infoWindow.setPosition(pos);
-          console.log(pos);
-          userlocation = pos;
-          console.log(userlocation);
-          this.userlocation = userlocation;
-        },
-        function() {
-          handleLocationError(true, infoWindow);
-        }
-      );
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow);
-    }
-  },
 
   methods: {
     sendData: function() {
-      var newUser = {
-        email: this.userEmail,
-        phone: this.userPhoneNumber,
-        password: this.userPassword
-      };
-      this.newUser = newUser;
-      console.log(this.newUser);
+      ProfileManager.userEmail = this.userEmail;
+      ProfileManager.userPhoneNumber = this.userPhoneNumber;
+      ProfileManager.userPassword = this.userPassword;
       var CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
-      console.log(poolData);
       var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
       var attributeList = [];
 
       var dataEmail = {
         Name: "email",
-        Value: this.newUser.email
+        Value: this.userEmail
       };
       var dataPhoneNumber = {
         Name: "phone_number",
-        Value: this.newUser.phone
+        Value: this.userPhoneNumber
       };
       var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(
         dataEmail
@@ -468,7 +411,7 @@ var SignupPage = {
 
       userPool.signUp(
         dataEmail.Value,
-        this.newUser.password,
+        this.userPassword,
         attributeList,
         null,
         function(err, result) {
@@ -484,15 +427,15 @@ var SignupPage = {
 
     verifyphone: function() {
       var authenticationData = {
-        Username: this.newUser.email,
-        Password: this.newUser.password
+        Username: ProfileManager.userEmail,
+        Password: ProfileManager.userPassword
       };
       var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(
         authenticationData
       );
       var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
       var userData = {
-        Username: this.newUser.email,
+        Username: ProfileManager.userEmail,
         Pool: userPool
       };
       var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
@@ -526,6 +469,7 @@ var SignupPage = {
                 cognitoUser.getAttributeVerificationCode("email", {
                   onSuccess: function(result) {
                     console.log("call result: " + result);
+                    router.push("/createaccount");
                   },
                   onFailure: function(err) {
                     alert(err);
@@ -543,7 +487,6 @@ var SignupPage = {
                   }
                 });
               }
-              router.push("/createaccount");
             },
 
             onFailure: function(err) {
@@ -569,17 +512,6 @@ var LoginPage = {
       password: "K@ppa123",
       errors: []
     };
-  },
-  created: function() {
-    axios.get("/fetchimage").then(function(response) {
-      this.key = response.data;
-      console.log(this.key);
-      var poolData = {
-        UserPoolId: this.key.pool_id,
-        ClientId: this.key.client_id
-      };
-      this.poolData = poolData;
-    });
   },
 
   methods: {
@@ -620,11 +552,7 @@ var CreateAccount = {
     return {
       userName: "",
       lastName: "",
-      userPhoneNumber: "",
       location: "",
-      userEmail: "",
-      userPassword: "",
-      passwordConfirmation: "",
       poolData: {},
       newUser: {},
       emailVerification: "",
@@ -633,44 +561,7 @@ var CreateAccount = {
       errors: []
     };
   },
-  created: function() {
-    axios.get("/fetchimage").then(function(response) {
-      this.key = response.data;
-      console.log(this.key);
-      AWS.config.update({
-        accessKeyId: this.key.access_key_id,
-        secretAccessKey: this.key.secret_access_key
-      });
-      var poolData = {
-        UserPoolId: this.key.pool_id,
-        ClientId: this.key.client_id
-      };
-      this.poolData = poolData;
-    });
-    var infoWindow = new google.maps.InfoWindow();
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        function(position) {
-          var pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
 
-          infoWindow.setPosition(pos);
-          console.log(pos);
-          userlocation = pos;
-          console.log(userlocation);
-          this.userlocation = userlocation;
-        },
-        function() {
-          handleLocationError(true, infoWindow);
-        }
-      );
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow);
-    }
-  },
   methods: {
     submit: function() {
       var s3 = new AWS.S3({
@@ -697,11 +588,14 @@ var CreateAccount = {
         }
       );
 
+      ProfileManager.userName = this.userName;
+      ProfileManager.lastName = this.lastName;
+
       var user = {
-        userName: this.userName,
-        lastName: this.lastName,
-        userPhoneNumber: this.userPhoneNumber,
-        userEmail: this.userEmail,
+        userName: ProfileManager.userName,
+        lastName: ProfileManager.lastName,
+        userPhoneNumber: ProfileManager.userPhoneNumber,
+        userEmail: ProfileManager.userEmail,
         userDate: new Date()
       };
 
@@ -760,69 +654,108 @@ var CreateAccount = {
     },
 
     sendData: function() {
-      var newUser = {
-        firstname: this.userName,
-        lastname: this.lastName,
-        email: this.userEmail,
-        phone: this.userPhoneNumber,
-        password: this.userPassword
-      };
-      this.newUser = newUser;
-      console.log(this.newUser);
+      var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+
+      console.log(userPool);
+      // var Wser = {
+      //   firstname: this.userName,
+      //   lastname: this.lastName,
+      //   email: this.userEmail,
+      //   phone: this.userPhoneNumber,
+      //   password: this.userPassword
+      // };
     }
   }
 };
 
-// var PostsNewPage = {
-//   template: "#posts-new-page",
-//   data: function() {
-//     return {
-//       title: "",
-//       body: "",
-//       image: "",
-//       errors: []
-//     };
-//   },
-//   methods: {
-//     submit: function() {
-//       var params = {
-//         title: this.title,
-//         body: this.body,
-//         image: this.image
-//       };
-//       axios
-//         .post("/v1/posts", params)
-//         .then(function(response) {
-//           router.push("/");
-//         })
-//         .catch(
-//           function(error) {
-//             this.errors = error.response.data.errors;
-//           }.bind(this)
-//         );
-//     }
-//   }
-// };
+var NewShmealPage = {
+  template: "#new-shmeal-page",
+  data: function() {
+    return {
+      mealName: "Meatloaf Surprise",
+      shmealBlurb: "probably ok",
+      shmealDayDate: "2018-12-25 05:00:00",
+      shmealTime: "6:00pm - 8:00pm",
+      shmealAllergen: "pork",
+      image: "",
+      errors: []
+    };
+  },
+  methods: {
+    onFileSelected: function(event) {
+      this.selectedFile = event.target.files[0];
+      document.getElementById("preview").src = window.URL.createObjectURL(
+        this.selectedFile
+      );
+    },
+
+    submitmenuitem: function() {
+      console.log(this.selectedFile);
+      var s3 = new AWS.S3({
+        params: { Bucket: "kevinshmealphotos" }
+      });
+
+      s3.upload(
+        {
+          Key: this.mealName + "pic.png",
+          Body: this.selectedFile,
+          ACL: "public-read"
+        },
+        function(err, data) {
+          if (err) {
+            return alert(
+              "There was an error uploading your photo: ",
+              err.message
+            );
+          }
+
+          alert("Successfully uploaded photo.");
+        }
+      );
+      var shmealDayDate = this.shmealDayDate;
+      var menuitem = {
+        menuitem: {
+          mealName: this.mealName,
+          userID: 65
+        }
+      };
+      this.menuitem = menuitem;
+      axios
+        .post("menuitems", menuitem)
+        .then(function(response) {
+          console.log(response.data);
+          var shmeal = {
+            shmeal: {
+              shmealDayDate: shmealDayDate,
+              menuItemID: response.data.id
+            }
+          };
+          axios.post("shmeals", shmeal).catch(
+            function(error) {
+              this.errors = error.response.data.errors;
+            }.bind(this)
+          );
+        })
+        .catch(
+          function(error) {
+            this.errors = error.response.data.errors;
+          }.bind(this)
+        );
+    }
+  }
+};
 
 var LogoutPage = {
   template: "<h1>Logout</h1>",
   created: function() {
-    axios.get("/fetchimage").then(function(response) {
-      this.key = response.data;
-      console.log(this.key);
-      var poolData = {
-        UserPoolId: this.key.pool_id,
-        ClientId: this.key.client_id
-      };
-      var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+    var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
-      var cognitoUser = userPool.getCurrentUser();
+    var cognitoUser = userPool.getCurrentUser();
 
-      if (cognitoUser != null) {
-        cognitoUser.signOut();
-      }
-      router.push("/");
-    });
+    if (cognitoUser != null) {
+      cognitoUser.signOut();
+    }
+    router.push("/");
   }
 };
 
@@ -832,8 +765,8 @@ var router = new VueRouter({
     { path: "/signup", component: SignupPage },
     { path: "/login", component: LoginPage },
     { path: "/createaccount", component: CreateAccount },
-    { path: "/logout", component: LogoutPage }
-    // { path: "/newpost", component: PostsNewPage }
+    { path: "/logout", component: LogoutPage },
+    { path: "/newshmeal", component: NewShmealPage }
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };
@@ -846,13 +779,54 @@ var app = Vue.filter("formatDate", function(value) {
   }
 });
 
+var ProfileManager = {
+  userName: "",
+  lastName: "",
+  userPhoneNumber: "",
+  userEmail: "",
+  userPassword: ""
+};
+
 new Vue({
   el: "#vue-app",
   router: router,
   created: function() {
-    var jwt = localStorage.getItem("jwt");
-    if (jwt) {
-      axios.defaults.headers.common["Authorization"] = jwt;
+    axios.get("/fetchimage").then(function(response) {
+      this.key = response.data;
+      console.log(this.key);
+      AWS.config.update({
+        accessKeyId: this.key.access_key_id,
+        secretAccessKey: this.key.secret_access_key
+      });
+      var poolData = {
+        UserPoolId: this.key.pool_id,
+        ClientId: this.key.client_id
+      };
+      this.poolData = poolData;
+    });
+    var userlocation = {};
+    var infoWindow = new google.maps.InfoWindow();
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+
+          infoWindow.setPosition(pos);
+          console.log(pos);
+          userlocation = pos;
+          console.log(userlocation);
+          this.userlocation = userlocation;
+        },
+        function() {
+          handleLocationError(true, infoWindow);
+        }
+      );
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow);
     }
   }
 });

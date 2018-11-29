@@ -30,7 +30,7 @@ class ShmealsController < ApplicationController
     render json: awscredentials.as_json
 
   end
-
+  
   # def latlng
   #   @shmeals = Shmeal.where({shmealDayDate: Date.today.prev_day..Date.today.next_month})
 

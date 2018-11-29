@@ -299,7 +299,6 @@ var CreateAccount = {
       });
     },
     login: function() {
-      // console.log(this.newUser, poolData);
       var authenticationData = {
         Username: this.newUser.email,
         Password: this.newUser.password
@@ -318,7 +317,6 @@ var CreateAccount = {
         onSuccess: function(result) {
           var accessToken = result.getAccessToken().getJwtToken();
 
-          /* Use the idToken for Logins Map when Federating User Pools with identity pools or when passing through an Authorization Header to an API Gateway Authorizer*/
           var idToken = result.idToken.jwtToken;
           if (cognitoUser != null) {
             cognitoUser.getSession(function(err, session) {
