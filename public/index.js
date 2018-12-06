@@ -672,11 +672,12 @@ var NewShmealPage = {
   template: "#new-shmeal-page",
   data: function() {
     return {
-      mealName: "Meatloaf Surprise",
+      mealName: "Banana Milkshake",
       shmealBlurb: "probably ok",
-      shmealDayDate: "2018-12-25 05:00:00",
-      shmealTime: "6:00pm - 8:00pm",
-      shmealAllergen: "pork",
+      shmealDayDate: "2018-12-16 05:00:00",
+      shmealStartTime: "5:00pm",
+      shmealEndTime: "8:00pm",
+      shmealAllergen: "N/A",
       image: "",
       errors: []
     };
@@ -712,29 +713,82 @@ var NewShmealPage = {
           alert("Successfully uploaded photo.");
         }
       );
-      var shmealDayDate = this.shmealDayDate;
+      var newShmeal = {
+        mealName: this.mealName,
+        shmealDayDate: this.shmealDayDate,
+        shmealStartTime: this.shmealStartTime,
+        shmealEndTime: this.shmealEndTime,
+        shmealBlurb: this.shmealBlurb
+      };
+
       var menuitem = {
         menuitem: {
           mealName: this.mealName,
-          userID: 65
+          userID: 84
         }
       };
-      this.menuitem = menuitem;
       axios
         .post("menuitems", menuitem)
         .then(function(response) {
           console.log(response.data);
           var shmeal = {
             shmeal: {
-              shmealDayDate: shmealDayDate,
+              shmealDayDate: newShmeal.shmealDayDate,
               menuItemID: response.data.id
             }
           };
-          axios.post("shmeals", shmeal).catch(
-            function(error) {
-              this.errors = error.response.data.errors;
-            }.bind(this)
-          );
+          axios
+            .post("shmeals", shmeal)
+            .then(function(info) {
+              this.shmeal = info.data;
+              console.log(info.data);
+              var shmshmealattribute = {
+                shmshmealattribute: {
+                  attributeName: "startTime",
+                  shmealAtrbDate: newShmeal.shmealStartTime,
+                  attributeDate: new Date(),
+                  shmealID: this.shmeal.id,
+                  menuItemID: this.shmeal.menuItemID
+                }
+              };
+              axios.post("shmshmealattributes", shmshmealattribute);
+            })
+            .then(function() {
+              var shmshmealattribute = {
+                shmshmealattribute: {
+                  attributeName: "endTime",
+                  shmealAtrbDate: newShmeal.shmealEndTime,
+                  attributeDate: new Date(),
+                  shmealID: this.shmeal.id,
+                  menuItemID: this.shmeal.menuItemID
+                }
+              };
+              axios.post("shmshmealattributes", shmshmealattribute);
+            })
+            .then(function() {
+              var shmshmealattribute = {
+                shmshmealattribute: {
+                  attributeName: "shmealBlurb",
+                  shmealAttribute: newShmeal.shmealBlurb,
+                  attributeDate: new Date(),
+                  shmealID: this.shmeal.id,
+                  menuItemID: this.shmeal.menuItemID
+                }
+              };
+              axios.post("shmshmealattributes", shmshmealattribute);
+            })
+            .then(function() {
+              var shmshmealattribute = {
+                shmshmealattribute: {
+                  attributeName: "shmealImageURL",
+                  shmealAttribute: newShmeal.mealName + ".png",
+                  attributeDate: new Date(),
+                  shmealID: this.shmeal.id,
+                  menuItemID: this.shmeal.menuItemID
+                }
+              };
+              axios.post("shmshmealattributes", shmshmealattribute);
+            });
         })
         .catch(
           function(error) {
