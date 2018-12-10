@@ -388,11 +388,11 @@ var SignupPage = {
       selectedFile: null,
       userName: "",
       lastName: "",
-      userPhoneNumber: "+17083360936",
+      userPhoneNumber: "",
       location: "",
-      userEmail: "kmerc5187@gmail.com",
-      userPassword: "K@ppa123",
-      userPasswordConfirmation: "K@ppa123",
+      userEmail: "",
+      userPassword: "",
+      userPasswordConfirmation: "",
       poolData: {},
       newUser: {},
       emailVerification: "",
@@ -533,8 +533,8 @@ var LoginPage = {
   template: "#login-page",
   data: function() {
     return {
-      email: "kmerc5187@gmail.com",
-      password: "K@ppa123",
+      email: "",
+      password: "",
       errors: []
     };
   },
@@ -717,12 +717,12 @@ var NewShmealPage = {
   template: "#new-shmeal-page",
   data: function() {
     return {
-      mealName: "Banana Milkshake",
-      shmealBlurb: "probably ok",
-      shmealDayDate: "2018-12-16 05:00:00",
-      shmealStartTime: "5:00pm",
-      shmealEndTime: "8:00pm",
-      shmealAllergen: "N/A",
+      mealName: "",
+      shmealBlurb: "",
+      shmealDayDate: "",
+      shmealStartTime: "",
+      shmealEndTime: "",
+      shmealAllergen: "",
       image: "",
       errors: []
     };
