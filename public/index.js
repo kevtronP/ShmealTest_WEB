@@ -234,6 +234,31 @@ var HomePage = {
 
           updatedShmeals.push(shmealPlus);
         });
+        var userlocation = {};
+        var infoWindow = new google.maps.InfoWindow();
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            function(position) {
+              var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+              };
+
+              infoWindow.setPosition(pos);
+              console.log(pos);
+              userlocation = pos;
+              console.log(userlocation);
+              this.userlocation = userlocation;
+            },
+            function() {
+              handleLocationError(true, infoWindow);
+            }
+          );
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow);
+        }
+        console.log(ProfileManager.currentUserData);
         console.log(updatedShmeals);
         // var awsKey = process.env.AWS_KEY;
 
@@ -345,7 +370,7 @@ var HomePage = {
             alert(err);
             return;
           }
-          console.log("session validity: " + session.isValid());
+          console.log(cognitoUser);
         });
       }
     }
@@ -535,6 +560,26 @@ var LoginPage = {
 
           /* Use the idToken for Logins Map when Federating User Pools with identity pools or when passing through an Authorization Header to an API Gateway Authorizer*/
           var idToken = result.idToken.jwtToken;
+          cognitoUser.getUserAttributes(function(err, result) {
+            if (err) {
+              alert(err);
+              return;
+            }
+            for (var i = 0; i < result.length; i++) {
+              console.log(
+                "attribute " +
+                  result[i].getName() +
+                  " has value " +
+                  result[i].getValue()
+              );
+            }
+            axios
+              .get("/login/" + result[4].getValue())
+              .then(function(response) {
+                ProfileManager.currentUserData = response.data;
+              });
+            console.log(ProfileManager.currentUserData[0].id);
+          });
         },
 
         onFailure: function(err) {
@@ -572,7 +617,7 @@ var CreateAccount = {
 
       s3.upload(
         {
-          Key: this.userEmail + "profpic.png",
+          Key: this.userEmail + ".png",
           Body: this.selectedFile,
           ACL: "public-read"
         },
@@ -631,7 +676,7 @@ var CreateAccount = {
           var shmuserattribute = {
             shmuserattribute: {
               attributeName: "profPicURL",
-              userAttribute: user.userEmail + "profpic.png",
+              userAttribute: user.userEmail + ".png",
               attributeDate: new Date(),
               userID: this.userid.id
             }
@@ -698,7 +743,7 @@ var NewShmealPage = {
 
       s3.upload(
         {
-          Key: this.mealName + "pic.png",
+          Key: this.mealName + ".png",
           Body: this.selectedFile,
           ACL: "public-read"
         },
@@ -724,7 +769,7 @@ var NewShmealPage = {
       var menuitem = {
         menuitem: {
           mealName: this.mealName,
-          userID: 84
+          userID: ProfileManager.currentUserData[0].id
         }
       };
       axios
@@ -838,7 +883,8 @@ var ProfileManager = {
   lastName: "",
   userPhoneNumber: "",
   userEmail: "",
-  userPassword: ""
+  userPassword: "",
+  currentUserData: {}
 };
 
 new Vue({
@@ -847,7 +893,6 @@ new Vue({
   created: function() {
     axios.get("/fetchimage").then(function(response) {
       this.key = response.data;
-      console.log(this.key);
       AWS.config.update({
         accessKeyId: this.key.access_key_id,
         secretAccessKey: this.key.secret_access_key
@@ -858,29 +903,5 @@ new Vue({
       };
       this.poolData = poolData;
     });
-    var userlocation = {};
-    var infoWindow = new google.maps.InfoWindow();
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        function(position) {
-          var pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-
-          infoWindow.setPosition(pos);
-          console.log(pos);
-          userlocation = pos;
-          console.log(userlocation);
-          this.userlocation = userlocation;
-        },
-        function() {
-          handleLocationError(true, infoWindow);
-        }
-      );
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow);
-    }
   }
 });

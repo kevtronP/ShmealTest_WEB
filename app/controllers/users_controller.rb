@@ -13,6 +13,10 @@ class UsersController < ApplicationController
     render json: user, each_serializer: UserAltSerializer
   end
 
+  def fetchuserid
+    userid = @user.id
+    render json: userid
+  end
   # GET /users/1
   def show
     @user = User.find(params[:id])

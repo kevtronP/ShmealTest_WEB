@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   get 'upcoming', action: :future, controller: 'shmeals'
   get 'fetchimage', action: :fetchaws, controller: 'shmeals'
+  get 'fetchuserid', action: :fetchuserid, controller: 'users'
 
   get 'login/:userEmail', action: :login, controller: 'users'
 
