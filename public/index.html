@@ -32,7 +32,9 @@
     <!-- Navigation -->
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="/#/">Shmeal</a>
+      <a class="navbar-brand" href="/#/">Shmeal <br> Welcome, {{ProfileManager.currentUser.userName}}
+        <!-- <img v-bind:src="userPhoto()" style="max-height: 45px" class="img-fluid" alt="Responsive image"> -->
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -89,10 +91,10 @@
             <div class="card-body">
               <img class="card-img-top" v-bind:src="shmeal.imageURL()" alt="Card image cap">
               <h4 class="card-title">{{ shmeal.shmeal.menuitem.mealName}}</h4>
-              <p class="card-text body">{{ shmeal.shmeal.menuitem.user.userName }}</p>
+              <p class="card-text body">{{ shmeal.shmeal.menuitem.user.userName }}
+                <img v-bind:src="shmeal.userPhoto()" style="max-height: 45px" class="img-fluid" alt="Responsive image">
+              </p>
               <p class="card-text body line-clamp" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden">{{ shmeal.description().shmealAttribute }}</p>
-                            <button type="button" class="btn btn-primary" v-on:click="checkuser()">Check User</button>
-
               <a href="#" class="btn btn-primary" v-on:click="setCurrentShmeal(shmeal)" data-toggle="modal" data-target="#exampleModal">{{shmeal.startTime()}} - {{shmeal.endTime()}}</a>
             </div>
           </div>
@@ -270,12 +272,10 @@
           <label>Upload Image</label>
           <br>
           <input type="file" @change="onFileSelected">
-          <button class="btn btn-primary" v-on:click="addPhoto()"></button>
           <br>
           <br>
           <img id="preview" alt="Image Preview" style="max-width:300px; max-height:300px; width:auto; height:auto">
         </div>
-        <button class="btn btn-primary" v-on:click="sendData()">Send Data</button>
         <button class="btn btn-primary" v-on:click="submit()">Submit</button>
         <a href="#" class="btn btn-primary" data-toggle="modal" v-on:click="check()" data-target="#verifyphonemodal">Verify Code</a>
         <!-- Modal -->
@@ -361,7 +361,6 @@
           <label>Upload Image</label>
           <br>
           <input type="file" @change="onFileSelected">
-          <button class="btn btn-primary" v-on:click="addPhoto()"></button>
           <br>
           <br>
           <img id="preview" alt="Image Preview" style="max-width:300px; max-height:300px; width:auto; height:auto">
@@ -387,7 +386,6 @@
         <input type="text" class="form-control" v-model="shmealAllergen">
       </div>
       <button class="btn btn-primary" v-on:click="submitmenuitem()">Submit</button>
-      <button class="btn btn-primary" v-on:click="submitshmeal()">Submit</button>
     </div>
 
   </div>

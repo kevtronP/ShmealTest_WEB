@@ -29,7 +29,6 @@ var HomePage = {
     axios.get("/upcoming").then(
       function(response) {
         this.shmeals = response.data;
-
         var locations = [];
 
         var map = new google.maps.Map(document.getElementById("map"), {
@@ -216,10 +215,8 @@ var HomePage = {
                   return compare;
                 }.bind(this)
               );
-
               var imageKey =
                 sortedimageURLs[sortedimageURLs.length - 1].shmealAttribute;
-              console.log(imageKey);
 
               var s3 = new AWS.S3();
               const url = s3.getSignedUrl("getObject", {
@@ -227,7 +224,38 @@ var HomePage = {
                 Key: imageKey,
                 Expires: 600
               });
-              console.log(url);
+              return url;
+            },
+            userPhoto: function() {
+              var imageURLsArray = [];
+
+              this.shmeal.menuitem.user.shmuserattributes.forEach(function(
+                attribute
+              ) {
+                if (attribute.attributeName === "profPicURL") {
+                  imageURLsArray.push(attribute);
+                }
+              });
+
+              var sortedimageURLs = imageURLsArray.sort(
+                function(imageURL1, imageURL2) {
+                  var shmealImageURL1 = new Date(imageURL1.attributeDate);
+                  var shmealImageURL2 = new Date(imageURL2.attributeDate);
+
+                  var compare = shmealImageURL1 - shmealImageURL2;
+
+                  return compare;
+                }.bind(this)
+              );
+              var imageKey =
+                sortedimageURLs[sortedimageURLs.length - 1].userAttribute;
+
+              var s3 = new AWS.S3();
+              const url = s3.getSignedUrl("getObject", {
+                Bucket: "kevinshmealphotos",
+                Key: imageKey,
+                Expires: 600
+              });
               return url;
             }
           };
@@ -255,14 +283,10 @@ var HomePage = {
             }
           );
         } else {
-          // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow);
         }
-        console.log(ProfileManager.currentUserData);
         console.log(updatedShmeals);
-        // var awsKey = process.env.AWS_KEY;
 
-        // console.log("key", awsKey);
         this.updatedShmeals = updatedShmeals;
       }.bind(this)
     );
@@ -275,8 +299,6 @@ var HomePage = {
       this.currentShmeal.CSdescription = this.currentShmeal.description();
       this.currentShmeal.CSstartTime = this.currentShmeal.startTime();
       this.currentShmeal.CSendTime = this.currentShmeal.endTime();
-      // this.clg = this.clg;
-      // console.log("clg", this.clg);
       var endTimesArrayAVA = [];
       this.currentShmeal.shmeal.shmshmealattributes.forEach(function(
         attribute
@@ -533,8 +555,8 @@ var LoginPage = {
   template: "#login-page",
   data: function() {
     return {
-      email: "",
-      password: "",
+      email: "kmerc5187@gmail.com",
+      password: "K@ppa123",
       errors: []
     };
   },
@@ -576,12 +598,11 @@ var LoginPage = {
             axios
               .get("/login/" + result[4].getValue())
               .then(function(response) {
-                ProfileManager.currentUserData = response.data;
+                ProfileManager.currentUser = response.data[0];
+                console.log(ProfileManager.currentUser);
               });
-            console.log(ProfileManager.currentUserData[0].id);
           });
         },
-
         onFailure: function(err) {
           alert(err);
         }
@@ -649,6 +670,7 @@ var CreateAccount = {
 
         .then(function(response) {
           this.userid = response.data;
+          ProfileManager.currentUser = response.data;
           var shmuserattribute = {
             shmuserattribute: {
               attributeName: "userHomeLat",
@@ -696,19 +718,6 @@ var CreateAccount = {
       document.getElementById("preview").src = window.URL.createObjectURL(
         this.selectedFile
       );
-    },
-
-    sendData: function() {
-      var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-
-      console.log(userPool);
-      // var Wser = {
-      //   firstname: this.userName,
-      //   lastname: this.lastName,
-      //   email: this.userEmail,
-      //   phone: this.userPhoneNumber,
-      //   password: this.userPassword
-      // };
     }
   }
 };
@@ -769,7 +778,7 @@ var NewShmealPage = {
       var menuitem = {
         menuitem: {
           mealName: this.mealName,
-          userID: ProfileManager.currentUserData[0].id
+          userID: ProfileManager.currentUser.id
         }
       };
       axios
@@ -884,12 +893,21 @@ var ProfileManager = {
   userPhoneNumber: "",
   userEmail: "",
   userPassword: "",
-  currentUserData: {}
+  currentUser: {}
 };
 
 new Vue({
   el: "#vue-app",
   router: router,
+  data: function() {
+    return {
+      message: "Burn to cinder",
+      ProfileManager: {
+        currentUser: {}
+      },
+      errors: []
+    };
+  },
   created: function() {
     axios.get("/fetchimage").then(function(response) {
       this.key = response.data;
@@ -902,6 +920,69 @@ new Vue({
         ClientId: this.key.client_id
       };
       this.poolData = poolData;
+      var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+      var cognitoUser = userPool.getCurrentUser();
+      cognitoUser.getSession(function(err, session) {
+        if (err) {
+          alert(err);
+          return;
+        }
+
+        cognitoUser.getUserAttributes(function(err, result) {
+          if (err) {
+            // error so send to log in page
+            alert(err);
+            return;
+          }
+          for (var i = 0; i < result.length; i++) {
+            if (result[i].getName() === "email") {
+              axios
+                .get("/login/" + result[i].getValue())
+                .then(function(response) {
+                  ProfileManager.currentUser = response.data[0];
+                });
+            }
+            console.log(
+              "attribute " +
+                result[i].getName() +
+                " has value " +
+                result[i].getValue()
+            );
+          }
+        });
+      });
     });
+    this.ProfileManager = ProfileManager;
+  },
+  methods: {
+    userPhoto: function() {
+      var s3 = new AWS.S3();
+      var imageURLsArray = [];
+
+      ProfileManager.currentUser.shmuserattributes.forEach(function(attribute) {
+        if (attribute.attributeName === "profPicURL") {
+          imageURLsArray.push(attribute);
+        }
+      });
+
+      var sortedimageURLs = imageURLsArray.sort(
+        function(imageURL1, imageURL2) {
+          var shmealImageURL1 = new Date(imageURL1.attributeDate);
+          var shmealImageURL2 = new Date(imageURL2.attributeDate);
+
+          var compare = shmealImageURL1 - shmealImageURL2;
+
+          return compare;
+        }.bind(this)
+      );
+      var imageKey = sortedimageURLs[sortedimageURLs.length - 1].userAttribute;
+
+      const url = s3.getSignedUrl("getObject", {
+        Bucket: "kevinshmealphotos",
+        Key: imageKey,
+        Expires: 600
+      });
+      return url;
+    }
   }
 });
