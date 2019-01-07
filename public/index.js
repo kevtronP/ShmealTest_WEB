@@ -13,6 +13,7 @@ var HomePage = {
       sortAttribute: "attributeDate",
       sortAscending: true,
       updatedShmeals: {},
+      currentTime: {},
       clg: [],
       dz: {},
       timeArray: [],
@@ -378,6 +379,36 @@ var HomePage = {
       }
       this.timeArray = timeArray;
     },
+    setCurrentTime: function(inputTime) {
+      this.currentTime = inputTime;
+    },
+    submitOrder: function() {
+      var order = {
+        orderDay: new Date(),
+        orderTime: this.currentTime,
+        eaterID: ProfileManager.currentUser.id,
+        cookID: this.currentShmeal.shmeal.menuitem.userID
+      };
+
+      var orderAttribute = {
+        attributeName: "pickUpTime",
+        requestDateAtrb: this.currentTime,
+        attributeDate: new Date()
+      };
+
+      axios.post("shmorders", order).then(function() {
+        axios.post("shmrequestattributes", orderAttribute).then(function() {
+          orderAttribute.attributeName = "requestQuantity";
+          orderAttribute.requestDateAtrb = null;
+          orderAttribute.requestAttribute = 1;
+          axios.post("shmrequestattributes", orderAttribute).then(function() {
+            orderAttribute.attributeName = "specialRequest";
+            orderAttribute.requestAttribute = null;
+            axios.post("shmrequestattributes", orderAttribute);
+          });
+        });
+      });
+    },
     checkuser: function() {
       var data = {
         UserPoolId: key.pool_id,
@@ -385,7 +416,6 @@ var HomePage = {
       };
       var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
       var cognitoUser = userPool.getCurrentUser();
-
       if (cognitoUser != null) {
         cognitoUser.getSession(function(err, session) {
           if (err) {
@@ -854,7 +884,7 @@ var NewShmealPage = {
 };
 
 var LogoutPage = {
-  template: "<h1>Logout</h1>",
+  template: "#LogoutPage",
   created: function() {
     var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
@@ -867,6 +897,21 @@ var LogoutPage = {
   }
 };
 
+var UpcomingShmealPage = {
+  template: "#upcoming-shmeal-page",
+  data: function() {
+    return {
+      shmeal: {}
+    };
+  },
+  created: function() {
+    axios.get("/upcoming").then(function(response) {
+      this.shmeals = response.data;
+      console.log(this.shmeals);
+    });
+  }
+};
+
 var router = new VueRouter({
   routes: [
     { path: "/", component: HomePage },
@@ -874,7 +919,8 @@ var router = new VueRouter({
     { path: "/login", component: LoginPage },
     { path: "/createaccount", component: CreateAccount },
     { path: "/logout", component: LogoutPage },
-    { path: "/newshmeal", component: NewShmealPage }
+    { path: "/newshmeal", component: NewShmealPage },
+    { path: "/upcomingshmeal", component: UpcomingShmealPage }
   ],
   scrollBehavior: function(to, from, savedPosition) {
     return { x: 0, y: 0 };

@@ -113,11 +113,11 @@
           </div>
           <div class="modal-body">
             <ul class="list-group list-group-flush">
-              <button type="button" class="list-group-item" button v-for="time in timeArray"> {{ time }} </button>
+              <button type="button" class="list-group-item" button v-for="time in timeArray" v-on:click="setCurrentTime(time)"> {{ time }} </button>
             </ul>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Submit Request</button>
+            <button type="button" class="btn btn-primary" v-on:click="submitOrder">Submit Request</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
@@ -387,6 +387,49 @@
       </div>
       <button class="btn btn-primary" v-on:click="submitmenuitem()">Submit</button>
     </div>
+
+  </div>
+</template>
+
+<template id="upcoming-shmeal-page">
+  <div class="vue-component">
+    <table class="table table-hover" v-bind:key="shmeal.id">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td colspan="2">Larry the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Footer -->
+    <footer class="py-5 bg-black">
+      <div class="container">
+        <p class="m-0 text-center text-white small">Copyright &copy; Your Website 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
 
   </div>
 </template>
