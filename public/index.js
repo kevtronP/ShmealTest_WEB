@@ -30,6 +30,7 @@ var HomePage = {
     axios.get("/upcoming").then(
       function(response) {
         this.shmeals = response.data;
+        UpcomingManager.shmeal = response.data;
         var locations = [];
 
         var map = new google.maps.Map(document.getElementById("map"), {
@@ -286,12 +287,13 @@ var HomePage = {
         } else {
           handleLocationError(false, infoWindow);
         }
-        console.log(updatedShmeals);
+        console.log(UpcomingManager.shmeal);
 
         this.updatedShmeals = updatedShmeals;
       }.bind(this)
     );
   },
+
   mounted: function() {},
 
   methods: {
@@ -387,16 +389,26 @@ var HomePage = {
         orderDay: new Date(),
         orderTime: this.currentTime,
         eaterID: ProfileManager.currentUser.id,
-        cookID: this.currentShmeal.shmeal.menuitem.userID
+        cookID: this.currentShmeal.shmeal.menuitem.userID,
+        shmealID: this.currentShmeal.shmeal.id
       };
 
       var orderAttribute = {
         attributeName: "pickUpTime",
         requestDateAtrb: this.currentTime,
-        attributeDate: new Date()
+        attributeDate: new Date(),
+        requestID: null
       };
 
-      axios.post("shmorders", order).then(function() {
+      var orderStatus = {
+        statusCode: "P",
+        requestID: null,
+        statusStartDate: this.currentTime
+      };
+
+      axios.post("shmorders", order).then(function(response) {
+        orderAttribute.requestID = response.data.id;
+        orderStatus.requestID = response.data.id;
         axios.post("shmrequestattributes", orderAttribute).then(function() {
           orderAttribute.attributeName = "requestQuantity";
           orderAttribute.requestDateAtrb = null;
@@ -404,7 +416,9 @@ var HomePage = {
           axios.post("shmrequestattributes", orderAttribute).then(function() {
             orderAttribute.attributeName = "specialRequest";
             orderAttribute.requestAttribute = null;
-            axios.post("shmrequestattributes", orderAttribute);
+            axios.post("shmrequestattributes", orderAttribute).then(function() {
+              axios.post("shmrequeststatuses", orderStatus);
+            });
           });
         });
       });
@@ -650,6 +664,8 @@ var CreateAccount = {
       lastName: "",
       location: "",
       poolData: {},
+      retro: {},
+      fresco: {},
       newUser: {},
       emailVerification: "",
       phoneVerification: "",
@@ -901,15 +917,19 @@ var UpcomingShmealPage = {
   template: "#upcoming-shmeal-page",
   data: function() {
     return {
-      shmeal: {}
+      activeShmeals: {},
+      events: [],
+      sortAttribute: "id",
+      sortAscending: true,
+      message: "TEST"
     };
   },
   created: function() {
-    axios.get("/upcoming").then(function(response) {
-      this.shmeals = response.data;
-      console.log(this.shmeals);
-    });
-  }
+    this.activeShmeals = UpcomingManager.shmeal;
+    console.log(this.activeShmeals);
+    console.log(UpcomingManager);
+  },
+  computed: {}
 };
 
 var router = new VueRouter({
@@ -942,6 +962,9 @@ var ProfileManager = {
   currentUser: {}
 };
 
+var UpcomingManager = {
+};
+
 new Vue({
   el: "#vue-app",
   router: router,
@@ -951,50 +974,57 @@ new Vue({
       ProfileManager: {
         currentUser: {}
       },
+      UpcomingManager: {
+        shmeal: {}
+      },
       errors: []
     };
   },
   created: function() {
-    axios.get("/fetchimage").then(function(response) {
-      this.key = response.data;
-      AWS.config.update({
-        accessKeyId: this.key.access_key_id,
-        secretAccessKey: this.key.secret_access_key
-      });
-      var poolData = {
-        UserPoolId: this.key.pool_id,
-        ClientId: this.key.client_id
-      };
-      this.poolData = poolData;
-      var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-      var cognitoUser = userPool.getCurrentUser();
-      cognitoUser.getSession(function(err, session) {
-        if (err) {
-          alert(err);
-          return;
-        }
-
-        cognitoUser.getUserAttributes(function(err, result) {
+    axios.get("/upcoming").then(function(response) {
+      UpcomingManager.shmeal = response.data;
+    }).then(function() {
+      axios.get("/fetchimage").then(function(response) {
+        this.key = response.data;
+        AWS.config.update({
+          accessKeyId: this.key.access_key_id,
+          secretAccessKey: this.key.secret_access_key
+        });
+        var poolData = {
+          UserPoolId: this.key.pool_id,
+          ClientId: this.key.client_id
+        };
+        this.poolData = poolData;
+        var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+        var cognitoUser = userPool.getCurrentUser();
+        cognitoUser.getSession(function(err, session) {
           if (err) {
-            // error so send to log in page
             alert(err);
             return;
           }
-          for (var i = 0; i < result.length; i++) {
-            if (result[i].getName() === "email") {
-              axios
-                .get("/login/" + result[i].getValue())
-                .then(function(response) {
-                  ProfileManager.currentUser = response.data[0];
-                });
+
+          cognitoUser.getUserAttributes(function(err, result) {
+            if (err) {
+              // error so send to log in page
+              alert(err);
+              return;
             }
-            console.log(
-              "attribute " +
-                result[i].getName() +
-                " has value " +
-                result[i].getValue()
-            );
-          }
+            for (var i = 0; i < result.length; i++) {
+              if (result[i].getName() === "email") {
+                axios
+                  .get("/login/" + result[i].getValue())
+                  .then(function(response) {
+                    ProfileManager.currentUser = response.data[0];
+                  });
+              }
+              console.log(
+                "attribute " +
+                  result[i].getName() +
+                  " has value " +
+                  result[i].getValue()
+              );
+            }
+          });
         });
       });
     });

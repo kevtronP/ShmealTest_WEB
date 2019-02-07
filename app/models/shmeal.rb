@@ -3,5 +3,5 @@ class Shmeal < ApplicationRecord
   has_many :shmshmealattributes
   has_many :shmorders
   belongs_to :menuitem
-
+  has_many :shmeals, through: :menuitem
 end

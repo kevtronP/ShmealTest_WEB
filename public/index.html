@@ -44,6 +44,9 @@
             <a class="nav-link" href="#/newshmeal">Post Shmeal</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="#/upcomingshmeal">Upcoming</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="#/signup">Sign Up</a>
           </li>
           <li class="nav-item">
@@ -90,7 +93,7 @@
           <div class="card mb-5">
             <div class="card-body">
               <img class="card-img-top" v-bind:src="shmeal.imageURL()" alt="Card image cap">
-              <h4 class="card-title">{{ shmeal.shmeal.menuitem.mealName}}</h4>
+              <h4 class="card-title">{{ shmeal.shmeal.menuitem.mealName }}</h4>
               <p class="card-text body">{{ shmeal.shmeal.menuitem.user.userName }}
                 <img v-bind:src="shmeal.userPhoto()" style="max-height: 45px" class="img-fluid" alt="Responsive image">
               </p>
@@ -393,35 +396,15 @@
 
 <template id="upcoming-shmeal-page">
   <div class="vue-component">
-    <table class="table table-hover" v-bind:key="shmeal.id">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colspan="2">Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="row" is="transition-group" name="fade">
+        <div class="col-md-4 card-deck" v-for="shmeal in activeShmeals" v-bind:key="shmeal.id">
+          <div class="card mb-5">
+            <div class="card-body">
+              <h4 class="card-title">{{ shmeal.menuitem }}</h4>
+            </div>
+          </div>
+        </div>
+    </div>
     <!-- Footer -->
     <footer class="py-5 bg-black">
       <div class="container">
